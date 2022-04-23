@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
@@ -152,15 +152,25 @@ const ProductDetail = () => {
         alt={`${routeName} image`}
       />
       <h1>You May Also Like</h1>
-      {currentProduct?.others.map((product: ProductsProps) => (
-        <div key={product.name}>
-          <ProductPreview
-            slug={product.slug}
-            text={product.name}
-            image={product.image.desktop}
-          />
-        </div>
-      ))}
+      {currentProduct?.others.map(
+        (product: {
+          slug: string;
+          name: string;
+          image: {
+            mobile: StaticImageData | any | string;
+            tablet: StaticImageData | any | string;
+            desktop: StaticImageData | any | string;
+          };
+        }) => (
+          <div key={product.name}>
+            <ProductPreview
+              slug={product.slug}
+              text={product.name}
+              image={product.image.desktop}
+            />
+          </div>
+        )
+      )}
 
       <button disabled={quantity === 1} onClick={handleDecrement}>
         <h1>-</h1>
