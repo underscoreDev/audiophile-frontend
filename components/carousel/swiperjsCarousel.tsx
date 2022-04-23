@@ -3,7 +3,6 @@ import Image from "next/image";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
 import { ProductsProps } from "interfaces/interfaces";
 import styled from "styled-components";
 import { colors } from "utils/theme";
@@ -11,8 +10,6 @@ import Button from "components/buttons/button";
 import Router from "next/router";
 import { body, h1, lightText } from "utils/typography";
 import { useAppSelector } from "redux/store/store";
-
-SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 const SwiperjsCarousel = () => {
   const { products } = useAppSelector(({ productsReducer }) => productsReducer);
