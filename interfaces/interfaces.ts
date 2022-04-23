@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 export interface ProductsProps {
   id: number;
   slug: string;
