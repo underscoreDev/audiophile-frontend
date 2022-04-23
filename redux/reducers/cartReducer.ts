@@ -44,7 +44,8 @@ export const {
 
 export const getTotalPrice = (state: RootState) =>
   state.cartReducer.cartProducts.reduce(
-    (acc, next) => (acc += next.quantity * next.product.price),
+    (acc: number, next: { quantity: number; product: { price: number } }) =>
+      (acc += next.quantity * next.product.price),
     0
   );
 

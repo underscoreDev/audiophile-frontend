@@ -25,7 +25,7 @@ const Category = () => {
       </div>
 
       <div className="category__products">
-        {category.map((cat) => (
+        {category.map((cat: ProductsProps) => (
           <div key={cat.slug}>
             <CategoryProduct cat={cat} />
           </div>

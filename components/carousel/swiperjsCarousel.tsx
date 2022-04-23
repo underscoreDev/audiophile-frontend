@@ -35,7 +35,7 @@ const SwiperjsCarousel = () => {
         className="mySwiper"
         loop={true}
       >
-        {newProducts.map((product) => (
+        {newProducts.map((product: ProductsProps) => (
           <SwiperSlide key={product.slug}>
             <div className="slide">
               <div className="slide__description">

@@ -5,6 +5,7 @@ import { useAppSelector } from "redux/store/store";
 import Image from "next/image";
 import Button from "components/buttons/button";
 import { useAppDispatch } from "redux/store/store";
+import { cartProductType } from "interfaces/interfaces";
 import {
   decreaseQuantity,
   increaseQuantity,
@@ -31,7 +32,7 @@ const Cart = () => {
             </button>
           </div>
           <>
-            {cartProducts.map((product) => (
+            {cartProducts.map((product: cartProductType) => (
               <div key={product.id} className="cart__items">
                 <Image
                   width={60}

@@ -11,6 +11,7 @@ import {
   decreaseQuantity,
   increaseQuantity,
 } from "redux/reducers/cartReducer";
+import { cartProductType, ProductsProps } from "interfaces/interfaces";
 
 const ProductDetail = () => {
   const router = useRouter();
@@ -23,7 +24,8 @@ const ProductDetail = () => {
   const { cartProducts } = useAppSelector(({ cartReducer }) => cartReducer);
 
   const currentProduct = products.find(
-    (product) => product.slug === routeName || product.name === routeName
+    (product: ProductsProps) =>
+      product.slug === routeName || product.name === routeName
   );
 
   const dispatch = useAppDispatch();
@@ -33,7 +35,9 @@ const ProductDetail = () => {
       return;
     } else {
       if (
-        cartProducts.map((product) => product.id).includes(currentProduct.slug)
+        cartProducts
+          .map((product: cartProductType) => product.id)
+          .includes(currentProduct.slug)
       ) {
         toast(<h1>{currentProduct?.name} is already in cart</h1>, {
           theme: "dark",
@@ -67,11 +71,11 @@ const ProductDetail = () => {
     } else {
       if (
         cartProducts
-          .map((product) => product.id)
+          .map((product: cartProductType) => product.id)
           .includes(currentProduct.slug) === false
       ) {
         return toast(
-          <h3>Product isn't in Cart. Add Product to cart First</h3>,
+          <h3>Product isn&apos;t in Cart. Add Product to cart First</h3>,
           {
             theme: "dark",
             type: "error",
@@ -91,11 +95,11 @@ const ProductDetail = () => {
     } else {
       if (
         cartProducts
-          .map((product) => product.id)
+          .map((product: cartProductType) => product.id)
           .includes(currentProduct.slug) === false
       ) {
         return toast(
-          <h3>Product isn't in Cart. Add Product to cart First</h3>,
+          <h3>Product isn&apos;t in Cart. Add Product to cart First</h3>,
           {
             theme: "dark",
             type: "error",
@@ -124,11 +128,13 @@ const ProductDetail = () => {
       <p>{currentProduct?.features}</p>
       <p>${currentProduct?.price}</p>
 
-      {currentProduct?.including.map((p) => (
-        <p key={p.item}>
-          {p.quantity}X {p.item}
-        </p>
-      ))}
+      {currentProduct?.including.map(
+        (p: { quantity: number; item: string }) => (
+          <p key={p.item}>
+            {p.quantity}X {p.item}
+          </p>
+        )
+      )}
 
       <Image
         priority={true}
@@ -146,7 +152,7 @@ const ProductDetail = () => {
         alt={`${routeName} image`}
       />
       <h1>You May Also Like</h1>
-      {currentProduct?.others.map((product) => (
+      {currentProduct?.others.map((product: ProductsProps) => (
         <div key={product.name}>
           <ProductPreview
             slug={product.slug}

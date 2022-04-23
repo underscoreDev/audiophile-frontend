@@ -39,7 +39,7 @@ export const incrementQuantity = (
     state.cartProducts[itemIndex].quantity >= 1 &&
       (state.cartProducts[itemIndex].quantity += 1);
   } else {
-    toast(<h3>Product isn't in Cart. Add Product to cart First</h3>, {
+    toast(<h3>Product isn&apos;t in Cart. Add Product to cart First</h3>, {
       theme: "dark",
       type: "error",
       position: "top-left",
@@ -60,7 +60,7 @@ export const decrementQuantity = (
     state.cartProducts[itemIndex].quantity >= 1 &&
       (state.cartProducts[itemIndex].quantity -= 1);
   } else {
-    toast(<h3>Product isn't in Cart. Add Product to cart First</h3>, {
+    toast(<h3>Product isn&apos;t in Cart. Add Product to cart First</h3>, {
       theme: "dark",
       type: "error",
       position: "top-left",
