@@ -4,7 +4,7 @@ export const body = {
   fontSize: "1.5rem",
   fontStyle: "normal",
   fontWeight: 500,
-  lineHeight: "25px",
+  lineHeight: "2.5rem",
   letterSpacing: "0px",
 };
 

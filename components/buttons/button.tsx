@@ -43,8 +43,9 @@ export default Button;
 const ButtonStyles = styled.button<ButtonProps>`
   position: relative;
   outline: none;
-  width: 16rem;
-  height: 4.8rem;
+  width: fit-content;
+  padding: 2rem 3rem;
+  min-height: 4.8rem;
   text-transform: uppercase;
   cursor: pointer;
   font-weight: 700;

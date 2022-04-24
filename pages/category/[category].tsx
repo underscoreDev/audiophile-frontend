@@ -5,7 +5,7 @@ import { h2 } from "utils/typography";
 import { useAppSelector } from "redux/store/store";
 import CategoryProduct from "components/categoryProduct/categoryProduct";
 import CategoryGroup from "components/categoryType/categoryGroup";
-import BestAudio from "components/bestAudio/bestAudio";
+import BestAudio from "components/bestAudio";
 import { ProductsProps } from "interfaces/interfaces";
 
 const Category = () => {

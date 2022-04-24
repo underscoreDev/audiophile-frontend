@@ -1,29 +1,17 @@
-import styled from "styled-components";
+import Box from "@mui/material/Box";
 import CategoryType from "components/categoryType/categoryType";
+import { categoryGroupCss, marginCss } from "components/categoryType/style";
 
 const CategoryGroup = () => {
   return (
-    <CategoryGroupStyles>
-      <span>
-        <CategoryType type="headphones" />
-      </span>
-
-      <span>
+    <Box css={categoryGroupCss}>
+      <CategoryType type="headphones" />
+      <Box css={marginCss}>
         <CategoryType type="speakers" />
-      </span>
-
-      <span>
-        <CategoryType type="earphones" />
-      </span>
-    </CategoryGroupStyles>
+      </Box>
+      <CategoryType type="earphones" />
+    </Box>
   );
 };
 
 export default CategoryGroup;
-
-const CategoryGroupStyles = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-`;
