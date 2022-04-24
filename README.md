@@ -17,13 +17,13 @@ Run this application into your local environment by forking the repository and e
 Clone the project
 
 ```bash
-  git clone https://github.com/Godswilldev/audiophile.git
+  git clone https://github.com/underscoreDev/audiophile-frontend.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd audiophile
+  cd audiophile-frontend
 ```
 
 Install dependencies
