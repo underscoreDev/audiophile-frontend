@@ -9,21 +9,26 @@ import Link from "next/link";
 import { useAppSelector, useAppDispatch } from "redux/store/store";
 import Cart from "components/cart/cart";
 import { toggleCart } from "redux/reducers/cartReducer";
+import { css } from "styled-components/macro";
+import { useRouter } from "next/router";
+
+const activeLinkCss = css`
+  color: ${colors.colorDarkPink};
+`;
 
 const Navbar = () => {
+  const router = useRouter();
+  console.log(router);
   const dispatch = useAppDispatch();
   const [scrolled, setScrolled] = useState(false);
 
-  const handleScrolled = () =>
-    window.scrollY > 100 ? setScrolled(true) : setScrolled(false);
+  const handleScrolled = () => (window.scrollY > 100 ? setScrolled(true) : setScrolled(false));
 
   useEffect(() => {
     window.addEventListener("scroll", handleScrolled);
   }, [scrolled]);
 
-  const { cartProducts, isCartOpen } = useAppSelector(
-    ({ cartReducer }) => cartReducer
-  );
+  const { cartProducts, isCartOpen } = useAppSelector(({ cartReducer }) => cartReducer);
 
   return (
     <>
@@ -36,16 +41,30 @@ const Navbar = () => {
           <Image className="nav__logo" src={logo} alt="nav logo" />
 
           <ul className="nav__links">
-            <Link href="/">Home</Link>
-            <Link href="/category/headphones">Headphones</Link>
-            <Link href="/category/speakers">Speakers</Link>
-            <Link href="/category/earphones">Earphones</Link>
+            <Link href="/" passHref>
+              <a style={{ color: router.pathname == "/" ? "#D87D4A" : "#fff" }}>Home</a>
+            </Link>
+
+            <Link href="/category/headphones">
+              <a style={{ color: router.query?.category == "headphones" ? "#D87D4A" : "#fff" }}>
+                Headphones
+              </a>
+            </Link>
+
+            <Link href="/category/speakers">
+              <a style={{ color: router.query?.category == "speakers" ? "#D87D4A" : "#fff" }}>
+                speakers
+              </a>
+            </Link>
+
+            <Link href="/category/earphones">
+              <a style={{ color: router.query?.category == "earphones" ? "#D87D4A" : "#fff" }}>
+                earphones
+              </a>
+            </Link>
           </ul>
 
-          <span
-            className="cart"
-            onClick={() => dispatch(toggleCart(!isCartOpen))}
-          >
+          <span className="cart" onClick={() => dispatch(toggleCart(!isCartOpen))}>
             <p>{cartProducts.length > 0 && cartProducts.length}</p>
             <Image src={cart} alt="cart" />
           </span>
@@ -68,7 +87,11 @@ const NavbarStyles = styled.nav`
   flex-direction: column;
   justify-content: space-around;
   z-index: 9;
-
+  @media (max-width: 500px) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+  }
   .cart {
     cursor: pointer;
   }
@@ -92,6 +115,9 @@ const NavbarStyles = styled.nav`
         &:hover {
           color: ${colors.colorDarkPink};
         }
+      }
+      @media (max-width: 500px) {
+        display: none;
       }
     }
   }
