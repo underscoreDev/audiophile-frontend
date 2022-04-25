@@ -15,7 +15,7 @@ const Home = () => {
         <CategoryGroup />
         <Z9Speaker />
         <Zx7Speaker />
-        <Yx1Earphone />
+        {/* <Yx1Earphone /> */}
         <BestAudio />
       </Container>
     </Box>

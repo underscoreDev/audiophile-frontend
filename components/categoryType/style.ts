@@ -21,12 +21,12 @@ export const categoryTypeCss = css`
 
 export const categoryIconCss = css`
   position: absolute;
-  top: -10rem;
+  top: -7rem;
   @media (max-width: 375px) {
-    top: -13rem;
+    top: -10rem;
   }
   @media (max-width: 350px) {
-    top: -15rem;
+    top: -13rem;
   }
 `;
 
@@ -50,8 +50,4 @@ export const categoryGroupCss = css`
 
 export const marginCss = css`
   margin: 15rem 0;
-
-  @media (max-width: 450px) {
-    margin: 20rem;
-  }
 `;

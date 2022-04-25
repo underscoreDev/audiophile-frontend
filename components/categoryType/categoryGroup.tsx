@@ -4,9 +4,9 @@ import { categoryGroupCss, marginCss } from "components/categoryType/style";
 
 const CategoryGroup = () => {
   return (
-    <Box css={categoryGroupCss}>
+    <Box className="categoryGroupCss" css={categoryGroupCss}>
       <CategoryType type="headphones" />
-      <Box css={marginCss}>
+      <Box className="marginCss" css={marginCss}>
         <CategoryType type="speakers" />
       </Box>
       <CategoryType type="earphones" />
