@@ -19,7 +19,7 @@ const navbarContainerCss = css`
   color: ${colors.colorWhite};
   background-color: ${colors.colorBlack};
   height: 9.7rem;
-  width: 100vw;
+  width: 100%;
   display: flex;
   align-items: center;
   z-index: 9;

@@ -25,8 +25,8 @@ const Z9Speaker = () => {
               ZX9 <br /> SPEAKER
             </h1>
             <p>
-              Upgrade to premium speakers that are <br /> phenomenally built to
-              deliver truly remarkable <br /> sound.
+              Upgrade to premium speakers that are <br /> phenomenally built to deliver truly
+              remarkable <br /> sound.
             </p>
             <span onClick={() => Router.push("/product/zx9-speaker")}>
               <Button text="see product" variant="BLACK" />
