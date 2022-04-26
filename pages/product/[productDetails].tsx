@@ -6,17 +6,12 @@ import Button from "components/buttons/button";
 import { ToastContainer, toast } from "react-toastify";
 import { useAppDispatch, useAppSelector } from "redux/store/store";
 import ProductPreview from "components/productPreview/productPreview";
-import {
-  addItemToCart,
-  decreaseQuantity,
-  increaseQuantity,
-} from "redux/reducers/cartReducer";
+import { addItemToCart, decreaseQuantity, increaseQuantity } from "redux/reducers/cartReducer";
 import { cartProductType, ProductsProps } from "interfaces/interfaces";
 
 const ProductDetail = () => {
   const router = useRouter();
-  const routeName: string | undefined | string[] =
-    router?.query?.productDetails;
+  const routeName: string | undefined | string[] = router?.query?.productDetails;
 
   const [quantity, setQuantity] = useState(1);
 
@@ -24,20 +19,17 @@ const ProductDetail = () => {
   const { cartProducts } = useAppSelector(({ cartReducer }) => cartReducer);
 
   const currentProduct = products.find(
-    (product: ProductsProps) =>
-      product.slug === routeName || product.name === routeName
+    (product: ProductsProps) => product.slug === routeName || product.name === routeName
   );
 
   const dispatch = useAppDispatch();
-
+  console.log(currentProduct);
   const addProductToCart = () => {
     if (currentProduct === undefined) {
       return;
     } else {
       if (
-        cartProducts
-          .map((product: cartProductType) => product.id)
-          .includes(currentProduct.slug)
+        cartProducts.map((product: cartProductType) => product.id).includes(currentProduct.slug)
       ) {
         toast(<h1>{currentProduct?.name} is already in cart</h1>, {
           theme: "dark",
@@ -70,19 +62,15 @@ const ProductDetail = () => {
       return;
     } else {
       if (
-        cartProducts
-          .map((product: cartProductType) => product.id)
-          .includes(currentProduct.slug) === false
+        cartProducts.map((product: cartProductType) => product.id).includes(currentProduct.slug) ===
+        false
       ) {
-        return toast(
-          <h3>Product isn&apos;t in Cart. Add Product to cart First</h3>,
-          {
-            theme: "dark",
-            type: "error",
-            position: "top-left",
-            autoClose: 3000,
-          }
-        );
+        return toast(<h3>Product isn&apos;t in Cart. Add Product to cart First</h3>, {
+          theme: "dark",
+          type: "error",
+          position: "top-left",
+          autoClose: 3000,
+        });
       }
       setQuantity(quantity + 1);
       dispatch(increaseQuantity(currentProduct?.slug));
@@ -94,19 +82,15 @@ const ProductDetail = () => {
       return;
     } else {
       if (
-        cartProducts
-          .map((product: cartProductType) => product.id)
-          .includes(currentProduct.slug) === false
+        cartProducts.map((product: cartProductType) => product.id).includes(currentProduct.slug) ===
+        false
       ) {
-        return toast(
-          <h3>Product isn&apos;t in Cart. Add Product to cart First</h3>,
-          {
-            theme: "dark",
-            type: "error",
-            position: "top-left",
-            autoClose: 3000,
-          }
-        );
+        return toast(<h3>Product isn&apos;t in Cart. Add Product to cart First</h3>, {
+          theme: "dark",
+          type: "error",
+          position: "top-left",
+          autoClose: 3000,
+        });
       }
       setQuantity(quantity - 1);
       dispatch(decreaseQuantity(currentProduct?.slug));
@@ -118,7 +102,7 @@ const ProductDetail = () => {
       <ToastContainer newestOnTop={true} />
       <Image
         priority={true}
-        src={currentProduct?.image.desktop}
+        src={currentProduct?.categoryImage.desktop}
         alt={`${routeName} image`}
       />
       {currentProduct?.new && <h3>New Product</h3>}
@@ -128,13 +112,11 @@ const ProductDetail = () => {
       <p>{currentProduct?.features}</p>
       <p>${currentProduct?.price}</p>
 
-      {currentProduct?.including.map(
-        (p: { quantity: number; item: string }) => (
-          <p key={p.item}>
-            {p.quantity}X {p.item}
-          </p>
-        )
-      )}
+      {currentProduct?.including.map((p: { quantity: number; item: string }) => (
+        <p key={p.item}>
+          {p.quantity}X {p.item}
+        </p>
+      ))}
 
       <Image
         priority={true}
@@ -163,11 +145,7 @@ const ProductDetail = () => {
           };
         }) => (
           <div key={product.name}>
-            <ProductPreview
-              slug={product.slug}
-              text={product.name}
-              image={product.image.desktop}
-            />
+            <ProductPreview slug={product.slug} text={product.name} image={product.image.desktop} />
           </div>
         )
       )}

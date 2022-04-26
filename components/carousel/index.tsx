@@ -20,8 +20,8 @@ import {
 
 export function HeaderCarousel() {
   const { products } = useAppSelector(({ productsReducer }) => productsReducer);
-  const newProducts = products.filter((p: ProductsProps) => p.new);
-
+  const newProducts = products.filter((p: ProductsProps) => p.new === true);
+  console.log(newProducts);
   return (
     <Box css={headerCarouselContainer}>
       <Swiper
