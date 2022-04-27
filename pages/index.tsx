@@ -1,6 +1,11 @@
+import dynamic from "next/dynamic";
 import type { NextPage } from "next";
-import HomePage from "components/homePage/home";
+import { PageLoader } from "components/pageLoader";
 
-const Home: NextPage = () => <HomePage />;
+const HomeComponent = dynamic(() => import("components/homePage/home"), {
+  loading: () => <PageLoader />,
+});
 
-export default Home;
+const HomeModule: NextPage = () => <HomeComponent />;
+
+export default HomeModule;

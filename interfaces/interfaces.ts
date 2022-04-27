@@ -81,3 +81,13 @@ export interface CartState {
   vat: number;
   grandTotal: number;
 }
+
+export interface CurrentProductProps {
+  slug: string;
+  name: string;
+  image: {
+    mobile: StaticImageData | any | string;
+    tablet: StaticImageData | any | string;
+    desktop: StaticImageData | any | string;
+  };
+}

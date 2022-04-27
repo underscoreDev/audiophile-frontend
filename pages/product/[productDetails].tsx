@@ -1,8 +1,15 @@
 import React from "react";
-import ProductDetail from "components/productDetails/index";
+import dynamic from "next/dynamic";
+import { useTitle } from "react-use";
+import { PageLoader } from "components/pageLoader";
+
+const ProductDetailComponent = dynamic(() => import("components/productDetails"), {
+  loading: () => <PageLoader />,
+});
 
 const ProductDetailpage = () => {
-  return <ProductDetail />;
+  useTitle("Audiophile | Product Detail");
+  return <ProductDetailComponent />;
 };
 
 export default ProductDetailpage;

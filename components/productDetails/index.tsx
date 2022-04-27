@@ -4,16 +4,17 @@ import Grid from "@mui/material/Grid";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import BestAudio from "components/bestAudio";
+import { showToast } from "utils/toast";
 import Button from "components/buttons/button";
 import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 import Container from "@mui/material/Container";
 import Image, { StaticImageData } from "next/image";
-import { ToastContainer, toast } from "react-toastify";
 import { addItemToCart } from "redux/reducers/cartReducer";
 import CategoryGroup from "components/categoryType/categoryGroup";
 import { useAppDispatch, useAppSelector } from "redux/store/store";
 import ProductPreview from "components/productPreview/productPreview";
-import { cartProductType, ProductsProps } from "interfaces/interfaces";
+import { cartProductType, CurrentProductProps, ProductsProps } from "interfaces/interfaces";
 import {
   productCss,
   goBackButton,
@@ -25,15 +26,6 @@ import {
   suggestionProductCss,
 } from "components/productDetails/style";
 
-interface CurrentProductProps {
-  slug: string;
-  name: string;
-  image: {
-    mobile: StaticImageData | any | string;
-    tablet: StaticImageData | any | string;
-    desktop: StaticImageData | any | string;
-  };
-}
 const ProductDetail = () => {
   const router = useRouter();
   useTitle(`Product | ${router.query.productDetails}`);
@@ -54,12 +46,7 @@ const ProductDetail = () => {
       if (
         cartProducts.map((product: cartProductType) => product.id).includes(currentProduct.slug)
       ) {
-        toast(<h1>{currentProduct?.name} is already in cart</h1>, {
-          theme: "dark",
-          type: "error",
-          position: "top-left",
-          autoClose: 3000,
-        });
+        showToast({ message: `${currentProduct?.name} is already in cart`, type: "error" });
         return;
       } else {
         dispatch(
@@ -69,12 +56,7 @@ const ProductDetail = () => {
             product: currentProduct,
           })
         );
-        toast(<h1>{currentProduct?.name} added to cart</h1>, {
-          theme: "dark",
-          type: "success",
-          position: "top-left",
-          autoClose: 3000,
-        });
+        showToast({ message: `${currentProduct?.name} added to cart`, type: "success" });
       }
     }
   };
@@ -95,6 +77,7 @@ const ProductDetail = () => {
             alt={`${routeName} image`}
             width={540}
             height={560}
+            css={"border-radius:1rem"}
           />
         </Grid>
 
