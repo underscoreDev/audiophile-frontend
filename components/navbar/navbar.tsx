@@ -1,16 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import Box from "@mui/material/Box";
-import Cart from "components/cart/cart";
 import { useRouter } from "next/router";
+import Cart from "components/cart/cart";
 import { useState, useEffect } from "react";
-import Backdrop from "@mui/material/Backdrop";
 import Container from "@mui/material/Container";
 import logo from "assets/shared/desktop/logo.svg";
 import { useAppSelector } from "redux/store/store";
 import cart from "assets/shared/desktop/icon-cart.svg";
 import Hamburger from "assets/shared/tablet/icon-hamburger.svg";
 import CategoryGroup from "components/categoryType/categoryGroup";
+import { RandomlyPositionedModal, Backdrop } from "components/cart/style";
 import {
   navCss,
   cartCss,
@@ -29,14 +29,10 @@ const Navbar = () => {
   useEffect(() => window.addEventListener("scroll", handleScrolled), [scrolled]);
   const { cartProducts } = useAppSelector(({ cartReducer }) => cartReducer);
   const handleScrolled = () => (window.scrollY > 100 ? setScrolled(true) : setScrolled(false));
+  const renderBackdrop = (props: any) => <Backdrop {...props} />;
 
   return (
-    <Box
-      css={`
-        position: relative;
-        transition: all 1s;
-      `}
-    >
+    <Box css={"position: relative"}>
       {isNavactive && (
         <Box css={isNavactive ? cateoryGroupCss : categoryNotActiveCss}>
           <CategoryGroup />
@@ -83,13 +79,14 @@ const Navbar = () => {
         </Container>
       </Box>
 
-      <Backdrop
-        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={open}
-        onClick={() => setOpen(false)}
+      <RandomlyPositionedModal
+        show={open}
+        onHide={() => setOpen(false)}
+        renderBackdrop={renderBackdrop}
+        aria-labelledby="modal-label"
       >
-        <Cart />
-      </Backdrop>
+        <Cart setOpen={setOpen} />
+      </RandomlyPositionedModal>
     </Box>
   );
 };

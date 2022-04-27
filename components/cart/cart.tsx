@@ -1,11 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import { colors } from "utils/theme";
-import { useAppSelector } from "redux/store/store";
+import React, { Dispatch, SetStateAction } from "react";
 import Image from "next/image";
+import Box from "@mui/material/Box";
 import Button from "components/buttons/button";
-import { useAppDispatch } from "redux/store/store";
 import { cartProductType } from "interfaces/interfaces";
+import { useAppSelector, useAppDispatch } from "redux/store/store";
+import router from "next/router";
 import {
   decreaseQuantity,
   increaseQuantity,
@@ -13,79 +12,78 @@ import {
   getTotalPrice,
 } from "redux/reducers/cartReducer";
 
-const Cart = () => {
+interface closeCart {
+  setOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+const Cart = ({ setOpen }: closeCart) => {
+  const dispatch = useAppDispatch();
+  const total = useAppSelector(getTotalPrice);
   const { cartProducts } = useAppSelector(({ cartReducer }) => cartReducer);
 
-  const total = useAppSelector(getTotalPrice);
-
-  const dispatch = useAppDispatch();
   return (
-    <CartStyles>
+    <Box className="cart">
       {cartProducts.length === 0 ? (
-        <h1>Your cart is Empty, Continue Shopping</h1>
+        <Box className="cart__empty">
+          <h1>Your Cart is Empty</h1>
+          <span
+            onClick={() => {
+              router.push("/");
+              setOpen(false);
+            }}
+          >
+            <Button text={"Continue Shopping"} variant={"PINK_DARK"} />
+          </span>
+        </Box>
       ) : (
-        <>
-          <div className="cart__header">
+        <Box className="cart__filled">
+          <Box className="cart__filled--header">
             <h1>Cart ({cartProducts.length})</h1>
             <button onClick={() => dispatch(clearCartItems())}>Remove all</button>
-          </div>
-          <>
+          </Box>
+
+          <Box className="cart__filled--body">
             {cartProducts.map((product: cartProductType) => (
-              <div key={product.id} className="cart__items">
-                <Image
-                  width={60}
-                  height={50}
-                  src={product.product.image.desktop}
-                  alt={`${product.id} image`}
-                />
-                <h1>{product.product.name}</h1>
-                <h2>${product.product.price}</h2>
-                <button
-                  disabled={product.quantity === 1}
-                  onClick={() => dispatch(decreaseQuantity(product.id))}
-                >
-                  <h1>-</h1>
-                </button>
+              <Box key={product.id} className="cart__items">
+                <Box className="cart__items--desc">
+                  <Image
+                    width={64}
+                    height={64}
+                    src={product.product.categoryImage.desktop}
+                    alt={`${product.id} image`}
+                    css={"border-radius:1rem"}
+                  />
+                  <span>
+                    <h1>{product.product.name}</h1>
+                    <h2>${product.product.price}</h2>
+                  </span>
+                </Box>
 
-                <h1>{product.quantity}</h1>
+                <Box className="cart__items--btn">
+                  <button
+                    disabled={product.quantity === 1}
+                    onClick={() => dispatch(decreaseQuantity(product.id))}
+                  >
+                    -
+                  </button>
+                  <h6> {product.quantity}</h6>
 
-                <button onClick={() => dispatch(increaseQuantity(product.id))}>
-                  <h1>+</h1>
-                </button>
-              </div>
+                  <button onClick={() => dispatch(increaseQuantity(product.id))}>+</button>
+                </Box>
+              </Box>
             ))}
-          </>
-          <h1>TOTAL - {total}</h1>
-          <Button text={"CHECKOUT"} variant={"PINK_DARK"} />
-        </>
+          </Box>
+          <Box className="cart__total">
+            <span>
+              <h2>TOTAL </h2>
+              <h1>$ {total}</h1>
+            </span>
+            <button>CHECKOUT</button>
+          </Box>
+        </Box>
       )}
-    </CartStyles>
+    </Box>
   );
 };
 
 export default Cart;
-
-const CartStyles = styled.div`
-  width: 37.7rem;
-  height: 48.8rem;
-  background-color: ${colors.colorWhite};
-  position: absolute;
-  z-index: 100;
-  right: 5rem;
-  top: 10rem;
-  padding: 3rem 1rem;
-
-  .cart {
-    &__header {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 2rem;
-    }
-    &__items {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-  }
-`;
