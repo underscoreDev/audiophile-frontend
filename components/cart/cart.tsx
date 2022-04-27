@@ -27,9 +27,7 @@ const Cart = () => {
         <>
           <div className="cart__header">
             <h1>Cart ({cartProducts.length})</h1>
-            <button onClick={() => dispatch(clearCartItems())}>
-              Remove all
-            </button>
+            <button onClick={() => dispatch(clearCartItems())}>Remove all</button>
           </div>
           <>
             {cartProducts.map((product: cartProductType) => (

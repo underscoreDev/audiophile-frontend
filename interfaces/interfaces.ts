@@ -75,7 +75,6 @@ export interface cartProductType {
 
 export interface CartState {
   cartProducts: cartProductType[];
-  isCartOpen: boolean;
   total: number;
   shipping: number;
   vat: number;

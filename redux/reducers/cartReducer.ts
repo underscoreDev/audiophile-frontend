@@ -5,7 +5,6 @@ import {
   removeItemFromCart,
   addToCart,
   clearCart,
-  toggleCartOpening,
   incrementQuantity,
   decrementQuantity,
 } from "redux/actions/actions";
@@ -13,7 +12,6 @@ import { RootState } from "redux/store/store";
 
 const initialState: CartState = {
   cartProducts: [],
-  isCartOpen: false,
   total: 0,
   shipping: 0,
   vat: 0,
@@ -27,20 +25,13 @@ const cartReducer = createSlice({
     addItemToCart: addToCart,
     removeFromCart: removeItemFromCart,
     clearCartItems: clearCart,
-    toggleCart: toggleCartOpening,
     increaseQuantity: incrementQuantity,
     decreaseQuantity: decrementQuantity,
   },
 });
 
-export const {
-  addItemToCart,
-  removeFromCart,
-  clearCartItems,
-  toggleCart,
-  increaseQuantity,
-  decreaseQuantity,
-} = cartReducer.actions;
+export const { addItemToCart, removeFromCart, clearCartItems, increaseQuantity, decreaseQuantity } =
+  cartReducer.actions;
 
 export const getTotalPrice = (state: RootState) =>
   state.cartReducer.cartProducts.reduce(
