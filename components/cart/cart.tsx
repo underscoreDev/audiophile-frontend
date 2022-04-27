@@ -80,7 +80,7 @@ const Cart = ({ setOpen }: closeCart) => {
             </span>
             <button
               onClick={() => {
-                router.push("/");
+                router.push("/checkout");
                 setOpen(false);
               }}
             >

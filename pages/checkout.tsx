@@ -1,9 +1,11 @@
-const Checkout = () => {
-  return (
-    <div css={""} >
-      <h1>Checkout Page</h1>
-    </div>
-  );
-};
+import dynamic from "next/dynamic";
+import type { NextPage } from "next";
+import { PageLoader } from "components/pageLoader";
 
-export default Checkout;
+const CheckoutComponent = dynamic(() => import("components/checkout"), {
+  loading: () => <PageLoader />,
+});
+
+const CheckoutModule: NextPage = () => <CheckoutComponent />;
+
+export default CheckoutModule;
