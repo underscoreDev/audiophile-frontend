@@ -78,7 +78,7 @@ const Cart = ({ setOpen }: closeCart) => {
               <h2>TOTAL </h2>
               <h1>$ {total}</h1>
             </span>
-            <button>CHECKOUT</button>
+            <button onClick={() => router.push("/checkout")}>CHECKOUT</button>
           </Box>
         </Box>
       )}
