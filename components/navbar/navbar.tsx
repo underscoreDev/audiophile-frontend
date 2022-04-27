@@ -152,7 +152,13 @@ const Navbar = () => {
             </Link>
           </ul>
 
-          <span css={cartCss} onClick={() => dispatch(toggleCart(!isCartOpen))}>
+          <span
+            css={cartCss}
+            onClick={() => {
+              dispatch(toggleCart(!isCartOpen));
+              !isCartOpen && window.scroll(0, 0);
+            }}
+          >
             <p>{cartProducts.length > 0 && cartProducts.length}</p>
             <Image src={cart} alt="cart" />
           </span>
