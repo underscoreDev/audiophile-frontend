@@ -72,8 +72,8 @@ const Navbar = () => {
             </Link>
           </ul>
 
-          <span css={cartCss} onClick={() => setOpen(!open)}>
-            <p>{cartProducts.length > 0 && cartProducts.length}</p>
+          <span  onClick={() => setOpen(!open)}>
+            <p css={cartCss}>{cartProducts.length > 0 && cartProducts.length}</p>
             <Image src={cart} alt="cart" />
           </span>
         </Container>

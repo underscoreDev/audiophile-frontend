@@ -15,8 +15,6 @@ export const navbarContainerCss = css`
 
 export const categoryNotActiveCss = css`
   opacity: 0;
-  /* left: -100vw; */
-  /* visibility: hidden; */
   transition: all 1s;
 `;
 
@@ -26,10 +24,7 @@ export const cateoryGroupCss = css`
   background-color: #ffffff;
   border-radius: 0 0 1rem 1rem;
   box-shadow: 0rem 0.5rem 0.5rem rgba(0, 0, 0, 0.5);
-
   width: 100%;
-  /* left: 0; */
-  /* visibility: visible; */
   opacity: 1;
   top: 10vh;
   padding: 10rem 0;
@@ -81,4 +76,14 @@ export const hamburgerCss = css`
   }
 `;
 
-export const cartCss = css``;
+export const cartCss = css`
+                position: absolute;
+                z-index: 10;
+                font-size: 1rem;
+                background: ${colors.colorDarkPink};
+                color: #fff;
+                padding: 0.5rem 0.7rem;
+                border-radius: 100%;
+                top: 1.5rem;
+                cursor: pointer;
+              `;
