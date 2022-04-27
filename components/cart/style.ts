@@ -64,9 +64,21 @@ export const RandomlyPositionedModal = styled(Modal)`
       }
 
       &--body {
-        /* display: flex;
-        justify-content: space-between;
-        align-items: center; */
+        height: 30rem;
+        overflow: auto;
+        scrollbar-width: thin;
+        scrollbar-color: ${colors.colorDarkPink};
+        &::-webkit-scrollbar {
+          width: 0.5rem;
+        }
+        &::-webkit-scrollbar-track {
+          background: #f5f5f5;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: ${colors.colorDarkPink};
+          border-radius: 6px;
+          border: 3px solid ${colors.colorDarkPink};
+        }
       }
     }
 
