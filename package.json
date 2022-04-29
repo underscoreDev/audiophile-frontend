@@ -16,9 +16,11 @@
     "@mui/styles": "^5.6.2",
     "@reduxjs/toolkit": "^1.8.1",
     "axios": "^0.24.0",
+    "formik": "^2.2.9",
     "next": "12.1.5",
     "react": "17.0.0",
     "react-dom": "17.0.0",
+    "react-hook-form": "^7.30.0",
     "react-material-ui-carousel": "^3.3.3",
     "react-overlays": "^5.1.1",
     "react-redux": "^7.2.6",
@@ -29,7 +31,8 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.5",
-    "swiper": "^8.1.4"
+    "swiper": "^8.1.4",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/node": "17.0.25",

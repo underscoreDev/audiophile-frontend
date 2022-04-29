@@ -9,6 +9,7 @@ import {
   decrementQuantity,
 } from "redux/actions/actions";
 import { RootState } from "redux/store/store";
+import { number } from "yup";
 
 const initialState: CartState = {
   cartProducts: [],
@@ -39,5 +40,38 @@ export const getTotalPrice = (state: RootState) =>
       (acc += next.quantity * next.product.price),
     0
   );
+
+export const shipping = (state: RootState) =>
+  state.cartReducer.cartProducts.reduce(
+    (acc, next, _, array) =>
+      Math.round(((acc += next.quantity * next.product.price) * array.length) / 100),
+    0
+  );
+
+export const vat = (state: RootState) =>
+  state.cartReducer.cartProducts.reduce(
+    (acc: number, next: { quantity: number; product: { price: number } }) =>
+      Math.round((acc += next.quantity * next.product.price) * 0.01),
+    0
+  );
+
+// export const grandTotal = () => shipping();
+
+// export const shippingFee = (amount: number) => {
+//   const fee = amount * 0.01;
+//   return parseInt(fee.toFixed(0));
+// };
+
+// //TODO: Calculate the vat fee
+// export const vatFee = (amount: number) => {
+//   const fee = amount * 0.001;
+//   return parseInt(fee.toFixed(0));
+// };
+
+//TODO: Calculate the grand fee
+export const grandTotal = (total: number, shipping: number, vat: number) => {
+  const fee = total + shipping + vat;
+  return parseInt(fee.toFixed(0));
+};
 
 export default cartReducer.reducer;
