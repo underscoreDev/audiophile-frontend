@@ -46,7 +46,10 @@ const ProductDetail = () => {
       if (
         cartProducts.map((product: cartProductType) => product.id).includes(currentProduct.slug)
       ) {
-        showToast({ message: `${currentProduct?.name} is already in cart`, type: "error" });
+        showToast({
+          message: <h2>{currentProduct?.name} is already in cart</h2>,
+          type: "error",
+        });
         return;
       } else {
         dispatch(
@@ -56,7 +59,7 @@ const ProductDetail = () => {
             product: currentProduct,
           })
         );
-        showToast({ message: `${currentProduct?.name} added to cart`, type: "success" });
+        showToast({ message: <h2>{currentProduct?.name} added to cart</h2>, type: "success" });
       }
     }
   };

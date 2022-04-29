@@ -94,7 +94,7 @@ export const RandomlyPositionedModal = styled(Modal)`
         display: flex;
         justify-content: space-between;
         align-items: center;
-
+        position: relative;
         span {
           margin-left: 2rem;
           h1 {

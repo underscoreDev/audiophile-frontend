@@ -1,8 +1,9 @@
 import { toast, Flip } from "react-toastify";
+import React from "react";
 
 interface ToastTypeProps {
   type: "info" | "success" | "warning" | "error" | "default";
-  message: string;
+  message: React.ReactNode;
 }
 
 export const showToast = ({ message, type }: ToastTypeProps) => {

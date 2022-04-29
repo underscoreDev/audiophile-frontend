@@ -23,7 +23,7 @@ export const incrementQuantity = (state: CartState, action: PayloadAction<string
     state.cartProducts[itemIndex].quantity >= 1 && (state.cartProducts[itemIndex].quantity += 1);
   } else {
     showToast({
-      message: `Product isn't in Cart. Add Product to cart First`,
+      message: <h2>Product isn&apos;t in Cart. Add Product to cart First</h2>,
       type: "error",
     });
   }
@@ -38,7 +38,7 @@ export const decrementQuantity = (state: CartState, action: PayloadAction<string
     state.cartProducts[itemIndex].quantity >= 1 && (state.cartProducts[itemIndex].quantity -= 1);
   } else {
     showToast({
-      message: `Product isn't in Cart. Add Product to cart First`,
+      message: <h2>Product isn&apos;t in Cart. Add Product to cart First</h2>,
       type: "error",
     });
   }
