@@ -7,7 +7,7 @@ export const addToCart = (state: CartState, action: PayloadAction<cartProductTyp
 };
 
 export const removeItemFromCart = (state: CartState, action: PayloadAction<string>) => {
-  state.cartProducts.filter((p) => p.id !== action.payload);
+  state.cartProducts = state.cartProducts.filter((p) => p.id !== action.payload);
 };
 
 export const clearCart = (state: CartState) => {

@@ -10,6 +10,7 @@ import {
   increaseQuantity,
   clearCartItems,
   getTotalPrice,
+  removeFromCart,
 } from "redux/reducers/cartReducer";
 import DeleteIcon from "@mui/icons-material/Delete";
 interface closeCart {
@@ -46,16 +47,9 @@ const Cart = ({ setOpen }: closeCart) => {
             {cartProducts.map((product: cartProductType) => (
               <Box key={product.id} className="cart__items">
                 <Box className="cart__items--desc">
-                  <DeleteIcon
-                    css={`
-                      position: absolute;
-                      left: 0;
-                      top: 10%;
-                      z-index: 88;
-                    `}
-                    color="error"
-                    fontSize="large"
-                  />
+                  <Box onClick={() => dispatch(removeFromCart(product.id))}>
+                    <DeleteIcon className="deleteIcon" color="error" fontSize="large" />
+                  </Box>
                   <Image
                     width={64}
                     height={64}

@@ -79,6 +79,13 @@ export const RandomlyPositionedModal = styled(Modal)`
           border-radius: 6px;
           border: 3px solid ${colors.colorDarkPink};
         }
+        .deleteIcon {
+          position: absolute;
+          left: 0;
+          top: 4.5rem;
+          z-index: 88;
+          cursor: pointer;
+        }
       }
     }
 
