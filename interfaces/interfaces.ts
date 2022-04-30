@@ -90,3 +90,14 @@ export interface CurrentProductProps {
     desktop: StaticImageData | any | string;
   };
 }
+
+export interface FormValuesProps {
+  fullName: string;
+  email: string;
+  phoneNumber: number;
+  address: string;
+  zipCode: number;
+  city: string;
+  country: string;
+  paymentMethod: string;
+}

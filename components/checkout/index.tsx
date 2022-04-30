@@ -1,10 +1,13 @@
 import Image from "next/image";
 import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import { useAppSelector } from "redux/store/store";
-import { cartProductType } from "interfaces/interfaces";
-import { getTotalPrice, grandTotal, shipping, vat } from "redux/reducers/cartReducer";
 import { useRouter } from "next/router";
+import { TextField } from "@mui/material";
+import Container from "@mui/material/Container";
+import { CheckoutSchema } from "utils/yupSchema";
+import { useAppSelector } from "redux/store/store";
+import { Formik, Form, FormikHelpers, FastField } from "formik";
+import { cartProductType, FormValuesProps } from "interfaces/interfaces";
+import { getTotalPrice, grandTotal, shipping, vat } from "redux/reducers/cartReducer";
 import {
   checkoutContainer,
   gridContainerCss,
@@ -12,20 +15,6 @@ import {
   checkoutGridCss,
   summaryGridCss,
 } from "components/checkout/style";
-import { Formik, Form, Field, FormikHelpers, FastField } from "formik";
-import * as Yup from "yup";
-import { TextField } from "@mui/material";
-
-interface FormValuesProps {
-  fullName: string;
-  email: string;
-  phoneNumber: number;
-  address: string;
-  zipCode: number;
-  city: string;
-  country: string;
-  paymentMethod: string;
-}
 
 const Checkout = () => {
   const router = useRouter();
@@ -47,45 +36,12 @@ const Checkout = () => {
     paymentMethod: "",
   };
 
-  const SignupSchema = Yup.object().shape({
-    paymentMethod: Yup.string().required("Required"),
-
-    fullName: Yup.string().min(3, "Name Too Short!").max(50, "Name Too Long!").required("Required"),
-
-    email: Yup.string().email("Wrong Format").required("Required"),
-
-    phoneNumber: Yup.number()
-      .min(5, "Number Too Short!")
-      .max(14, "Number Too Long!")
-      .required("This field is required"),
-
-    zipCode: Yup.number()
-      .min(1, "Number Too Short!")
-      .max(7, "Number Too Long!")
-      .required("This field is required"),
-
-    address: Yup.string()
-      .min(3, "Address Too Short!")
-      .max(50, "Address Too Long!")
-      .required("This field is required"),
-
-    city: Yup.string()
-      .min(3, "City Too Short!")
-      .max(50, "City Too Long!")
-      .required("This field is required"),
-
-    country: Yup.string()
-      .min(3, "Country Too Short!")
-      .max(50, "Country Too Long!")
-      .required("This field is required"),
-  });
-
   const handleSubmit = async (
     values: FormValuesProps,
     { setSubmitting }: FormikHelpers<FormValuesProps>
   ) => {
     await sleep(5000);
-    await alert(JSON.stringify(values, null, 2));
+    alert(JSON.stringify(values, null, 2));
     setSubmitting(false);
   };
 
@@ -100,7 +56,7 @@ const Checkout = () => {
 
         <Formik
           initialValues={initialvalues}
-          validationSchema={SignupSchema}
+          validationSchema={CheckoutSchema}
           onSubmit={handleSubmit}
           validateOnChange
         >
