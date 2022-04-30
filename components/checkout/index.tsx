@@ -72,6 +72,18 @@ const Checkout = () => {
                   <h1>CHECKOUT</h1>
 
                   <h2>Billing Details</h2>
+
+                  <label htmlFor="fullName">Full Name</label>
+                  <TextField
+                    id="fullName"
+                    name="fullName"
+                    placeholder="Alexei Sanchez"
+                    value={values.fullName}
+                    onChange={handleChange}
+                    error={touched.fullName && Boolean(errors.fullName)}
+                    helperText={touched.fullName && errors.fullName}
+                  />
+
                   <label htmlFor="email">Email</label>
                   <TextField
                     id="email"
@@ -83,15 +95,63 @@ const Checkout = () => {
                     helperText={touched.email && errors.email}
                   />
 
-                  <label htmlFor="fullName">First Name</label>
-                  <FastField id="fullName" name="fullName" placeholder="John" />
-                  {errors.fullName && touched.fullName ? <div>{errors.fullName}</div> : null}
-                  <br />
+                  <label htmlFor="phoneNumber">Phone Number</label>
+                  <TextField
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    placeholder="+234(90)1120-7786"
+                    value={values.phoneNumber}
+                    onChange={handleChange}
+                    error={touched.phoneNumber && Boolean(errors.phoneNumber)}
+                    helperText={touched.phoneNumber && errors.phoneNumber}
+                  />
 
-                  <FastField name="email" type="email" />
-                  {errors.email && touched.email ? <div>{errors.email}</div> : null}
-                  <br />
-                  <div id="my-radio-group">paymentMethod</div>
+                  <h2>Shipping Info</h2>
+
+                  <label htmlFor="address">Address</label>
+                  <TextField
+                    id="address"
+                    name="address"
+                    placeholder="1137 Williams Avenue"
+                    value={values.address}
+                    onChange={handleChange}
+                    error={touched.address && Boolean(errors.address)}
+                    helperText={touched.address && errors.address}
+                  />
+
+                  <label htmlFor="zipCode">Zip Code</label>
+                  <TextField
+                    id="zipCode"
+                    name="zipCode"
+                    placeholder="10001"
+                    value={values.zipCode}
+                    onChange={handleChange}
+                    error={touched.zipCode && Boolean(errors.zipCode)}
+                    helperText={touched.zipCode && errors.zipCode}
+                  />
+
+                  <label htmlFor="city">City</label>
+                  <TextField
+                    id="city"
+                    name="city"
+                    placeholder="New York"
+                    value={values.city}
+                    onChange={handleChange}
+                    error={touched.city && Boolean(errors.city)}
+                    helperText={touched.city && errors.city}
+                  />
+                  <label htmlFor="country">Country</label>
+                  <TextField
+                    id="country"
+                    name="country"
+                    placeholder="United States"
+                    value={values.country}
+                    onChange={handleChange}
+                    error={touched.country && Boolean(errors.country)}
+                    helperText={touched.country && errors.country}
+                  />
+
+                  <div id="my-radio-group">Payment Details</div>
                   <div role="group" aria-labelledby="my-radio-group">
                     <label>
                       <FastField type="radio" name="paymentMethod" value="One" />
