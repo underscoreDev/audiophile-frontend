@@ -4,9 +4,7 @@ export const CheckoutSchema = Yup.object().shape({
   paymentMethod: Yup.string().required("A Option is required"),
   email: Yup.string().email("Wrong Format").required("Required"),
   fullName: Yup.string().min(3, "Name Too Short!").max(50, "Name Too Long!").required("Required"),
-  eMoneyNumber: Yup.number().required("This field is required"),
-  eMoneyPin: Yup.number().required("This field is required"),
-  
+
   address: Yup.string()
     .min(3, "Address Too Short!")
     .max(50, "Address Too Long!")

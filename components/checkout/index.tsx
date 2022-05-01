@@ -288,9 +288,7 @@ const Checkout = () => {
                           <Box>
                             <label
                               css={formLabelCss(
-                                values.paymentMethod === "e-Money" &&
-                                  touched.eMoneyNumber &&
-                                  Boolean(errors.eMoneyNumber)
+                                touched.eMoneyNumber && Boolean(errors.eMoneyNumber)
                               )}
                               htmlFor="eMoneyNumber"
                             >
@@ -303,25 +301,11 @@ const Checkout = () => {
                               placeholder="238521993"
                               value={values.eMoneyNumber}
                               onChange={handleChange}
-                              error={
-                                values.paymentMethod === "e-Money" &&
-                                touched.eMoneyNumber &&
-                                Boolean(errors.eMoneyNumber)
-                              }
-                              helperText={
-                                values.paymentMethod === "e-Money" &&
-                                touched.eMoneyNumber &&
-                                errors.eMoneyNumber
-                              }
                             />
                           </Box>
                           <Box>
                             <label
-                              css={formLabelCss(
-                                values.paymentMethod === "e-Money" &&
-                                  touched.eMoneyPin &&
-                                  Boolean(errors.eMoneyPin)
-                              )}
+                              css={formLabelCss(touched.eMoneyPin && Boolean(errors.eMoneyPin))}
                               htmlFor="eMoneyPin"
                             >
                               e-Money Pin
@@ -333,16 +317,6 @@ const Checkout = () => {
                               placeholder="7786"
                               value={values.eMoneyPin}
                               onChange={handleChange}
-                              error={
-                                values.paymentMethod === "e-Money" &&
-                                touched.eMoneyPin &&
-                                Boolean(errors.eMoneyPin)
-                              }
-                              helperText={
-                                values.paymentMethod === "e-Money" &&
-                                touched.eMoneyPin &&
-                                errors.eMoneyPin
-                              }
                             />
                           </Box>
                         </Box>
