@@ -31,6 +31,7 @@ const Zx7SpeakerStyles = styled.div`
   border-radius: 0.8rem;
   overflow: hidden;
   border-radius: 0.8rem;
+  margin-top: 10rem;
 
   .zx7__Image {
     height: 100%;
