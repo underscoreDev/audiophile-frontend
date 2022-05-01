@@ -100,4 +100,7 @@ export interface FormValuesProps {
   city: string;
   country: string;
   paymentMethod: string;
+      eMoneyNumber: null;
+    eMoneyPin:null;
+
 }

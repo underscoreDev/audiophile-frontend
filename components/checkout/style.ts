@@ -29,7 +29,6 @@ export const checkoutGridCss = css`
   border-radius: 1rem;
   height: 112.6rem;
   padding: 5rem;
-
 `;
 
 export const gridContainerCss = css``;
@@ -74,6 +73,54 @@ export const textFieldCss = css`
     position: absolute;
     right: 0;
     top: -3rem;
+  }
+`;
+
+export const paymentContainerCss = css`
+  margin-top: 5rem;
+`;
+
+export const paymentMethodCss = css`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+
+  h3 {
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+  }
+`;
+
+export const cashOnDeliveryCss = css`
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  margin-top:5rem;
+  p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 2.5rem;
+    width:55rem;
+    opacity:0.7;
+  }
+`;
+
+export const methodCss = (error: string | boolean | undefined) => css`
+  height: 5.6rem;
+  width: 30.9rem;
+  border-radius: 8px;
+  border: ${error ? "1px solid red" : "1px solid #cfcfcf"};
+  display: flex;
+  align-items: center;
+  padding-left: 3rem;
+  margin-bottom: 3rem;
+
+  label {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.9rem;
+    padding-left: 2rem;
   }
 `;
 
