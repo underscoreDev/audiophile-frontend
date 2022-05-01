@@ -39,7 +39,7 @@ export function HeaderCarousel() {
       >
         {newProducts.map((product: ProductsProps) => (
           <SwiperSlide key={product.slug}>
-            <Container>
+            <Container maxWidth="lg">
               <Grid
                 container
                 spacing={4}
