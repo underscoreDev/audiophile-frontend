@@ -94,9 +94,9 @@ export interface CurrentProductProps {
 export interface FormValuesProps {
   fullName: string;
   email: string;
-  phoneNumber: number;
+  phoneNumber: number | null;
   address: string;
-  zipCode: number;
+  zipCode: number | null;
   city: string;
   country: string;
   paymentMethod: string;

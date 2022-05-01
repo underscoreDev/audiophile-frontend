@@ -1,6 +1,6 @@
 import { css } from "styled-components/macro";
 import { colors } from "utils/theme";
-import { body, h6 } from "utils/typography";
+import { body, h6, h3 } from "utils/typography";
 
 export const checkoutContainer = css`
   width: 100%;
@@ -19,10 +19,62 @@ export const backButtonCss = css`
   }
 `;
 
+export const checkoutTextCss = css`
+  ${h3}
+  margin-bottom: 4rem;
+`;
+
 export const checkoutGridCss = css`
   background-color: #fff;
   border-radius: 1rem;
   height: 112.6rem;
+  padding: 5rem;
+
+`;
+
+export const gridContainerCss = css``;
+
+export const sectionTitleCss = css`
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 2.5rem;
+  text-transform: uppercase;
+  color: ${colors.colorDarkPink};
+  margin-top: 1rem;
+`;
+
+export const formLabelCss = (active: boolean | undefined) => css`
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.6rem;
+  color: ${active ? "red" : "black"};
+  display: block;
+  margin: 1rem 0;
+`;
+
+export const textFieldCss = css`
+  height: 5.6rem;
+  width: 30.9rem;
+  border-radius: 8px;
+  position: relative;
+  input {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 19px;
+    padding-left: 2rem;
+    &::placeholder {
+      font-size: 1.4rem;
+    }
+  }
+  p {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    color: #cd2c2c;
+    position: absolute;
+    right: 0;
+    top: -3rem;
+  }
 `;
 
 export const summaryGridCss = css`
@@ -135,8 +187,4 @@ export const summaryGridCss = css`
       }
     }
   }
-`;
-
-export const gridContainerCss = css`
-  /* background-color: red; */
 `;

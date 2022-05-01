@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Box from "@mui/material/Box";
 import { useRouter } from "next/router";
-import { TextField } from "@mui/material";
+import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
 import { CheckoutSchema } from "utils/yupSchema";
 import { useAppSelector } from "redux/store/store";
@@ -14,6 +14,10 @@ import {
   backButtonCss,
   checkoutGridCss,
   summaryGridCss,
+  formLabelCss,
+  checkoutTextCss,
+  textFieldCss,
+  sectionTitleCss,
 } from "components/checkout/style";
 
 const Checkout = () => {
@@ -28,9 +32,9 @@ const Checkout = () => {
   const initialvalues: FormValuesProps = {
     fullName: "",
     email: "",
-    phoneNumber: 0,
+    phoneNumber: null,
     address: "",
-    zipCode: 0,
+    zipCode: null,
     city: "",
     country: "",
     paymentMethod: "",
@@ -69,89 +73,162 @@ const Checkout = () => {
                 gap={4}
               >
                 <Box gridColumn="span 8" css={checkoutGridCss}>
-                  <h1>CHECKOUT</h1>
+                  <h1 css={checkoutTextCss}>CHECKOUT</h1>
 
-                  <h2>Billing Details</h2>
+                  <h2 css={sectionTitleCss}>Billing Details</h2>
+                  <Box
+                    css={`
+                      display: flex;
+                      justify-content: space-between;
+                      flex-wrap: wrap;
+                      margin-bottom: 3rem;
+                    `}
+                  >
+                    <Box>
+                      <label
+                        css={formLabelCss(touched.fullName && Boolean(errors.fullName))}
+                        htmlFor="fullName"
+                      >
+                        Full Name
+                      </label>
+                      <TextField
+                        id="fullName"
+                        css={textFieldCss}
+                        name="fullName"
+                        placeholder="Alexei Sanchez"
+                        value={values.fullName}
+                        onChange={handleChange}
+                        error={touched.fullName && Boolean(errors.fullName)}
+                        helperText={touched.fullName && errors.fullName}
+                      />
+                    </Box>
+                    <Box>
+                      {" "}
+                      <label
+                        css={formLabelCss(touched.email && Boolean(errors.email))}
+                        htmlFor="email"
+                      >
+                        Email Address
+                      </label>
+                      <TextField
+                        id="email"
+                        css={textFieldCss}
+                        name="email"
+                        label="Email"
+                        value={values.email}
+                        onChange={handleChange}
+                        error={touched.email && Boolean(errors.email)}
+                        helperText={touched.email && errors.email}
+                      />
+                    </Box>
+                    <Box>
+                      <label
+                        css={formLabelCss(touched.phoneNumber && Boolean(errors.phoneNumber))}
+                        htmlFor="phoneNumber"
+                      >
+                        Phone Number
+                      </label>
+                      <TextField
+                        css={textFieldCss}
+                        id="phoneNumber"
+                        name="phoneNumber"
+                        placeholder="+234(90)1120-7786"
+                        value={values.phoneNumber}
+                        onChange={handleChange}
+                      />
+                    </Box>
+                  </Box>
 
-                  <label htmlFor="fullName">Full Name</label>
-                  <TextField
-                    id="fullName"
-                    name="fullName"
-                    placeholder="Alexei Sanchez"
-                    value={values.fullName}
-                    onChange={handleChange}
-                    error={touched.fullName && Boolean(errors.fullName)}
-                    helperText={touched.fullName && errors.fullName}
-                  />
+                  <h2 css={sectionTitleCss}>Shipping Info</h2>
 
-                  <label htmlFor="email">Email</label>
-                  <TextField
-                    id="email"
-                    name="email"
-                    label="Email"
-                    value={values.email}
-                    onChange={handleChange}
-                    error={touched.email && Boolean(errors.email)}
-                    helperText={touched.email && errors.email}
-                  />
+               
+                    <Box>
+                      <label
+                        css={formLabelCss(touched.address && Boolean(errors.address))}
+                        htmlFor="address"
+                      >
+                        Address
+                      </label>
+                      <TextField
+                        fullWidth
+                        css={textFieldCss}
+                        id="address"
+                        name="address"
+                        placeholder="1137 Williams Avenue"
+                        value={values.address}
+                        onChange={handleChange}
+                        error={touched.address && Boolean(errors.address)}
+                        helperText={touched.address && errors.address}
+                      />
+                    </Box>
+   <Box
+                 
+                    css={`
+                      display: flex;
+                      justify-content: space-between;
+                      flex-wrap: wrap;
+                  margin-bottom: 3rem;
+                    `}
+                  >
+                    <Box>
+                      <label
+                        css={formLabelCss(touched.zipCode && Boolean(errors.zipCode))}
+                        htmlFor="zipCode"
+                      >
+                        Zip Code
+                      </label>
+                      <TextField
+                        css={textFieldCss}
+                        id="zipCode"
+                        name="zipCode"
+                        placeholder="10001"
+                        value={values.zipCode}
+                        onChange={handleChange}
+                      />
+                    </Box>
 
-                  <label htmlFor="phoneNumber">Phone Number</label>
-                  <TextField
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    placeholder="+234(90)1120-7786"
-                    value={values.phoneNumber}
-                    onChange={handleChange}
-                    error={touched.phoneNumber && Boolean(errors.phoneNumber)}
-                    helperText={touched.phoneNumber && errors.phoneNumber}
-                  />
+                    <Box>
+                      <label
+                        css={formLabelCss(touched.city && Boolean(errors.city))}
+                        htmlFor="city"
+                      >
+                        City
+                      </label>
+                      <TextField
+                        css={textFieldCss}
+                        id="city"
+                        name="city"
+                        placeholder="New York"
+                        value={values.city}
+                        onChange={handleChange}
+                        error={touched.city && Boolean(errors.city)}
+                        helperText={touched.city && errors.city}
+                      />
+                    </Box>
 
-                  <h2>Shipping Info</h2>
+                    <Box>
+                      <label
+                        css={formLabelCss(touched.country && Boolean(errors.country))}
+                        htmlFor="country"
+                      >
+                        Country
+                      </label>
+                      <TextField
+                        css={textFieldCss}
+                        id="country"
+                        name="country"
+                        placeholder="United States"
+                        value={values.country}
+                        onChange={handleChange}
+                        error={touched.country && Boolean(errors.country)}
+                        helperText={touched.country && errors.country}
+                      />
+                    </Box>
+                  </Box>
 
-                  <label htmlFor="address">Address</label>
-                  <TextField
-                    id="address"
-                    name="address"
-                    placeholder="1137 Williams Avenue"
-                    value={values.address}
-                    onChange={handleChange}
-                    error={touched.address && Boolean(errors.address)}
-                    helperText={touched.address && errors.address}
-                  />
-
-                  <label htmlFor="zipCode">Zip Code</label>
-                  <TextField
-                    id="zipCode"
-                    name="zipCode"
-                    placeholder="10001"
-                    value={values.zipCode}
-                    onChange={handleChange}
-                    error={touched.zipCode && Boolean(errors.zipCode)}
-                    helperText={touched.zipCode && errors.zipCode}
-                  />
-
-                  <label htmlFor="city">City</label>
-                  <TextField
-                    id="city"
-                    name="city"
-                    placeholder="New York"
-                    value={values.city}
-                    onChange={handleChange}
-                    error={touched.city && Boolean(errors.city)}
-                    helperText={touched.city && errors.city}
-                  />
-                  <label htmlFor="country">Country</label>
-                  <TextField
-                    id="country"
-                    name="country"
-                    placeholder="United States"
-                    value={values.country}
-                    onChange={handleChange}
-                    error={touched.country && Boolean(errors.country)}
-                    helperText={touched.country && errors.country}
-                  />
-
-                  <div id="my-radio-group">Payment Details</div>
+                  <h2 css={sectionTitleCss} id="my-radio-group">
+                    Payment Details
+                  </h2>
                   <div role="group" aria-labelledby="my-radio-group">
                     <label>
                       <FastField type="radio" name="paymentMethod" value="One" />
