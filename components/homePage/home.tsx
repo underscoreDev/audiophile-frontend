@@ -18,7 +18,9 @@ const Home = () => {
         <Z9Speaker />
         <Zx7Speaker />
         <Yx1Earphone />
-        <BestAudio />
+        <Box style={{ margin: "20rem 0" }}>
+          <BestAudio />
+        </Box>
       </Container>
     </Box>
   );

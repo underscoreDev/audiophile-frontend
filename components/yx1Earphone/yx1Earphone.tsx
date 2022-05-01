@@ -30,6 +30,7 @@ const Yx1EarphoneStyles = styled.div`
   grid-template-columns: repeat(2, 50%);
   grid-gap: 3rem;
   justify-content: space-between;
+  margin-top: 10rem;
 
   .yx1__text {
     background-color: ${colors.colorDarkWhite};
