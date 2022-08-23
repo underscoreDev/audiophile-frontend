@@ -1,9 +1,7 @@
-import { ButtonProps } from "@mui/material";
-import { css } from "styled-components/macro";
 import { colors } from "utils/theme";
+import { css } from "styled-components/macro";
 
 export const buttonCss = (
-  text: string,
   variant:
     | "PINK_DARK"
     | "PINK_LIGHT"
@@ -12,6 +10,11 @@ export const buttonCss = (
     | "BORDERLESS_BLACK"
     | "BORDERLESS_COLOURED"
 ) => css`
+.arrow__Right {
+  position: relative;
+  margin-left: 1.2rem;
+  top: 0.2rem;
+}
   position: relative;
   outline: none;
   width: fit-content;
@@ -23,28 +26,88 @@ export const buttonCss = (
   transition: all 0.3s ease-in-out;
   &:active,
   &:focus {
-    transform: translateY(-0.2rem);
+    transform: translateY(0.2rem);
   }
 
   &:hover {
-    /* color: ${({ variant }) => {
-      switch (variant) {
-        case "PINK_DARK":
-          return colors.colorWhite;
-        case "PINK_LIGHT":
-          return colors.colorWhite;
-        case "BLACK":
-          return colors.colorWhite;
-        case "BORDERED":
-          return colors.colorBlack;
-        case "BORDERLESS_BLACK":
-          return colors.colorDarkPink;
-        case "BORDERLESS_COLOURED":
-          return colors.colorBlack;
-        default:
-          colors.colorBlack;
-          break;
-      }
-    }}; */
+    background-color: ${
+      variant === "PINK_DARK"
+        ? colors.colorLightPink
+        : variant === "PINK_LIGHT"
+        ? colors.colorDarkPink
+        : variant === "BLACK"
+        ? colors.colorLightBlack
+        : variant === "BORDERED"
+        ? "transparent"
+        : variant === "BORDERLESS_BLACK"
+        ? "transparent"
+        : variant === "BORDERLESS_COLOURED"
+        ? "transparent"
+        : colors.colorBlack
+    };
+
+    color: ${
+      variant === "PINK_DARK"
+        ? colors.colorWhite
+        : variant === "PINK_LIGHT"
+        ? colors.colorWhite
+        : variant === "BLACK"
+        ? colors.colorWhite
+        : variant === "BORDERED"
+        ? colors.colorBlack
+        : variant === "BORDERLESS_BLACK"
+        ? colors.colorDarkPink
+        : variant === "BORDERLESS_COLOURED"
+        ? colors.colorBlack
+        : colors.colorBlack
+    };
   }
+
+  border: ${
+    variant === "PINK_DARK"
+      ? "none"
+      : variant === "PINK_LIGHT"
+      ? "none"
+      : variant === "BLACK"
+      ? "none"
+      : variant === "BORDERED"
+      ? "1px solid black"
+      : variant === "BORDERLESS_BLACK"
+      ? "none"
+      : variant === "BORDERLESS_COLOURED"
+      ? "none"
+      : "none"
+  };
+
+background-color: ${
+  variant === "PINK_DARK"
+    ? colors.colorDarkPink
+    : variant === "PINK_LIGHT"
+    ? colors.colorLightPink
+    : variant === "BLACK"
+    ? colors.colorBlack
+    : variant === "BORDERED"
+    ? "transparent"
+    : variant === "BORDERLESS_BLACK"
+    ? "transparent"
+    : variant === "BORDERLESS_COLOURED"
+    ? "transparent"
+    : "transparent"
+};
+
+color: ${
+  variant === "PINK_DARK"
+    ? colors.colorWhite
+    : variant === "PINK_LIGHT"
+    ? colors.colorWhite
+    : variant === "BLACK"
+    ? colors.colorWhite
+    : variant === "BORDERED"
+    ? colors.colorBlack
+    : variant === "BORDERLESS_BLACK"
+    ? colors.colorLightBlack
+    : variant === "BORDERLESS_COLOURED"
+    ? colors.colorDarkPink
+    : colors.colorBlack
+};
 `;
