@@ -1,5 +1,3 @@
-import thunk from "redux-thunk";
-import logger from "redux-logger";
 import { persistReducer } from "redux-persist";
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "redux/store/rootReducer";
@@ -16,7 +14,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = configureStore({
   reducer: persistedReducer,
   devTools: process.env.NODE_ENV !== "production",
-  middleware: [thunk, logger],
+  middleware: [],
 });
 
 export type RootState = ReturnType<typeof store.getState>;
