@@ -58,7 +58,7 @@ const Checkout = () => {
 
   return (
     <Box css={checkoutContainer}>
-      <Container css={"padding:10rem 0"}>
+      <Container maxWidth="lg" css={"padding:10rem 0"}>
         <Box css={"margin-bottom:5rem"}>
           <p onClick={() => router.back()} css={backButtonCss}>
             Go Back

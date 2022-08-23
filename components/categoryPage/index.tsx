@@ -20,7 +20,7 @@ const Category = () => {
         <h1>{routeName}</h1>
       </Box>
 
-      <Container>
+      <Container maxWidth="lg">
         <Box>
           {category.map((cat, idx) => (
             <Box key={cat.slug}>

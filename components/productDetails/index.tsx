@@ -65,7 +65,7 @@ const ProductDetail = () => {
   };
 
   return (
-    <Container css={productCss}>
+    <Container maxWidth="lg" css={productCss}>
       <ToastContainer newestOnTop={true} />
 
       <h1 onClick={() => router.back()} css={goBackButton}>

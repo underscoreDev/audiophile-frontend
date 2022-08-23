@@ -12,9 +12,9 @@ export const Global = createGlobalStyle`
  html{
         box-sizing: border-box;
         scroll-behavior: smooth;
-        @media ${device.desktop}{
-            font-size: 100%;
-        }
+
+
+
         @media ${device.laptopL}{
             font-size: 62.5%;
         }

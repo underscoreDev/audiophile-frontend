@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <Box>
       <HeaderCarousel />
-      <Container>
+      <Container  maxWidth="lg"> 
         <CategoryGroup />
         <Z9Speaker />
         <Zx7Speaker />
