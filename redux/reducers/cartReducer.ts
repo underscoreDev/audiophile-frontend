@@ -9,7 +9,6 @@ import {
   decrementQuantity,
 } from "redux/actions/actions";
 import { RootState } from "redux/store/store";
-import { number } from "yup";
 
 const initialState: CartState = {
   cartProducts: [],
