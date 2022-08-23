@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import Image from "next/image";
 import Box from "@mui/material/Box";
-import Button from "components/buttons/button";
+import Button from "components/buttons";
 import { cartProductType } from "interfaces/interfaces";
 import { useAppSelector, useAppDispatch } from "redux/store/store";
 import router from "next/router";

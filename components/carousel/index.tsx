@@ -5,7 +5,7 @@ import Image from "next/image";
 import router from "next/router";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Button from "components/buttons/button";
+import Button from "components/buttons";
 import Container from "@mui/material/Container";
 import { useAppSelector } from "redux/store/store";
 import { ProductsProps } from "interfaces/interfaces";

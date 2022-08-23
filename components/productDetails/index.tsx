@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import BestAudio from "components/bestAudio";
 import { showToast } from "utils/toast";
-import Button from "components/buttons/button";
+import Button from "components/buttons";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import Container from "@mui/material/Container";

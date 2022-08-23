@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styled from "styled-components";
 import { h5 } from "utils/typography";
-import Button from "components/buttons/button";
+import Button from "components/buttons";
 import { useRouter } from "next/router";
 
 interface ProductPreviewProps {

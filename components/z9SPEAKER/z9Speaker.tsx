@@ -3,7 +3,7 @@ import { colors } from "utils/theme";
 import patternCircles from "assets/home/desktop/pattern-circles.svg";
 import Z9 from "assets/shared/desktop/image-category-thumbnail-speakers.png";
 import Image from "next/image";
-import Button from "components/buttons/button";
+import Button from "components/buttons";
 import Router from "next/router";
 import { h1 } from "utils/typography";
 import { body } from "utils/typography";

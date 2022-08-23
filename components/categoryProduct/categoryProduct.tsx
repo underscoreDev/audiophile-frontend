@@ -2,7 +2,7 @@ import Image from "next/image";
 import Router from "next/router";
 import Box from "@mui/material/Box";
 import { css } from "styled-components/macro";
-import Button from "components/buttons/button";
+import Button from "components/buttons";
 import { ProductsProps } from "interfaces/interfaces";
 import { body, h1, lightText } from "utils/typography";
 

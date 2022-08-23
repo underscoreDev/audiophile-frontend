@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Box from "@mui/material/Box";
 import { useRouter } from "next/router";
-import Button from "components/buttons/button";
+import Button from "components/buttons";
 import speaker from "assets/shared/desktop/image-category-thumbnail-speakers.png";
 import earphones from "assets/shared/desktop/image-category-thumbnail-earphones.png";
 import headphones from "assets/shared/desktop/image-category-thumbnail-headphones.png";

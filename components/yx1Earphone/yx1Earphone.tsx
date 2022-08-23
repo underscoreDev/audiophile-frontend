@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 import yx1 from "assets/home/desktop/image-earphones-yx1.jpg";
-import Button from "components/buttons/button";
+import Button from "components/buttons";
 import Router from "next/router";
 import { h4 } from "utils/typography";
 import { colors } from "utils/theme";
