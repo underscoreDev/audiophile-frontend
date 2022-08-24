@@ -1,45 +1,31 @@
-import styled from "styled-components";
 import Image from "next/image";
-import yx1 from "assets/home/desktop/image-earphones-yx1.jpg";
+import Box from "@mui/material/Box";
+import { useRouter } from "next/router";
 import Button from "components/buttons";
-import Router from "next/router";
-import { h4 } from "utils/typography";
-import { colors } from "utils/theme";
+import {
+  yx1Css,
+  yx1DecsriptionCss,
+  yx1ImageCss,
+} from "components/homePage/components/yx1earphone-block/style";
+import yx1 from "assets/home/desktop/image-earphones-yx1.jpg";
 
 const Yx1Earphone = () => {
+  const router = useRouter();
   return (
-    <Yx1EarphoneStyles>
-      <div>
-        <Image src={yx1} alt="YX1 earphones" />
-      </div>
+    <Box css={yx1Css}>
+      <Image css={yx1ImageCss} src={yx1} alt="YX1 earphones" />
 
-      <div className="yx1__text">
+      <Box css={yx1DecsriptionCss}>
         <h1>YX1 EARPHONES</h1>
-        <span onClick={() => Router.push("/product/yx1-earphones")}>
-          <Button text="see product" variant="BORDERED" />
-        </span>
-      </div>
-    </Yx1EarphoneStyles>
+
+        <Button
+          onClick={() => router.push("/product/yx1-earphones")}
+          text="see product"
+          variant="BORDERED"
+        />
+      </Box>
+    </Box>
   );
 };
 
 export default Yx1Earphone;
-
-const Yx1EarphoneStyles = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 50%);
-  grid-gap: 3rem;
-  justify-content: space-between;
-  margin-top: 10rem;
-
-  .yx1__text {
-    background-color: ${colors.colorDarkWhite};
-    border-radius: 0.8rem;
-    padding-left: 10rem;
-    padding-top: 10rem;
-    h1 {
-      ${h4}
-      margin-bottom: 2rem;
-    }
-  }
-`;

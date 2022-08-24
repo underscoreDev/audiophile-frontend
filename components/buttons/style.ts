@@ -10,11 +10,11 @@ export const buttonCss = (
     | "BORDERLESS_BLACK"
     | "BORDERLESS_COLOURED"
 ) => css`
-.arrow__Right {
-  position: relative;
-  margin-left: 1.2rem;
-  top: 0.2rem;
-}
+  .arrow__Right {
+    position: relative;
+    margin-left: 1.2rem;
+    top: 0.2rem;
+  }
   position: relative;
   outline: none;
   width: fit-content;
@@ -30,57 +30,50 @@ export const buttonCss = (
   }
 
   &:hover {
-    background-color: ${
-      variant === "PINK_DARK"
-        ? colors.colorLightPink
-        : variant === "PINK_LIGHT"
-        ? colors.colorDarkPink
-        : variant === "BLACK"
-        ? colors.colorLightBlack
-        : variant === "BORDERED"
-        ? "transparent"
-        : variant === "BORDERLESS_BLACK"
-        ? "transparent"
-        : variant === "BORDERLESS_COLOURED"
-        ? "transparent"
-        : colors.colorBlack
-    };
+    background-color: ${variant === "PINK_DARK"
+      ? colors.colorLightPink
+      : variant === "PINK_LIGHT"
+      ? colors.colorDarkPink
+      : variant === "BLACK"
+      ? colors.colorLightBlack
+      : variant === "BORDERED"
+      ? colors.colorBlack
+      : variant === "BORDERLESS_BLACK"
+      ? "transparent"
+      : variant === "BORDERLESS_COLOURED"
+      ? "transparent"
+      : colors.colorBlack};
 
-    color: ${
-      variant === "PINK_DARK"
-        ? colors.colorWhite
-        : variant === "PINK_LIGHT"
-        ? colors.colorWhite
-        : variant === "BLACK"
-        ? colors.colorWhite
-        : variant === "BORDERED"
-        ? colors.colorBlack
-        : variant === "BORDERLESS_BLACK"
-        ? colors.colorDarkPink
-        : variant === "BORDERLESS_COLOURED"
-        ? colors.colorBlack
-        : colors.colorBlack
-    };
+    color: ${variant === "PINK_DARK"
+      ? colors.colorWhite
+      : variant === "PINK_LIGHT"
+      ? colors.colorWhite
+      : variant === "BLACK"
+      ? colors.colorWhite
+      : variant === "BORDERED"
+      ? colors.colorWhite
+      : variant === "BORDERLESS_BLACK"
+      ? colors.colorDarkPink
+      : variant === "BORDERLESS_COLOURED"
+      ? colors.colorBlack
+      : colors.colorBlack};
   }
 
-  border: ${
-    variant === "PINK_DARK"
-      ? "none"
-      : variant === "PINK_LIGHT"
-      ? "none"
-      : variant === "BLACK"
-      ? "none"
-      : variant === "BORDERED"
-      ? "1px solid black"
-      : variant === "BORDERLESS_BLACK"
-      ? "none"
-      : variant === "BORDERLESS_COLOURED"
-      ? "none"
-      : "none"
-  };
+  border: ${variant === "PINK_DARK"
+    ? "none"
+    : variant === "PINK_LIGHT"
+    ? "none"
+    : variant === "BLACK"
+    ? "none"
+    : variant === "BORDERED"
+    ? "1px solid black"
+    : variant === "BORDERLESS_BLACK"
+    ? "none"
+    : variant === "BORDERLESS_COLOURED"
+    ? "none"
+    : "none"};
 
-background-color: ${
-  variant === "PINK_DARK"
+  background-color: ${variant === "PINK_DARK"
     ? colors.colorDarkPink
     : variant === "PINK_LIGHT"
     ? colors.colorLightPink
@@ -92,11 +85,9 @@ background-color: ${
     ? "transparent"
     : variant === "BORDERLESS_COLOURED"
     ? "transparent"
-    : "transparent"
-};
+    : "transparent"};
 
-color: ${
-  variant === "PINK_DARK"
+  color: ${variant === "PINK_DARK"
     ? colors.colorWhite
     : variant === "PINK_LIGHT"
     ? colors.colorWhite
@@ -108,6 +99,5 @@ color: ${
     ? colors.colorLightBlack
     : variant === "BORDERLESS_COLOURED"
     ? colors.colorDarkPink
-    : colors.colorBlack
-};
+    : colors.colorBlack};
 `;

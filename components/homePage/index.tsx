@@ -10,7 +10,7 @@ import Yx1Earphone from "components/homePage/components/yx1earphone-block";
 
 const Home = () => {
   useTitle("AUDIOPHILE | One Stop Audio Store");
-  
+
   return (
     <Box>
       <HeaderCarousel />
@@ -19,7 +19,7 @@ const Home = () => {
         <Z9Speaker />
         <Zx7Speaker />
         <Yx1Earphone />
-        <Box style={{ margin: "20rem 0" }}>
+        <Box css={"margin:20rem 0"}>
           <BestAudio />
         </Box>
       </Container>

@@ -23,7 +23,7 @@ const Zx7Speaker = () => {
         <Button
           onClick={() => router.push("/product/zx7-speaker")}
           text="see product"
-          variant="BLACK"
+          variant="BORDERED"
         />
       </Box>
     </Box>

@@ -10,7 +10,7 @@ interface ButtonProps {
     | "BORDERED"
     | "BORDERLESS_BLACK"
     | "BORDERLESS_COLOURED";
-  onClick(): void;
+  onClick?(): void;
 }
 
 const Button = ({ text, variant, onClick }: ButtonProps) => (
