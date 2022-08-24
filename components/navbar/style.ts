@@ -1,82 +1,5 @@
 import { colors } from "utils/theme";
-import { boldText } from "utils/typography";
 import { css } from "styled-components/macro";
-
-export const navbarContainerCss = css`
-  color: ${colors.colorWhite};
-  background-color: ${colors.colorBlack};
-  height: 9.7rem;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  z-index: 9;
-  box-shadow: 0rem 0.5rem 0.5rem rgba(0, 0, 0, 0.3);
-`;
-
-export const categoryNotActiveCss = css`
-  opacity: 0;
-  transition: all 1s;
-`;
-
-export const cateoryGroupCss = css`
-  transition: all 1s;
-  z-index: 20;
-  background-color: #ffffff;
-  border-radius: 0 0 1rem 1rem;
-  box-shadow: 0rem 0.5rem 0.5rem rgba(0, 0, 0, 0.5);
-  width: 100%;
-  opacity: 1;
-  top: 10vh;
-  padding: 10rem 0;
-  position: absolute;
-  .categoryGroupCss {
-    margin: 0;
-    @media (max-width: 375px) {
-      margin-top: 4rem;
-    }
-  }
-  .marginCss {
-    margin: 10rem 0;
-
-    @media (max-width: 375px) {
-      margin: 15rem 0;
-    }
-  }
-`;
-
-export const navCss = css`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-`;
-
-export const navLinkCss = css`
-  display: flex;
-  justify-content: space-between;
-
-  @media (max-width: 600px) {
-    display: none;
-  }
-`;
-
-export const linkCss = (active: Boolean) => css`
-  margin-right: 3rem;
-  ${boldText}
-  text-transform: uppercase;
-  color: ${active ? colors.colorDarkPink : colors.colorWhite};
-  transition: all 0.3s;
-  &:hover {
-    color: ${colors.colorDarkPink};
-  }
-`;
-
-export const hamburgerCss = css`
-  display: none;
-  @media (max-width: 600px) {
-    display: block;
-  }
-`;
 
 export const cartCss = css`
   position: absolute;
@@ -90,12 +13,33 @@ export const cartCss = css`
   cursor: pointer;
 `;
 
-export const logoStyles={
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '0rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }
+export const logoStyles = {
+  mr: 2,
+  display: { xs: "none", md: "flex" },
+  fontFamily: "monospace",
+  fontWeight: 700,
+  letterSpacing: "0rem",
+  color: "inherit",
+  textDecoration: "none",
+};
+
+export const logoMobilestyles = {
+  mr: 2,
+  display: { xs: "flex", md: "none" },
+  flexGrow: 1,
+  fontFamily: "monospace",
+  fontWeight: 700,
+  letterSpacing: "0rem",
+  color: "inherit",
+  textDecoration: "none",
+};
+
+export const cartLogoCss = css`
+  display: inline;
+  right: 4rem;
+  position: relative;
+  top: 1rem;
+  @media (max-width: 375px) {
+    right: 2rem;
+  }
+`;
