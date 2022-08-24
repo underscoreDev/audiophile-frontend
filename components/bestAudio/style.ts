@@ -11,9 +11,10 @@ export const bestAudioCss = css`
 
 export const bestAudioDescriptionCss = css`
   h1 {
+    ${h2}
     text-transform: uppercase;
     margin-bottom: 5rem;
-    ${h2}
+
     span {
       color: ${colors.colorDarkPink};
     }
