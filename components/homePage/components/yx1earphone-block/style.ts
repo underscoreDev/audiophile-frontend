@@ -3,11 +3,8 @@ import { colors } from "utils/theme";
 import { h4 } from "utils/typography";
 
 export const yx1Css = css`
-  display: grid;
-  grid-template-columns: repeat(2, 50%);
-  grid-gap: 3rem;
-  justify-content: space-between;
   margin-top: 10rem;
+  height: 32rem;
 `;
 
 export const yx1DecsriptionCss = css`
