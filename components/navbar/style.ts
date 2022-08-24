@@ -89,3 +89,13 @@ export const cartCss = css`
   top: 1.5rem;
   cursor: pointer;
 `;
+
+export const logoStyles={
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '0rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }
