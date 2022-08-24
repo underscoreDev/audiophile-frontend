@@ -3,7 +3,7 @@ import { useTitle } from "react-use";
 import BestAudio from "components/bestAudio";
 import Container from "@mui/material/Container";
 import { HeaderCarousel } from "components/carousel";
-import CategoryGroup from "components/categoryType/categoryGroup";
+import CategoryGroup from "components/categoryGroup";
 import Z9Speaker from "components/homePage/components/zx9speaker-block";
 import Zx7Speaker from "components/homePage/components/zx7speaker-block";
 import Yx1Earphone from "components/homePage/components/yx1earphone-block";

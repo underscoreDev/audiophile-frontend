@@ -4,9 +4,9 @@ import BestAudio from "components/bestAudio";
 import Container from "@mui/material/Container";
 import { useAppSelector } from "redux/store/store";
 import { ProductsProps } from "interfaces/interfaces";
-import CategoryGroup from "components/categoryType/categoryGroup";
 import CategoryProduct from "components/categoryProduct/categoryProduct";
 import { categoryPageCss, categoryHeaderCss } from "components/categoryPage/style";
+import CategoryGroup from "components/categoryGroup";
 
 const Category = () => {
   const router = useRouter();

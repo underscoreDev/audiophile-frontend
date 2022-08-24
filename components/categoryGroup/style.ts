@@ -2,6 +2,17 @@ import { css } from "styled-components/macro";
 import { colors } from "utils/theme";
 import { h6 } from "utils/typography";
 
+export const categoryGroupCss = css`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10rem 0;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    margin: 20rem 0;
+  }
+`;
+
 export const categoryTypeCss = css`
   position: relative;
   height: 16.5rem;
@@ -34,17 +45,6 @@ export const categorydescCss = css`
   padding-bottom: 1rem;
   h1 {
     ${h6}
-  }
-`;
-
-export const categoryGroupCss = css`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10rem 0;
-  @media (max-width: 1000px) {
-    flex-direction: column;
-    margin: 20rem 0;
   }
 `;
 

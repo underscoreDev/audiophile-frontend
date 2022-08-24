@@ -11,10 +11,10 @@ import { ToastContainer } from "react-toastify";
 import Container from "@mui/material/Container";
 import Image, { StaticImageData } from "next/image";
 import { addItemToCart } from "redux/reducers/cartReducer";
-import CategoryGroup from "components/categoryType/categoryGroup";
 import { useAppDispatch, useAppSelector } from "redux/store/store";
 import ProductPreview from "components/productPreview/productPreview";
 import { cartProductType, CurrentProductProps, ProductsProps } from "interfaces/interfaces";
+import CategoryGroup from "components/categoryGroup";
 import {
   productCss,
   goBackButton,
