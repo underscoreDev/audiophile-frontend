@@ -21,11 +21,13 @@ import { colors } from "utils/theme";
 import { useAppSelector } from "redux/store/store";
 import { RandomlyPositionedModal, Backdrop } from "components/cart/style";
 import Cart from "components/cart/cart";
+import { useLocation } from "react-use";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = () => {
   const router = useRouter();
+  const loc=useLocation()
   const [open, setOpen] = React.useState(false);
   const { cartProducts } = useAppSelector(({ cartReducer }) => cartReducer);
   const renderBackdrop = (props: any) => <Backdrop {...props} />;
@@ -91,7 +93,7 @@ const ResponsiveAppBar = () => {
                   my: 2,
                   fontSize: "medium",
                   fontWeight: "bold",
-                  color: router.pathname == page.path ? colors.colorDarkPink : "#fafafa",
+                  color: loc.pathname == page.path ? colors.colorDarkPink : "#fafafa",
                   display: "block",
                 }}
               >
@@ -124,7 +126,7 @@ const ResponsiveAppBar = () => {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Typography fontSize="large" textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>
