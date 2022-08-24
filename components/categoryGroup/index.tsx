@@ -7,9 +7,9 @@ import earphones from "assets/shared/desktop/image-category-thumbnail-earphones.
 import headphones from "assets/shared/desktop/image-category-thumbnail-headphones.png";
 import {
   categoryTypeCss,
-  categoryGroupCss,
   categoryIconCss,
   categorydescCss,
+  categoryGroupCss,
 } from "components/categoryGroup/style";
 
 const CategoryGroup = () => {

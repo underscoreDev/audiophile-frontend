@@ -1,15 +1,15 @@
-import { css } from "styled-components/macro";
 import { colors } from "utils/theme";
 import { h6 } from "utils/typography";
+import { css } from "styled-components/macro";
 
 export const categoryGroupCss = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 10rem 0;
+  margin: 20rem 0;
+
   @media (max-width: 1000px) {
     flex-direction: column;
-    margin: 20rem 0;
   }
 `;
 

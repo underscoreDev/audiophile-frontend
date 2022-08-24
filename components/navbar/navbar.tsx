@@ -9,8 +9,8 @@ import logo from "assets/shared/desktop/logo.svg";
 import { useAppSelector } from "redux/store/store";
 import cart from "assets/shared/desktop/icon-cart.svg";
 import Hamburger from "assets/shared/tablet/icon-hamburger.svg";
-import CategoryGroup from "components/categoryType/categoryGroup";
 import { RandomlyPositionedModal, Backdrop } from "components/cart/style";
+import CategoryGroup from "components/categoryGroup";
 import {
   navCss,
   cartCss,
