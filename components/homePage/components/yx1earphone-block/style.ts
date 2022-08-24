@@ -11,7 +11,7 @@ export const yx1DecsriptionCss = css`
   background-color: ${colors.colorDarkWhite};
   border-radius: 0.8rem;
   padding-left: 10rem;
-  padding-top: 10rem;
+  /* padding-top: 10rem; */
   h1 {
     ${h4}
     margin-bottom: 2rem;
