@@ -1,52 +1,33 @@
 import Image from "next/image";
-import Router from "next/router";
-import styled from "styled-components";
-import Zx7Speak from "assets/home/desktop/image-speaker-zx7.jpg";
-import { h4 } from "utils/typography";
+import Box from "@mui/material/Box";
+import { useRouter } from "next/router";
 import Button from "components/buttons";
+import {
+  zx7DescriptionCss,
+  zx7ImageCss,
+  zx7SpeakerCss,
+} from "components/homePage/components/zx7speaker-block/style";
+import Zx7SpeakerImage from "components/homePage/components/zx7speaker-block/images/image-speaker-zx7.jpg";
 
 const Zx7Speaker = () => {
+  const router = useRouter();
   return (
-    <Zx7SpeakerStyles>
-      <div className="zx7__Image">
-        <Image src={Zx7Speak} alt="Zx7Speak" />
-      </div>
+    <Box css={zx7SpeakerCss}>
+      <Box css={zx7ImageCss}>
+        <Image src={Zx7SpeakerImage} alt="Zx7Speaker" />
+      </Box>
 
-      <div className="zx7__text">
+      <Box css={zx7DescriptionCss}>
         <h1>ZX7 SPEAKER</h1>
-        <span onClick={() => Router.push("/product/zx7-speaker")}>
-          <Button text="see product" variant="BLACK" />
-        </span>
-      </div>
-    </Zx7SpeakerStyles>
+
+        <Button
+          onClick={() => router.push("/product/zx7-speaker")}
+          text="see product"
+          variant="BLACK"
+        />
+      </Box>
+    </Box>
   );
 };
 
 export default Zx7Speaker;
-
-const Zx7SpeakerStyles = styled.div`
-  position: relative;
-  width: 100%;
-  height: 31rem;
-  border-radius: 0.8rem;
-  overflow: hidden;
-  border-radius: 0.8rem;
-  margin-top: 10rem;
-
-  .zx7__Image {
-    height: 100%;
-    width: 100%;
-  }
-
-  .zx7__text {
-    position: relative;
-    bottom: 25rem;
-    left: 10rem;
-
-    h1 {
-      z-index: 1000;
-      ${h4}
-      margin-bottom: 2rem;
-    }
-  }
-`;
