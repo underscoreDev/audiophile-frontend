@@ -13,7 +13,7 @@ const Home = () => {
 
   return (
     <Box>
-      {/* <HeaderCarousel />
+      <HeaderCarousel />
       <Container maxWidth="lg">
         <CategoryGroup />
         <Z9Speaker />
@@ -22,7 +22,7 @@ const Home = () => {
         <Box css={"margin:20rem 0"}>
           <BestAudio />
         </Box>
-      </Container> */}
+      </Container>
     </Box>
   );
 };
