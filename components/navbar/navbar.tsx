@@ -11,8 +11,10 @@ import cart from "assets/shared/desktop/icon-cart.svg";
 import Hamburger from "assets/shared/tablet/icon-hamburger.svg";
 import { RandomlyPositionedModal, Backdrop } from "components/cart/style";
 import CategoryGroup from "components/categoryGroup";
+import { routes, NavRoutes } from "./data";
 import {
   navCss,
+  linkCss,
   cartCss,
   navLinkCss,
   hamburgerCss,
@@ -23,12 +25,13 @@ import {
 
 const Navbar = () => {
   const router = useRouter();
+
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isNavactive, setIsNavactive] = useState<boolean>(false);
   useEffect(() => window.addEventListener("scroll", handleScrolled), [scrolled]);
   const { cartProducts } = useAppSelector(({ cartReducer }) => cartReducer);
-  const handleScrolled = () => (window.scrollY > 100 ? setScrolled(true) : setScrolled(false));
+  const handleScrolled = () => (window.scrollY > 200 ? setScrolled(true) : setScrolled(false));
   const renderBackdrop = (props: any) => <Backdrop {...props} />;
 
   return (
@@ -38,44 +41,29 @@ const Navbar = () => {
           <CategoryGroup />
         </Box>
       )}
-      <Box css={navbarContainerCss} style={{ position: scrolled ? "fixed" : "relative" }}>
-        <Container style={{ display: "flex" }} css={navCss}>
-          <Box css={hamburgerCss} onClick={() => setIsNavactive(!isNavactive)}>
+      {/* <Box css={hamburgerCss} onClick={() => setIsNavactive(!isNavactive)}>
             <Image src={Hamburger} alt="Hamburger Menu" />
-          </Box>
+          </Box> */}
 
+      <Box css={navbarContainerCss} style={{ position: scrolled ? "fixed" : "relative" }}>
+        <Container css={navCss}>
+          <Image src={logo} alt="nav logo" />
           <Box>
-            <Image src={logo} alt="nav logo" />
+            {routes.map((route: NavRoutes) => (
+              <Link
+                css={linkCss(router.pathname === route.path)}
+                href={route.path}
+                key={route.name}
+              >
+                <a href="">{route.name}</a>
+              </Link>
+            ))}
           </Box>
 
-          <ul css={navLinkCss}>
-            <Link href="/">
-              <a style={{ color: router.pathname == "/" ? "#D87D4A" : "#fff" }}>Home</a>
-            </Link>
-
-            <Link href="/category/headphones">
-              <a style={{ color: router.query?.category == "headphones" ? "#D87D4A" : "#fff" }}>
-                Headphones
-              </a>
-            </Link>
-
-            <Link href="/category/speakers">
-              <a style={{ color: router.query?.category == "speakers" ? "#D87D4A" : "#fff" }}>
-                speakers
-              </a>
-            </Link>
-
-            <Link href="/category/earphones">
-              <a style={{ color: router.query?.category == "earphones" ? "#D87D4A" : "#fff" }}>
-                earphones
-              </a>
-            </Link>
-          </ul>
-
-          <span onClick={() => setOpen(!open)}>
+          <Box onClick={() => setOpen(!open)}>
             {cartProducts.length > 0 && <p css={cartCss}>{cartProducts.length}</p>}
             <Image src={cart} alt="cart" />
-          </span>
+          </Box>
         </Container>
       </Box>
 

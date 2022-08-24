@@ -16,7 +16,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <Global />
         <Navbar />
         <Component {...pageProps} />
-        <Footer />
+        {/* <Footer /> */}
       </PersistGate>
     </Provider>
   );

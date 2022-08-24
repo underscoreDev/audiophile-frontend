@@ -16,19 +16,20 @@ import {
   gridItemImageCss,
   headerCarouselContainer,
   headerTextCss,
-} from "components/carousel/style";
+} from "components/homePage/components/carousel/style";
 
 export function HeaderCarousel() {
   const { products } = useAppSelector(({ productsReducer }) => productsReducer);
+
   const newProducts = products.filter((p: ProductsProps) => p.new === true);
-  console.log(newProducts);
+
   return (
     <Box css={headerCarouselContainer}>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 2500,
+          delay: 3000,
           disableOnInteraction: false,
         }}
         pagination={{

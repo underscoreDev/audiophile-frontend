@@ -10,7 +10,7 @@ export const navbarContainerCss = css`
   display: flex;
   align-items: center;
   z-index: 9;
-  box-shadow: 0rem 0.5rem 0.5rem rgba(0, 0, 0, 0.5);
+  box-shadow: 0rem 0.5rem 0.5rem rgba(0, 0, 0, 0.3);
 `;
 
 export const categoryNotActiveCss = css`
@@ -54,18 +54,20 @@ export const navCss = css`
 export const navLinkCss = css`
   display: flex;
   justify-content: space-between;
-  a {
-    margin-right: 3rem;
-    ${boldText}
-    text-transform: uppercase;
-    color: ${colors.colorWhite};
-    transition: all 0.3s;
-    &:hover {
-      color: ${colors.colorDarkPink};
-    }
-  }
+
   @media (max-width: 600px) {
     display: none;
+  }
+`;
+
+export const linkCss = (active: Boolean) => css`
+  margin-right: 3rem;
+  ${boldText}
+  text-transform: uppercase;
+  color: ${active ? colors.colorDarkPink : colors.colorWhite};
+  transition: all 0.3s;
+  &:hover {
+    color: ${colors.colorDarkPink};
   }
 `;
 
@@ -77,13 +79,13 @@ export const hamburgerCss = css`
 `;
 
 export const cartCss = css`
-                position: absolute;
-                z-index: 10;
-                font-size: 1rem;
-                background: ${colors.colorDarkPink};
-                color: #fff;
-                padding: 0.5rem 0.7rem;
-                border-radius: 100%;
-                top: 1.5rem;
-                cursor: pointer;
-              `;
+  position: absolute;
+  z-index: 10;
+  font-size: 1rem;
+  background: ${colors.colorDarkPink};
+  color: #fff;
+  padding: 0.5rem 0.7rem;
+  border-radius: 100%;
+  top: 1.5rem;
+  cursor: pointer;
+`;
