@@ -6,7 +6,7 @@ export const categoryGroupCss = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20rem 0;
+  /* margin: 20rem 0; */
 
   @media (max-width: 1000px) {
     flex-direction: column;
