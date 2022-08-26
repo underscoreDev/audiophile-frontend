@@ -14,10 +14,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Global />
-        <ResponsiveAppBar/>
-        {/* <Navbar /> */}
+        <ResponsiveAppBar />
         <Component {...pageProps} />
-        <Footer /> 
+        {/* <Footer />  */}
       </PersistGate>
     </Provider>
   );

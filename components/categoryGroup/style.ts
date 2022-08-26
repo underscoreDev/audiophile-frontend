@@ -23,6 +23,7 @@ export const categoryTypeCss = css`
   flex-direction: column;
 
   @media (max-width: 600px) {
+    margin: 0;
     margin-bottom: 15rem;
   }
 `;

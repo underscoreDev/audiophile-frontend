@@ -41,10 +41,17 @@ export const headerTextCss = css`
     left: 0;
     margin-bottom: 3rem;
     text-transform: uppercase;
+
+    @media (max-width: 600px) {
+      font-size: 4rem;
+    }
   }
   h2 {
     ${body}
     margin-bottom: 3rem;
+    @media (max-width: 600px) {
+      font-size: 2rem;
+    }
   }
 `;
 

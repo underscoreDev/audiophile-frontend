@@ -7,6 +7,7 @@ import {
   patternCss,
   zx9speakerCss,
   slideDescriptionCss,
+  zx9ImageCss,
 } from "components/homePage/components/zx9speaker-block/style";
 import ZX9Image from "components/homePage/components/zx9speaker-block/images/zx9Speaker.png";
 import PatternCircles from "components/homePage/components/zx9speaker-block/images/pattern-circles.svg";
@@ -19,7 +20,7 @@ const Z9Speaker = () => {
         <Image src={PatternCircles} alt="Pattern Circles" />
       </Box>
 
-      <Image  src={ZX9Image} alt="ZX9Speaker Image" />
+      <Image css={zx9ImageCss} src={ZX9Image} alt="ZX9Speaker Image" />
 
       <Box css={slideDescriptionCss}>
         <h1>

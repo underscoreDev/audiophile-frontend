@@ -13,6 +13,13 @@ const marginCss = css`
   margin-top: 20rem;
 `;
 
+const mobileMarginCss = css`
+  ${marginCss}
+  @media (max-width: 600px) {
+    margin-top: 15rem;
+  }
+`;
+
 const Home = () => {
   useTitle("AUDIOPHILE | One Stop Audio Store");
 
@@ -29,13 +36,13 @@ const Home = () => {
           <Z9Speaker />
         </Box>
 
-        <Box css={marginCss}>
+        <Box css={mobileMarginCss}>
           <Zx7Speaker />
         </Box>
 
-      <Box css={marginCss}>
+        <Box css={mobileMarginCss}>
           <Yx1Earphone />
-        </Box> 
+        </Box>
 
         <Box css={marginCss}>
           <BestAudio />

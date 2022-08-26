@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import BestGear from "assets/shared/desktop/image-best-gear.jpg";
 import { bestAudioCss, bestAudioImgCss, bestAudioDescriptionCss } from "components/bestAudio/style";
 
 const BestAudio = () => {
@@ -21,9 +20,7 @@ const BestAudio = () => {
         </Typography>
       </Box>
 
-      <Box css={bestAudioImgCss}>
-        <Image width={540} height={588} src={BestGear} alt="Best Gear Image" />
-      </Box>
+      <Box css={bestAudioImgCss}></Box>
     </Box>
   );
 };

@@ -12,12 +12,26 @@ export const zx9speakerCss = css`
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 0;
+  }
 `;
 
 export const patternCss = css`
   position: absolute;
   width: 100%;
   height: 100%;
+`;
+
+export const zx9ImageCss = css`
+  @media (max-width: 700px) {
+    width: 10rem;
+  }
 `;
 
 export const slideDescriptionCss = css`
@@ -33,5 +47,10 @@ export const slideDescriptionCss = css`
     ${h1}
     left: 0;
     margin-bottom: 3rem;
+  }
+
+  @media (max-width: 700px) {
+    text-align: center;
+    margin-top: 5rem;
   }
 `;

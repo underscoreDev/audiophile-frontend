@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 import { useRouter } from "next/router";
 import Button from "components/buttons";
 import {
@@ -7,17 +7,14 @@ import {
   yx1DecsriptionCss,
   yx1ImageCss,
 } from "components/homePage/components/yx1earphone-block/style";
-import yx1 from "assets/home/desktop/image-earphones-yx1.jpg";
 
 const Yx1Earphone = () => {
   const router = useRouter();
   return (
-    <Grid container direction="row" justifyContent="space-between" css={yx1Css}>
-      <Grid item xs={12} sm={6}>
-        <Image css={yx1ImageCss} src={yx1} alt="YX1 earphones" />
-      </Grid>
+    <Box css={yx1Css}>
+      <Box css={yx1ImageCss}></Box>
 
-      <Grid item xs={12} sm={6} css={yx1DecsriptionCss}>
+      <Box css={yx1DecsriptionCss}>
         <h1>YX1 EARPHONES</h1>
 
         <Button
@@ -25,8 +22,8 @@ const Yx1Earphone = () => {
           text="see product"
           variant="BORDERED"
         />
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   );
 };
 
