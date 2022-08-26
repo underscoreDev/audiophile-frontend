@@ -11,7 +11,7 @@ import { useLocation, useTitle } from "react-use";
 const Category = () => {
   const location = useLocation();
   const routeName = location?.pathname?.slice(1)
-  useTitle(`AUDIOPHILE | ${routeName.toUpperCase()}`)
+  useTitle(`AUDIOPHILE | ${routeName?.toUpperCase()}`)
   const { products } = useAppSelector(({ productsReducer }) => productsReducer);
   const category = products.filter((product: ProductsProps) => product.category === routeName);
 
