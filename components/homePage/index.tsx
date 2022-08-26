@@ -33,9 +33,9 @@ const Home = () => {
           <Zx7Speaker />
         </Box>
 
-        <Box css={marginCss}>
+      <Box css={marginCss}>
           <Yx1Earphone />
-        </Box>
+        </Box> 
 
         <Box css={marginCss}>
           <BestAudio />

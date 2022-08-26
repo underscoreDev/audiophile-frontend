@@ -5,6 +5,7 @@ import Button from "components/buttons";
 import speaker from "assets/shared/desktop/image-category-thumbnail-speakers.png";
 import earphones from "assets/shared/desktop/image-category-thumbnail-earphones.png";
 import headphones from "assets/shared/desktop/image-category-thumbnail-headphones.png";
+
 import {
   categoryTypeCss,
   categoryIconCss,
@@ -49,7 +50,14 @@ const CategoryGroup = () => {
         </Box>
       </Box>
 
-      <Box css={categoryTypeCss}>
+      <Box
+        css={`
+          ${categoryTypeCss}
+          @media (max-width: 600px) {
+            margin-bottom: 0;
+          }
+        `}
+      >
         <Box css={categoryIconCss}>
           <Image width={146} height={146} alt="earphones image" src={earphones} />
         </Box>
