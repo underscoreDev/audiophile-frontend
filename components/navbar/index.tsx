@@ -59,7 +59,7 @@ const ResponsiveAppBar = () => {
   const handleCloseUserMenu = () => setAnchorElUser(null);
 
   return (
-    <AppBar sx={{ backgroundColor: "black" }} position="sticky">
+    <AppBar sx={{ backgroundColor: "black", padding: "1rem 0" }} position="sticky">
       <Container maxWidth="lg">
         <Toolbar disableGutters>
           <Typography variant="h2" noWrap component="a" href="/" sx={logoStyles}>

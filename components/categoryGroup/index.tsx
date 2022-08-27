@@ -27,7 +27,7 @@ const CategoryGroup = () => {
           <h1>HEADPHONES</h1>
 
           <Button
-            onClick={() => router.push("/category/headphones")}
+            onClick={() => router.push("/headphones")}
             text="shop"
             variant="BORDERLESS_BLACK"
           />
@@ -42,11 +42,7 @@ const CategoryGroup = () => {
         <Box css={categorydescCss}>
           <h1>SPEAKER</h1>
 
-          <Button
-            onClick={() => router.push("/category/speaker")}
-            text="shop"
-            variant="BORDERLESS_BLACK"
-          />
+          <Button onClick={() => router.push("/speaker")} text="shop" variant="BORDERLESS_BLACK" />
         </Box>
       </Box>
 
@@ -66,7 +62,7 @@ const CategoryGroup = () => {
           <h1>EARPHONES</h1>
 
           <Button
-            onClick={() => router.push("/category/earphones")}
+            onClick={() => router.push("/earphones")}
             text="shop"
             variant="BORDERLESS_BLACK"
           />
