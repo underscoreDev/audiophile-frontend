@@ -46,7 +46,7 @@
 
     "react-overlays": "^5.1.1",
 
-
+"react-redux": "^8.0.2",
 
 "react-toastify": "^8.1.0",
 
