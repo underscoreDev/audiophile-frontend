@@ -6,6 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -58,7 +59,7 @@ const ResponsiveAppBar = () => {
   const handleCloseUserMenu = () => setAnchorElUser(null);
 
   return (
-    <AppBar sx={{ backgroundColor: "black" }} position="static">
+    <AppBar sx={{ backgroundColor: "black" }} position="sticky">
       <Container maxWidth="lg">
         <Toolbar disableGutters>
           <Typography variant="h2" noWrap component="a" href="/" sx={logoStyles}>
@@ -84,7 +85,10 @@ const ResponsiveAppBar = () => {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: "block", md: "none" } }}
             >
-              <Box css={categoryGroupCss} style={{ margin: "5rem 0" }}>
+              <IconButton onClick={handleCloseNavMenu}>
+                <CloseIcon fontSize="large" />
+              </IconButton>
+              <Box css={categoryGroupCss} style={{ marginTop: "10rem", marginBottom: "5rem" }}>
                 <Box css={categoryTypeCss}>
                   <Box style={{ marginBottom: "-3rem" }}>
                     <Image width={146} height={146} alt="headphones image" src={headphones} />
@@ -173,7 +177,7 @@ const ResponsiveAppBar = () => {
 
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="User Photo" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
 
