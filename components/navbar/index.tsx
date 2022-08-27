@@ -9,10 +9,18 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
+import Button2 from "components/buttons";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { routes } from "./data";
-import { cartCss, cartLogoCss, logoMobilestyles, logoStyles } from "./style";
+import {
+  cartCss,
+  cartLogoCss,
+  logoMobilestyles,
+  logoStyles,
+  categoryTypeCss,
+  categorydescCss,
+} from "./style";
 import Drawer from "@mui/material/Drawer";
 import cart from "assets/shared/desktop/icon-cart.svg";
 import Image from "next/image";
@@ -22,12 +30,16 @@ import { useAppSelector } from "redux/store/store";
 import { RandomlyPositionedModal, Backdrop } from "components/cart/style";
 import Cart from "components/cart/cart";
 import { useLocation } from "react-use";
+import { categoryGroupCss } from "components/categoryGroup/style";
+import speaker from "assets/shared/desktop/image-category-thumbnail-speakers.png";
+import earphones from "assets/shared/desktop/image-category-thumbnail-earphones.png";
+import headphones from "assets/shared/desktop/image-category-thumbnail-headphones.png";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = () => {
   const router = useRouter();
-  const loc=useLocation()
+  const loc = useLocation();
   const [open, setOpen] = React.useState(false);
   const { cartProducts } = useAppSelector(({ cartReducer }) => cartReducer);
   const renderBackdrop = (props: any) => <Backdrop {...props} />;
@@ -72,11 +84,62 @@ const ResponsiveAppBar = () => {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: "block", md: "none" } }}
             >
-              {routes.map((page) => (
-                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page.name}</Typography>
-                </MenuItem>
-              ))}
+              <Box css={categoryGroupCss} style={{ margin: "5rem 0" }}>
+                <Box css={categoryTypeCss}>
+                  <Box style={{ marginBottom: "-3rem" }}>
+                    <Image width={146} height={146} alt="headphones image" src={headphones} />
+                  </Box>
+
+                  <Box css={categorydescCss}>
+                    <h1>HEADPHONES</h1>
+
+                    <Button2
+                      onClick={() => router.push("/category/headphones")}
+                      text="shop"
+                      variant="BORDERLESS_BLACK"
+                    />
+                  </Box>
+                </Box>
+
+                <Box css={categoryTypeCss}>
+                  <Box style={{ marginBottom: "-3rem" }}>
+                    <Image width={146} height={146} alt="speaker image" src={speaker} />
+                  </Box>
+
+                  <Box css={categorydescCss}>
+                    <h1>SPEAKER</h1>
+
+                    <Button2
+                      onClick={() => router.push("/category/speaker")}
+                      text="shop"
+                      variant="BORDERLESS_BLACK"
+                    />
+                  </Box>
+                </Box>
+
+                <Box
+                  css={`
+                    ${categoryTypeCss}
+                    @media (max-width: 600px) {
+                      margin-bottom: 0;
+                    }
+                  `}
+                >
+                  <Box style={{ marginBottom: "-3rem" }}>
+                    <Image width={146} height={146} alt="earphones image" src={earphones} />
+                  </Box>
+
+                  <Box css={categorydescCss}>
+                    <h1>EARPHONES</h1>
+
+                    <Button2
+                      onClick={() => router.push("/category/earphones")}
+                      text="shop"
+                      variant="BORDERLESS_BLACK"
+                    />
+                  </Box>
+                </Box>
+              </Box>
             </Drawer>
           </Box>
 
@@ -126,7 +189,9 @@ const ResponsiveAppBar = () => {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography fontSize="large" textAlign="center">{setting}</Typography>
+                  <Typography fontSize="large" textAlign="center">
+                    {setting}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>

@@ -1,5 +1,6 @@
 import { colors } from "utils/theme";
 import { css } from "styled-components/macro";
+import { h6 } from "utils/typography";
 
 export const cartCss = css`
   position: absolute;
@@ -41,5 +42,31 @@ export const cartLogoCss = css`
   top: 1rem;
   @media (max-width: 375px) {
     right: 2rem;
+  }
+`;
+
+export const categoryTypeCss = css`
+  height: 17rem;
+  width: 32rem;
+  margin: 0 1rem;
+  background-color: ${colors.colorDarkWhite};
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  flex-direction: column;
+
+  @media (max-width: 600px) {
+    margin: 0;
+    margin-bottom: 10rem;
+  }
+`;
+
+export const categorydescCss = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    ${h6}
   }
 `;

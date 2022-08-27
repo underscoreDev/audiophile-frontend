@@ -16,7 +16,7 @@ const marginCss = css`
 const mobileMarginCss = css`
   ${marginCss}
   @media (max-width: 600px) {
-    margin-top: 15rem;
+    margin-top: 13rem;
   }
 `;
 

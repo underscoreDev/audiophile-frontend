@@ -28,12 +28,6 @@ export const patternCss = css`
   height: 100%;
 `;
 
-export const zx9ImageCss = css`
-  @media (max-width: 700px) {
-    width: 10rem;
-  }
-`;
-
 export const slideDescriptionCss = css`
   color: ${colors.colorWhite};
   align-self: center;
