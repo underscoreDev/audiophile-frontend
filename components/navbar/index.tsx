@@ -35,6 +35,7 @@ import { RandomlyPositionedModal, Backdrop } from "components/cart/style";
 import speaker from "assets/shared/desktop/image-category-thumbnail-speakers.png";
 import earphones from "assets/shared/desktop/image-category-thumbnail-earphones.png";
 import headphones from "assets/shared/desktop/image-category-thumbnail-headphones.png";
+import Navlogo from "./navlogo";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -62,9 +63,9 @@ const ResponsiveAppBar = () => {
     <AppBar sx={{ backgroundColor: "black", padding: "1rem 0" }} position="sticky">
       <Container maxWidth="lg">
         <Toolbar disableGutters>
-          <Typography variant="h2" noWrap component="a" href="/" sx={logoStyles}>
-            audiophile
-          </Typography>
+          <Box  sx={logoStyles}>
+            <Navlogo />
+          </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -147,9 +148,9 @@ const ResponsiveAppBar = () => {
             </Drawer>
           </Box>
 
-          <Typography variant="h2" noWrap component="a" href="/" sx={logoMobilestyles}>
-            audiophile
-          </Typography>
+          <Box  sx={logoMobilestyles}>
+            <Navlogo />
+          </Box>
 
           <Box sx={{ flexGrow: 1, justifyContent: "center", display: { xs: "none", md: "flex" } }}>
             {routes.map((page: NavRoutes) => (
