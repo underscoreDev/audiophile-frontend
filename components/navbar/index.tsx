@@ -1,19 +1,25 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
+import Image from "next/image";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
+import { colors } from "utils/theme";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
+import Cart from "components/cart/cart";
+import { useLocation } from "react-use";
+import { useRouter } from "next/router";
 import Button2 from "components/buttons";
+import AppBar from "@mui/material/AppBar";
+import Button from "@mui/material/Button";
+import Drawer from "@mui/material/Drawer";
+import Avatar from "@mui/material/Avatar";
+import Toolbar from "@mui/material/Toolbar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import { routes } from "./data";
+import Container from "@mui/material/Container";
+import MenuIcon from "@mui/icons-material/Menu";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import CloseIcon from "@mui/icons-material/Close";
+import { routes, NavRoutes } from "components/navbar/data";
 import {
   cartCss,
   cartLogoCss,
@@ -21,17 +27,11 @@ import {
   logoStyles,
   categoryTypeCss,
   categorydescCss,
-} from "./style";
-import Drawer from "@mui/material/Drawer";
-import cart from "assets/shared/desktop/icon-cart.svg";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import { colors } from "utils/theme";
+} from "components/navbar/style";
 import { useAppSelector } from "redux/store/store";
-import { RandomlyPositionedModal, Backdrop } from "components/cart/style";
-import Cart from "components/cart/cart";
-import { useLocation } from "react-use";
+import cart from "assets/shared/desktop/icon-cart.svg";
 import { categoryGroupCss } from "components/categoryGroup/style";
+import { RandomlyPositionedModal, Backdrop } from "components/cart/style";
 import speaker from "assets/shared/desktop/image-category-thumbnail-speakers.png";
 import earphones from "assets/shared/desktop/image-category-thumbnail-earphones.png";
 import headphones from "assets/shared/desktop/image-category-thumbnail-headphones.png";
@@ -152,7 +152,7 @@ const ResponsiveAppBar = () => {
           </Typography>
 
           <Box sx={{ flexGrow: 1, justifyContent: "center", display: { xs: "none", md: "flex" } }}>
-            {routes.map((page) => (
+            {routes.map((page: NavRoutes) => (
               <Button
                 key={page.name}
                 onClick={() => router.push(`${page.path}`)}
