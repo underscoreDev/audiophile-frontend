@@ -4,10 +4,7 @@ import rootReducer from "redux/store/rootReducer";
 import storageSession from "redux-persist/lib/storage/session";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
-const persistConfig = {
-  key: "root",
-  storage: storageSession,
-};
+const persistConfig = { key: "root", storage: storageSession };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

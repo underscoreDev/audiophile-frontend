@@ -1,5 +1,5 @@
 {
-  "name": "audiophile frontend",
+  "name": "audiophile-frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.10.0",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.2",
+    "@mui/styled-engine-sc": "^5.10.1",
     "@reduxjs/toolkit": "^1.8.3",
     "axios": "^0.27.2",
     "formik": "^2.2.9",
@@ -26,8 +27,8 @@
     "react-toastify": "^8.1.0",
     "react-use": "^17.3.2",
     "redux-persist": "^6.0.0",
-    "swiper": "^8.1.4",
     "styled-components": "^5.3.5",
+    "swiper": "^8.1.4",
     "yup": "^0.32.11"
   },
   "devDependencies": {
