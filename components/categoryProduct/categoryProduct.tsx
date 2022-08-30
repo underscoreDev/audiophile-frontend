@@ -1,11 +1,10 @@
 import Image from "next/image";
-import { useRouter } from "next/router";
-import Box from "@mui/material/Box";
-import { css } from "styled-components/macro";
 import Button from "components/buttons";
+import { useRouter } from "next/router";
+import { css } from "styled-components/macro";
+import Grid from "@mui/material/Unstable_Grid2";
 import { ProductsProps } from "interfaces/interfaces";
 import { body, h1, h2, lightText } from "utils/typography";
-import Grid from "@mui/material/Unstable_Grid2";
 
 interface categoryProp {
   cat: ProductsProps;
