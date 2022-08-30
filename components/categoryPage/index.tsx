@@ -10,8 +10,8 @@ import { useLocation, useTitle } from "react-use";
 
 const Category = () => {
   const location = useLocation();
-  const routeName = location?.pathname?.slice(1)
-  useTitle(`AUDIOPHILE | ${routeName?.toUpperCase()}`)
+  const routeName = location?.pathname?.slice(1);
+  useTitle(`${routeName?.toUpperCase()} | AUDIOPHILE`);
   const { products } = useAppSelector(({ productsReducer }) => productsReducer);
   const category = products.filter((product: ProductsProps) => product.category === routeName);
 
@@ -21,7 +21,7 @@ const Category = () => {
         <h1>{routeName}</h1>
       </Box>
 
-      <Container maxWidth="lg">
+      <Container sx={{ maxWidth: { xs: "lg", xl: "xl" } }}>
         <Box>
           {category.map((cat, idx) => (
             <Box key={cat.slug}>
@@ -31,10 +31,10 @@ const Category = () => {
         </Box>
 
         <Box>
-          <CategoryGroup />
-          <Box style={{ marginBottom: "15rem" }}>
-            <BestAudio />
+          <Box sx={{ margin: "15rem 0" }}>
+            <CategoryGroup />
           </Box>
+          <BestAudio />
         </Box>
       </Container>
     </Box>
