@@ -1,6 +1,6 @@
 import { colors } from "utils/theme";
 import { css } from "styled-components/macro";
-import { body, h1, h3, h6, lightText } from "utils/typography";
+import { body, h1, h3, h6,h2, lightText } from "utils/typography";
 
 export const productCss = css`
   position: relative;
@@ -23,17 +23,17 @@ export const goBackButton = css`
 `;
 
 export const productImgContainer = css`
-  display: flex;
+  /* display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 0 0;
-  height: 100%;
+  height: 100%; */
 `;
 
 export const productImageCss = css``;
 
 export const productDescCss = css`
-  width: 40%;
+  /* width: 40%; */
   h3 {
     ${lightText}
     margin-bottom: 2rem;
@@ -41,6 +41,9 @@ export const productDescCss = css`
   }
   h1 {
     ${h1}
+    @media(max-width:768px) {
+      ${h2}
+    }
   }
   p {
     ${body}

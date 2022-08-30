@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import { useTitle } from "react-use";
-import Grid from "@mui/material/Grid";
+import Grid from "@mui/material/Unstable_Grid2";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import BestAudio from "components/bestAudio";
@@ -28,7 +28,7 @@ import {
 
 const ProductDetail = () => {
   const router = useRouter();
-  useTitle(`Product | ${router.query.productDetails}`);
+  useTitle(`${router.query.productDetails} | PRODUCT`);
   const dispatch = useAppDispatch();
   const [quantity, setQuantity] = useState<number>(1);
   const { cartProducts } = useAppSelector(({ cartReducer }) => cartReducer);
@@ -37,6 +37,7 @@ const ProductDetail = () => {
   const currentProduct = products.find(
     (product: ProductsProps) => product.slug === routeName || product.name === routeName
   );
+
   useEffect(() => setQuantity(quantity), [router, quantity]);
 
   const addProductToCart = () => {
@@ -65,15 +66,15 @@ const ProductDetail = () => {
   };
 
   return (
-    <Container maxWidth="lg" css={productCss}>
+    <Container sx={{ maxWidth: { xs: "lg", xl: "xl" } }} css={productCss}>
       <ToastContainer newestOnTop={true} />
 
       <h1 onClick={() => router.back()} css={goBackButton}>
         Go Back
       </h1>
 
-      <Grid container spacing={12} justifyContent={"space-between"} css={productImgContainer}>
-        <Grid item xs={7} css={productImageCss}>
+      <Grid container justifyContent={"space-between"} alignItems="center">
+        <Grid xs={12} sm={5} md={6}>
           <Image
             priority={true}
             src={currentProduct?.categoryImage.desktop}
@@ -84,7 +85,13 @@ const ProductDetail = () => {
           />
         </Grid>
 
-        <Grid item xs={5} css={productDescCss}>
+        <Grid
+          xs={12}
+          sm={7}
+          md={6}
+          sx={{ paddingLeft: { xs: 0, sm: "3rem" }, marginTop: { xs: "5rem", sm: 0 } }}
+          css={productDescCss}
+        >
           {currentProduct?.new && <h3>New Product</h3>}
           <h1>{currentProduct?.name}</h1>
           <p>{currentProduct?.description}</p>
@@ -98,12 +105,12 @@ const ProductDetail = () => {
 
       <Box css={featuresCss}>
         <Grid container spacing={12} justifyContent={"space-between"}>
-          <Grid item xs={7}>
+          <Grid xs={7}>
             <h2>Features</h2>
             <p>{currentProduct?.features}</p>
           </Grid>
 
-          <Grid item xs={5}>
+          <Grid xs={5}>
             <h2>In the Box</h2>
             {currentProduct?.including.map((p: { quantity: number; item: string }) => (
               <p key={p.item}>
@@ -137,18 +144,18 @@ const ProductDetail = () => {
 
       <h5>You May Also Like</h5>
 
-      <Box css={suggestionProductCss}>
+      {/* <Box css={suggestionProductCss}>
         {currentProduct?.others.map((product: CurrentProductProps) => (
           <Box key={product.name}>
             <ProductPreview slug={product.slug} text={product.name} image={product.image.desktop} />
           </Box>
         ))}
-      </Box>
+      </Box> */}
 
-      <Box css={"margin-bottom:15rem"}>
+      <Box css={"margin:15rem 0"}>
         <CategoryGroup />
-        <BestAudio />
       </Box>
+      <BestAudio />
     </Container>
   );
 };
