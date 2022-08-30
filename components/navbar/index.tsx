@@ -15,6 +15,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Container from "@mui/material/Container";
+import Navlogo from "components/navbar/navlogo";
 import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
@@ -35,7 +36,6 @@ import { RandomlyPositionedModal, Backdrop } from "components/cart/style";
 import speaker from "assets/shared/desktop/image-category-thumbnail-speakers.png";
 import earphones from "assets/shared/desktop/image-category-thumbnail-earphones.png";
 import headphones from "assets/shared/desktop/image-category-thumbnail-headphones.png";
-import Navlogo from "./navlogo";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -61,10 +61,10 @@ const ResponsiveAppBar = () => {
 
   return (
     <AppBar sx={{ backgroundColor: "black", padding: "1rem 0" }} position="sticky">
-      <Container  sx={{ maxWidth: { xs: "lg", xl: "xl" } }}>
+      <Container sx={{ maxWidth: { xs: "lg", xl: "xl" } }}>
         <Toolbar disableGutters>
-          <Box sx={logoStyles}>
-            <Navlogo />
+          <Box onClick={()=>router.push("/")} sx={logoStyles}>
+              <Navlogo  />
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>

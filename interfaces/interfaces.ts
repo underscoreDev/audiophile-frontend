@@ -94,13 +94,13 @@ export interface CurrentProductProps {
 export interface FormValuesProps {
   fullName: string;
   email: string;
-  phoneNumber: number | null;
+  phoneNumber: number | null|undefined;
   address: string;
-  zipCode: number | null;
+  zipCode: number | null|undefined;
   city: string;
   country: string;
   paymentMethod: string;
-      eMoneyNumber: null;
-    eMoneyPin:null;
+      eMoneyNumber: null|undefined;
+    eMoneyPin:null|undefined;
 
 }

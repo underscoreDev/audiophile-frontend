@@ -37,14 +37,14 @@ const Checkout = () => {
   const initialvalues: FormValuesProps = {
     fullName: "",
     email: "",
-    phoneNumber: null,
+    phoneNumber: undefined,
     address: "",
-    zipCode: null,
+    zipCode: undefined,
     city: "",
     country: "",
     paymentMethod: "cash",
-    eMoneyNumber: null,
-    eMoneyPin: null,
+    eMoneyNumber: undefined,
+    eMoneyPin: undefined,
   };
 
   const handleSubmit = async (
