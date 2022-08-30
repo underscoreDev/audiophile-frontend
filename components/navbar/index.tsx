@@ -63,7 +63,7 @@ const ResponsiveAppBar = () => {
     <AppBar sx={{ backgroundColor: "black", padding: "1rem 0" }} position="sticky">
       <Container maxWidth="lg">
         <Toolbar disableGutters>
-          <Box  sx={logoStyles}>
+          <Box sx={logoStyles}>
             <Navlogo />
           </Box>
 
@@ -99,7 +99,7 @@ const ResponsiveAppBar = () => {
                     <h1>HEADPHONES</h1>
 
                     <Button2
-                      onClick={() => router.push("/category/headphones")}
+                      onClick={() => router.push("/headphones")}
                       text="shop"
                       variant="BORDERLESS_BLACK"
                     />
@@ -115,7 +115,7 @@ const ResponsiveAppBar = () => {
                     <h1>SPEAKER</h1>
 
                     <Button2
-                      onClick={() => router.push("/category/speaker")}
+                      onClick={() => router.push("/speaker")}
                       text="shop"
                       variant="BORDERLESS_BLACK"
                     />
@@ -138,7 +138,7 @@ const ResponsiveAppBar = () => {
                     <h1>EARPHONES</h1>
 
                     <Button2
-                      onClick={() => router.push("/category/earphones")}
+                      onClick={() => router.push("/earphones")}
                       text="shop"
                       variant="BORDERLESS_BLACK"
                     />
@@ -148,7 +148,7 @@ const ResponsiveAppBar = () => {
             </Drawer>
           </Box>
 
-          <Box  sx={logoMobilestyles}>
+          <Box sx={logoMobilestyles}>
             <Navlogo />
           </Box>
 
