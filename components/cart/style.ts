@@ -16,11 +16,9 @@ export const Backdrop = styled("div")`
 `;
 
 export const RandomlyPositionedModal = styled(Modal)`
-  transition: 1s all;
+  transition: 0.5s all;
   position: fixed;
   z-index: 1040;
-  right: 5rem;
-  top: 10rem;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   width: 40rem;
   min-height: 48.8rem;
@@ -31,6 +29,13 @@ export const RandomlyPositionedModal = styled(Modal)`
   padding: 3rem;
   border: none;
   outline: none;
+
+  @media (max-width: 768px) {
+    width: 38rem;
+    height: 80%;
+    right: 0;
+    top: 10rem;
+  }
 
   .cart {
     &__empty {
@@ -64,8 +69,9 @@ export const RandomlyPositionedModal = styled(Modal)`
       }
 
       &--body {
-        height: 30rem;
+        height: 35rem;
         overflow: auto;
+        padding-top: 3rem;
         scrollbar-width: thin;
         scrollbar-color: ${colors.colorDarkPink};
         &::-webkit-scrollbar {
@@ -151,6 +157,11 @@ export const RandomlyPositionedModal = styled(Modal)`
 
     &__total {
       margin-top: 3rem;
+      position: relative;
+      bottom: 0;
+      left: 0;
+      transform: translate(0, 0);
+
       span {
         display: flex;
         justify-content: space-between;
@@ -181,7 +192,7 @@ export const RandomlyPositionedModal = styled(Modal)`
         line-height: 1.8rem;
         text-align: center;
         letter-spacing: 1px;
-
+        /* position: absolute; */
         &:hover {
           background-color: ${colors.colorLightPink};
         }

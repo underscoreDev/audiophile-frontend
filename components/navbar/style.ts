@@ -1,6 +1,6 @@
 import { colors } from "utils/theme";
-import { css } from "styled-components/macro";
 import { h6 } from "utils/typography";
+import { css } from "styled-components/macro";
 
 export const cartCss = css`
   position: absolute;
@@ -10,7 +10,8 @@ export const cartCss = css`
   color: #fff;
   padding: 0.5rem 0.7rem;
   border-radius: 100%;
-  top: 1.5rem;
+  top: 0.5rem;
+  left: 0.7rem;
   cursor: pointer;
 `;
 
