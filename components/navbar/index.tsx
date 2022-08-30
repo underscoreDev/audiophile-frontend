@@ -61,7 +61,7 @@ const ResponsiveAppBar = () => {
 
   return (
     <AppBar sx={{ backgroundColor: "black", padding: "1rem 0" }} position="sticky">
-      <Container maxWidth="lg">
+      <Container  sx={{ maxWidth: { xs: "lg", xl: "xl" } }}>
         <Toolbar disableGutters>
           <Box sx={logoStyles}>
             <Navlogo />

@@ -27,7 +27,7 @@ const Home = () => {
     <Box>
       <HeaderCarousel />
 
-      <Container maxWidth="lg">
+      <Container sx={{ maxWidth: { xs: "lg", xl: "xl" } }}>
         <Box css={marginCss}>
           <CategoryGroup />
         </Box>

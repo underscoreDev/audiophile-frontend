@@ -41,6 +41,11 @@ export const footerContainerCss = css`
     }
   }
 
+  svg{
+    width:2.4rem;
+    height:2.4rem;
+  }
+
   p {
     ${body}
   }

@@ -10,15 +10,7 @@ export const headerCarouselContainer = css`
 `;
 
 export const gridContainerCss = css`
-  min-height: 90vh;
   height: 90vh;
-  @media (max-width: 900px) {
-    min-height: unset;
-    height: 72rem;
-  }
-  @media (max-width: 800px) {
-    height: 60rem;
-  }
 `;
 
 export const headerTextCss = css`

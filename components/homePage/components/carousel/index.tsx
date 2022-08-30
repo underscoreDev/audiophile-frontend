@@ -28,19 +28,13 @@ export function HeaderCarousel() {
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
+        autoplay={{delay: 5000,disableOnInteraction: false}}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
         {newProducts.map((product: ProductsProps) => (
           <SwiperSlide key={product.slug}>
-            <Container maxWidth="lg">
+            <Container sx={{ maxWidth: { xs: "lg", xl: "xl" } }}>
               <Grid
                 container
                 spacing={4}

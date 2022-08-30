@@ -12,7 +12,7 @@ import { footerContainerCss, footerCss } from "components/footer/style";
 const Footer = () => {
   return (
     <Box css={footerCss}>
-      <Container maxWidth="xl" css={footerContainerCss}>
+      <Container sx={{ maxWidth: { xs: "lg", xl: "xl" } }} css={footerContainerCss}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid xs={12} sm={6}>
             <Image src={logo} alt="audiophile logo" />
