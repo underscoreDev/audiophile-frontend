@@ -31,7 +31,7 @@ const Category = () => {
         </Box>
 
         <Box>
-          <Box sx={{ margin: "15rem 0" }}>
+          <Box sx={{ margin: { xs: "20rem 0 15rem 0", sm: "15rem 0" } }}>
             <CategoryGroup />
           </Box>
           <BestAudio />

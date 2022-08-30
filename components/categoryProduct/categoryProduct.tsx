@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import { css } from "styled-components/macro";
 import Button from "components/buttons";
 import { ProductsProps } from "interfaces/interfaces";
-import { body, h1, lightText } from "utils/typography";
+import { body, h1, h2, lightText } from "utils/typography";
 import Grid from "@mui/material/Unstable_Grid2";
 
 interface categoryProp {
@@ -19,11 +19,19 @@ export const categoryProductDescCss = css`
   }
   h1 {
     ${h1}
+
+    @media(max-width:768px) {
+      ${h2}
+    }
   }
   p {
     ${body}
     margin: 2rem 0;
     padding-right: 5rem;
+
+    @media (max-width: 600px) {
+      padding-right: 0;
+    }
   }
 `;
 
