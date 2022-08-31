@@ -1,6 +1,6 @@
 import { colors } from "utils/theme";
 import { css } from "styled-components/macro";
-import { body, h1, h3, h6,h2, lightText } from "utils/typography";
+import { body, h1, h3, h6, h2, lightText } from "utils/typography";
 
 export const productCss = css`
   position: relative;
@@ -22,18 +22,7 @@ export const goBackButton = css`
   z-index: 100;
 `;
 
-export const productImgContainer = css`
-  /* display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 0;
-  height: 100%; */
-`;
-
-export const productImageCss = css``;
-
 export const productDescCss = css`
-  /* width: 40%; */
   h3 {
     ${lightText}
     margin-bottom: 2rem;
@@ -45,9 +34,13 @@ export const productDescCss = css`
       ${h2}
     }
   }
+
   p {
     ${body}
     margin: 2rem 0;
+    @media (max-width: 768px) {
+      text-align: justify;
+    }
   }
 
   h6 {
@@ -64,9 +57,10 @@ export const featuresCss = css`
     margin-bottom: 3rem;
     text-transform: uppercase;
   }
+
   p {
     ${body}
-    display: flex;
+    text-align: justify;
     span {
       margin-right: 3rem;
       color: ${colors.colorDarkPink};
@@ -76,7 +70,7 @@ export const featuresCss = css`
 `;
 
 export const gridImageCss = css`
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-template-areas: "img1 img3" "img2 img3";
@@ -110,7 +104,7 @@ export const gridImageCss = css`
       width: 100%;
       height: 100%;
     }
-  }
+  } */
 `;
 
 export const suggestionProductCss = css`

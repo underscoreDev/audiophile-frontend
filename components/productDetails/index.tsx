@@ -18,13 +18,12 @@ import CategoryGroup from "components/categoryGroup";
 import {
   productCss,
   goBackButton,
-  productImgContainer,
   productDescCss,
-  productImageCss,
   featuresCss,
   gridImageCss,
   suggestionProductCss,
 } from "components/productDetails/style";
+import { color } from "@mui/system";
 
 const ProductDetail = () => {
   const router = useRouter();
@@ -104,13 +103,18 @@ const ProductDetail = () => {
       </Grid>
 
       <Box css={featuresCss}>
-        <Grid container spacing={12} justifyContent={"space-between"}>
-          <Grid xs={7}>
+        <Grid container alignItems="flex-start" justifyContent={"space-between"}>
+          <Grid xs={12} sm={7} md={6}>
             <h2>Features</h2>
             <p>{currentProduct?.features}</p>
           </Grid>
 
-          <Grid xs={5}>
+          <Grid
+            xs={12}
+            sm={5}
+            md={6}
+            sx={{ paddingLeft: { xs: 0, sm: "5rem" }, marginTop: { xs: "5rem", sm: 0 } }}
+          >
             <h2>In the Box</h2>
             {currentProduct?.including.map((p: { quantity: number; item: string }) => (
               <p key={p.item}>
@@ -121,25 +125,37 @@ const ProductDetail = () => {
         </Grid>
       </Box>
 
-      <Box css={gridImageCss}>
-        <Image
-          className="img3"
-          priority={true}
-          src={currentProduct?.gallery.second.desktop}
-          alt={`${routeName} image`}
-        />
-        <Image
-          className="img1"
-          priority={true}
-          src={currentProduct?.gallery.third.desktop}
-          alt={`${routeName} image`}
-        />
-        <Image
-          className="img2"
-          priority={true}
-          src={currentProduct?.gallery.first.desktop}
-          alt={`${routeName} image`}
-        />
+      <Box
+        display="grid"
+        gap={2}
+        gridTemplateColumns={"repeat(2, 1fr)"}
+        gridTemplateRows={"repeat(2, 1fr)"}
+        justifyContent="space-between"
+      >
+        <Box gridColumn={"1/2"} gridRow={"1/2"}>
+          <Image
+            priority={true}
+            src={currentProduct?.gallery.second.desktop}
+            alt={`${routeName} image`}
+          />
+        </Box>
+
+        <Box gridColumn={"2/-1"} gridRow={"1/-1"}>
+          <Image
+            priority={true}
+            style={{ height: "100%" }}
+            src={currentProduct?.gallery.third.desktop}
+            alt={`${routeName} image`}
+          />
+        </Box>
+
+        <Box gridColumn={"1/2"} gridRow={"2/-1"}>
+          <Image
+            priority={true}
+            src={currentProduct?.gallery.first.desktop}
+            alt={`${routeName} image`}
+          />
+        </Box>
       </Box>
 
       <h5>You May Also Like</h5>
