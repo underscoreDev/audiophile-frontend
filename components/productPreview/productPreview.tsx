@@ -17,13 +17,16 @@ const ProductPreview = ({ text, image, slug }: ProductPreviewProps) => {
     <ProductPreviewStyles>
       <div className="product">
         <span className="product__img">
-          <Image width={350} height={318} alt={text} src={image} />
+          <Image alt={text} src={image} />
         </span>
         <span className="product__description">
           <h1>{text.toUpperCase()}</h1>
-          <span onClick={() => router.push(`/product/${slug}`)}>
-            <Button text="see product" variant="PINK_DARK" />
-          </span>
+
+          <Button
+            onClick={() => router.push(`/product/${slug}`)}
+            text="see product"
+            variant="PINK_DARK"
+          />
         </span>
       </div>
     </ProductPreviewStyles>
@@ -36,14 +39,8 @@ const ProductPreviewStyles = styled.div`
   .product {
     width: 35rem;
     height: 47rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
     &__img {
-      overflow: hidden;
       border-radius: 0.8rem;
-      box-shadow: 0.1rem 0rem 0.1rem rgba(0, 0, 0, 0.1);
     }
 
     &__description {
@@ -54,7 +51,7 @@ const ProductPreviewStyles = styled.div`
 
       h1 {
         ${h5}
-        margin-bottom: 3rem;
+        margin: 3rem 0;
       }
     }
   }

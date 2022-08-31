@@ -1,29 +1,26 @@
+import Image from "next/image";
 import Box from "@mui/material/Box";
 import { useTitle } from "react-use";
-import Grid from "@mui/material/Unstable_Grid2";
+import { showToast } from "utils/toast";
+import Button from "components/buttons";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import BestAudio from "components/bestAudio";
-import { showToast } from "utils/toast";
-import Button from "components/buttons";
 import "react-toastify/dist/ReactToastify.css";
+import Grid from "@mui/material/Unstable_Grid2";
 import { ToastContainer } from "react-toastify";
 import Container from "@mui/material/Container";
-import Image, { StaticImageData } from "next/image";
+import CategoryGroup from "components/categoryGroup";
 import { addItemToCart } from "redux/reducers/cartReducer";
 import { useAppDispatch, useAppSelector } from "redux/store/store";
 import ProductPreview from "components/productPreview/productPreview";
 import { cartProductType, CurrentProductProps, ProductsProps } from "interfaces/interfaces";
-import CategoryGroup from "components/categoryGroup";
 import {
   productCss,
   goBackButton,
   productDescCss,
   featuresCss,
-  gridImageCss,
-  suggestionProductCss,
 } from "components/productDetails/style";
-import { color } from "@mui/system";
 
 const ProductDetail = () => {
   const router = useRouter();
@@ -126,47 +123,66 @@ const ProductDetail = () => {
       </Box>
 
       <Box
-        display="grid"
-        gap={2}
-        gridTemplateColumns={"repeat(2, 1fr)"}
-        gridTemplateRows={"repeat(2, 1fr)"}
-        justifyContent="space-between"
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          flexDirection: { xs: "column", md: "row" },
+        }}
+        css={"img{border-radius:1rem}"}
       >
-        <Box gridColumn={"1/2"} gridRow={"1/2"}>
-          <Image
-            priority={true}
-            src={currentProduct?.gallery.second.desktop}
-            alt={`${routeName} image`}
-          />
-        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            flexDirection: { xs: "row", md: "column" },
+            marginBottom: { xs: "3rem", md: 0 },
+            paddingRight: { xs: 0, md: "3rem" },
+          }}
+        >
+          <Box sx={{ paddingRight: { xs: "3rem", md: 0 } }}>
+            <Image
+              priority={true}
+              src={currentProduct?.gallery.second.desktop}
+              alt={`${routeName} image`}
+            />
+          </Box>
 
-        <Box gridColumn={"2/-1"} gridRow={"1/-1"}>
-          <Image
-            priority={true}
-            style={{ height: "100%" }}
-            src={currentProduct?.gallery.third.desktop}
-            alt={`${routeName} image`}
-          />
-        </Box>
-
-        <Box gridColumn={"1/2"} gridRow={"2/-1"}>
           <Image
             priority={true}
             src={currentProduct?.gallery.first.desktop}
             alt={`${routeName} image`}
           />
         </Box>
+
+        <Image
+          priority={true}
+          css={"padding-left: 5rem"}
+          src={currentProduct?.gallery.third.desktop}
+          alt={`${routeName} image`}
+        />
       </Box>
 
       <h5>You May Also Like</h5>
 
-      {/* <Box css={suggestionProductCss}>
+      <Grid
+        container
+        justifyContent={"space-between"}
+        sx={{ margin: "5rem auto 15rem 0" }}
+        alignItems="center"
+      >
         {currentProduct?.others.map((product: CurrentProductProps) => (
-          <Box key={product.name}>
+          <Grid
+            sx={{ textAlign: "center", width: "min-content", margin: "5rem auto" }}
+            xs={12}
+            md={4}
+            key={product.name}
+            justifyContent={"space-between"}
+            alignItems="center"
+          >
             <ProductPreview slug={product.slug} text={product.name} image={product.image.desktop} />
-          </Box>
+          </Grid>
         ))}
-      </Box> */}
+      </Grid>
 
       <Box css={"margin:15rem 0"}>
         <CategoryGroup />
