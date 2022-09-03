@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Box from "@mui/material/Box";
+import Grid from "@mui/material/Unstable_Grid2";
 import { useRouter } from "next/router";
 import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
@@ -11,9 +12,7 @@ import { getTotalPrice, grandTotal, shipping, vat } from "redux/reducers/cartRed
 import cashOnDelivery from "assets/cart/cash on delivery.png";
 import {
   checkoutContainer,
-  gridContainerCss,
   backButtonCss,
-  checkoutGridCss,
   summaryGridCss,
   formLabelCss,
   checkoutTextCss,
@@ -58,7 +57,7 @@ const Checkout = () => {
 
   return (
     <Box css={checkoutContainer}>
-      <Container maxWidth="lg" css={"padding:10rem 0"}>
+      <Container sx={{ maxWidth: { xs: "lg", xl: "xl" } }} css={"padding:10rem 0"}>
         <Box css={"margin-bottom:5rem"}>
           <p onClick={() => router.back()} css={backButtonCss}>
             Go Back
@@ -74,25 +73,17 @@ const Checkout = () => {
           {({ errors, touched, isSubmitting, values, handleChange }) => {
             return (
               <Form>
-                <Box
-                  display="grid"
-                  css={gridContainerCss}
-                  gridTemplateColumns="repeat(12,1fr)"
-                  gap={4}
-                >
-                  <Box gridColumn="span 8" css={checkoutGridCss}>
+                <Grid container justifyContent="space-between">
+                  <Grid
+                    xs={12}
+                    md={7.5}
+                    sx={{ padding: "5rem", background: "#fff", borderRadius: "1rem" }}
+                  >
                     <h1 css={checkoutTextCss}>CHECKOUT</h1>
 
                     <h2 css={sectionTitleCss}>Billing Details</h2>
-                    <Box
-                      css={`
-                        display: flex;
-                        justify-content: space-between;
-                        flex-wrap: wrap;
-                        margin-bottom: 3rem;
-                      `}
-                    >
-                      <Box>
+                    <Grid container justifyContent="space-between">
+                      <Grid xs={12} md={5.5} sx={{ margin: "1rem 0" }}>
                         <label
                           css={formLabelCss(touched.fullName && Boolean(errors.fullName))}
                           htmlFor="fullName"
@@ -109,9 +100,9 @@ const Checkout = () => {
                           error={touched.fullName && Boolean(errors.fullName)}
                           helperText={touched.fullName && errors.fullName}
                         />
-                      </Box>
-                      <Box>
-                        {" "}
+                      </Grid>
+
+                      <Grid xs={12} md={5.5} sx={{ margin: "1rem 0" }}>
                         <label
                           css={formLabelCss(touched.email && Boolean(errors.email))}
                           htmlFor="email"
@@ -128,8 +119,9 @@ const Checkout = () => {
                           error={touched.email && Boolean(errors.email)}
                           helperText={touched.email && errors.email}
                         />
-                      </Box>
-                      <Box>
+                      </Grid>
+
+                      <Grid xs={12} md={5.5} sx={{ margin: "1rem 0" }}>
                         <label
                           css={formLabelCss(touched.phoneNumber && Boolean(errors.phoneNumber))}
                           htmlFor="phoneNumber"
@@ -144,94 +136,95 @@ const Checkout = () => {
                           value={values.phoneNumber}
                           onChange={handleChange}
                         />
-                      </Box>
-                    </Box>
+                      </Grid>
+                    </Grid>
 
                     <h2 css={sectionTitleCss}>Shipping Info</h2>
+                    <Grid container justifyContent="space-between">
+                      <Box>
+                        <label
+                          css={formLabelCss(touched.address && Boolean(errors.address))}
+                          htmlFor="address"
+                        >
+                          Address
+                        </label>
+                        <TextField
+                          fullWidth
+                          css={textFieldCss}
+                          id="address"
+                          name="address"
+                          placeholder="1137 Williams Avenue"
+                          value={values.address}
+                          onChange={handleChange}
+                          error={touched.address && Boolean(errors.address)}
+                          helperText={touched.address && errors.address}
+                        />
+                      </Box>
 
-                    <Box>
-                      <label
-                        css={formLabelCss(touched.address && Boolean(errors.address))}
-                        htmlFor="address"
+                      <Box
+                        css={`
+                          display: flex;
+                          justify-content: space-between;
+                          flex-wrap: wrap;
+                          margin-bottom: 3rem;
+                        `}
                       >
-                        Address
-                      </label>
-                      <TextField
-                        fullWidth
-                        css={textFieldCss}
-                        id="address"
-                        name="address"
-                        placeholder="1137 Williams Avenue"
-                        value={values.address}
-                        onChange={handleChange}
-                        error={touched.address && Boolean(errors.address)}
-                        helperText={touched.address && errors.address}
-                      />
-                    </Box>
+                        <Box>
+                          <label
+                            css={formLabelCss(touched.zipCode && Boolean(errors.zipCode))}
+                            htmlFor="zipCode"
+                          >
+                            Zip Code
+                          </label>
+                          <TextField
+                            css={textFieldCss}
+                            id="zipCode"
+                            name="zipCode"
+                            placeholder="10001"
+                            value={values.zipCode}
+                            onChange={handleChange}
+                          />
+                        </Box>
 
-                    <Box
-                      css={`
-                        display: flex;
-                        justify-content: space-between;
-                        flex-wrap: wrap;
-                        margin-bottom: 3rem;
-                      `}
-                    >
-                      <Box>
-                        <label
-                          css={formLabelCss(touched.zipCode && Boolean(errors.zipCode))}
-                          htmlFor="zipCode"
-                        >
-                          Zip Code
-                        </label>
-                        <TextField
-                          css={textFieldCss}
-                          id="zipCode"
-                          name="zipCode"
-                          placeholder="10001"
-                          value={values.zipCode}
-                          onChange={handleChange}
-                        />
-                      </Box>
+                        <Box>
+                          <label
+                            css={formLabelCss(touched.city && Boolean(errors.city))}
+                            htmlFor="city"
+                          >
+                            City
+                          </label>
+                          <TextField
+                            css={textFieldCss}
+                            id="city"
+                            name="city"
+                            placeholder="New York"
+                            value={values.city}
+                            onChange={handleChange}
+                            error={touched.city && Boolean(errors.city)}
+                            helperText={touched.city && errors.city}
+                          />
+                        </Box>
 
-                      <Box>
-                        <label
-                          css={formLabelCss(touched.city && Boolean(errors.city))}
-                          htmlFor="city"
-                        >
-                          City
-                        </label>
-                        <TextField
-                          css={textFieldCss}
-                          id="city"
-                          name="city"
-                          placeholder="New York"
-                          value={values.city}
-                          onChange={handleChange}
-                          error={touched.city && Boolean(errors.city)}
-                          helperText={touched.city && errors.city}
-                        />
+                        <Box>
+                          <label
+                            css={formLabelCss(touched.country && Boolean(errors.country))}
+                            htmlFor="country"
+                          >
+                            Country
+                          </label>
+                          <TextField
+                            css={textFieldCss}
+                            id="country"
+                            name="country"
+                            placeholder="United States"
+                            value={values.country}
+                            onChange={handleChange}
+                            error={touched.country && Boolean(errors.country)}
+                            helperText={touched.country && errors.country}
+                          />
+                        </Box>
                       </Box>
-
-                      <Box>
-                        <label
-                          css={formLabelCss(touched.country && Boolean(errors.country))}
-                          htmlFor="country"
-                        >
-                          Country
-                        </label>
-                        <TextField
-                          css={textFieldCss}
-                          id="country"
-                          name="country"
-                          placeholder="United States"
-                          value={values.country}
-                          onChange={handleChange}
-                          error={touched.country && Boolean(errors.country)}
-                          helperText={touched.country && errors.country}
-                        />
-                      </Box>
-                    </Box>
+                    </Grid>
 
                     <Box css={paymentContainerCss}>
                       <h2 css={sectionTitleCss}>Payment Details</h2>
@@ -322,9 +315,9 @@ const Checkout = () => {
                         </Box>
                       )}
                     </Box>
-                  </Box>
+                  </Grid>
 
-                  <Box gridColumn="span 4" css={summaryGridCss}>
+                  <Grid xs={12} md={4} css={summaryGridCss}>
                     <h1>SUMMARY</h1>
 
                     <Box className="cart__filled--body">
@@ -372,8 +365,8 @@ const Checkout = () => {
                         CONTINUE
                       </button>
                     </Box>
-                  </Box>
-                </Box>
+                  </Grid>
+                </Grid>
               </Form>
             );
           }}

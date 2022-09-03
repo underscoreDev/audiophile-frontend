@@ -1,10 +1,10 @@
-import { css } from "styled-components/macro";
 import { colors } from "utils/theme";
+import { css } from "styled-components/macro";
 import { body, h6, h3 } from "utils/typography";
 
 export const checkoutContainer = css`
   width: 100%;
-  height: 140rem;
+  height: 100%;
   background-color: #f2f2f2;
 `;
 
@@ -24,13 +24,6 @@ export const checkoutTextCss = css`
   margin-bottom: 4rem;
 `;
 
-export const checkoutGridCss = css`
-  background-color: #fff;
-  border-radius: 1rem;
-  height: 112.6rem;
-  padding: 5rem;
-`;
-
 export const gridContainerCss = css``;
 
 export const sectionTitleCss = css`
@@ -39,7 +32,7 @@ export const sectionTitleCss = css`
   line-height: 2.5rem;
   text-transform: uppercase;
   color: ${colors.colorDarkPink};
-  margin-top: 1rem;
+  margin-top: 5rem;
 `;
 
 export const formLabelCss = (active: boolean | undefined) => css`
@@ -53,7 +46,7 @@ export const formLabelCss = (active: boolean | undefined) => css`
 
 export const textFieldCss = css`
   height: 5.6rem;
-  width: 30.9rem;
+  width: 100%;
   border-radius: 8px;
   position: relative;
   input {
@@ -95,14 +88,14 @@ export const paymentMethodCss = css`
 export const cashOnDeliveryCss = css`
   display: flex;
   justify-content: space-between;
-  align-items:center;
-  margin-top:5rem;
+  align-items: center;
+  margin-top: 5rem;
   p {
     font-size: 1.5rem;
     font-weight: 500;
     line-height: 2.5rem;
-    width:55rem;
-    opacity:0.7;
+    width: 55rem;
+    opacity: 0.7;
   }
 `;
 
@@ -127,8 +120,8 @@ export const methodCss = (error: string | boolean | undefined) => css`
 export const summaryGridCss = css`
   background-color: #fff;
   border-radius: 1rem;
-  height: 68rem;
-  padding: 3rem;
+  // height: 68rem;
+  // padding: 3rem;
 
   > h1 {
     margin-bottom: 3rem;
