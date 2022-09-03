@@ -106,7 +106,6 @@ export const methodCss = (error: string | boolean | undefined) => css`
   border: ${error ? "1px solid red" : "1px solid #cfcfcf"};
   display: flex;
   align-items: center;
-  padding-left: 3rem;
   margin-bottom: 3rem;
 
   label {

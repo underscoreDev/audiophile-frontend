@@ -83,7 +83,7 @@ const Checkout = () => {
 
                     <h2 css={sectionTitleCss}>Billing Details</h2>
                     <Grid container justifyContent="space-between">
-                      <Grid xs={12} md={5.5} sx={{ margin: "1rem 0" }}>
+                      <Grid xs={12} sm={5.5} sx={{ margin: "1rem 0" }}>
                         <label
                           css={formLabelCss(touched.fullName && Boolean(errors.fullName))}
                           htmlFor="fullName"
@@ -102,7 +102,7 @@ const Checkout = () => {
                         />
                       </Grid>
 
-                      <Grid xs={12} md={5.5} sx={{ margin: "1rem 0" }}>
+                      <Grid xs={12} sm={5.5} sx={{ margin: "1rem 0" }}>
                         <label
                           css={formLabelCss(touched.email && Boolean(errors.email))}
                           htmlFor="email"
@@ -121,7 +121,7 @@ const Checkout = () => {
                         />
                       </Grid>
 
-                      <Grid xs={12} md={5.5} sx={{ margin: "1rem 0" }}>
+                      <Grid xs={12} sm={5.5} sx={{ margin: "1rem 0" }}>
                         <label
                           css={formLabelCss(touched.phoneNumber && Boolean(errors.phoneNumber))}
                           htmlFor="phoneNumber"
@@ -141,7 +141,7 @@ const Checkout = () => {
 
                     <h2 css={sectionTitleCss}>Shipping Info</h2>
                     <Grid container justifyContent="space-between">
-                      <Box>
+                      <Grid xs={12} sx={{ margin: "1rem 0" }}>
                         <label
                           css={formLabelCss(touched.address && Boolean(errors.address))}
                           htmlFor="address"
@@ -159,106 +159,104 @@ const Checkout = () => {
                           error={touched.address && Boolean(errors.address)}
                           helperText={touched.address && errors.address}
                         />
-                      </Box>
+                      </Grid>
 
-                      <Box
-                        css={`
-                          display: flex;
-                          justify-content: space-between;
-                          flex-wrap: wrap;
-                          margin-bottom: 3rem;
-                        `}
-                      >
-                        <Box>
-                          <label
-                            css={formLabelCss(touched.zipCode && Boolean(errors.zipCode))}
-                            htmlFor="zipCode"
-                          >
-                            Zip Code
-                          </label>
-                          <TextField
-                            css={textFieldCss}
-                            id="zipCode"
-                            name="zipCode"
-                            placeholder="10001"
-                            value={values.zipCode}
-                            onChange={handleChange}
-                          />
-                        </Box>
+                      <Grid xs={12} sm={5.5} sx={{ margin: "1rem 0" }}>
+                        <label
+                          css={formLabelCss(touched.zipCode && Boolean(errors.zipCode))}
+                          htmlFor="zipCode"
+                        >
+                          Zip Code
+                        </label>
+                        <TextField
+                          css={textFieldCss}
+                          id="zipCode"
+                          name="zipCode"
+                          placeholder="10001"
+                          value={values.zipCode}
+                          onChange={handleChange}
+                        />
+                      </Grid>
 
-                        <Box>
-                          <label
-                            css={formLabelCss(touched.city && Boolean(errors.city))}
-                            htmlFor="city"
-                          >
-                            City
-                          </label>
-                          <TextField
-                            css={textFieldCss}
-                            id="city"
-                            name="city"
-                            placeholder="New York"
-                            value={values.city}
-                            onChange={handleChange}
-                            error={touched.city && Boolean(errors.city)}
-                            helperText={touched.city && errors.city}
-                          />
-                        </Box>
+                      <Grid xs={12} sm={5.5} sx={{ margin: "1rem 0" }}>
+                        <label
+                          css={formLabelCss(touched.city && Boolean(errors.city))}
+                          htmlFor="city"
+                        >
+                          City
+                        </label>
+                        <TextField
+                          css={textFieldCss}
+                          id="city"
+                          name="city"
+                          placeholder="New York"
+                          value={values.city}
+                          onChange={handleChange}
+                          error={touched.city && Boolean(errors.city)}
+                          helperText={touched.city && errors.city}
+                        />
+                      </Grid>
 
-                        <Box>
-                          <label
-                            css={formLabelCss(touched.country && Boolean(errors.country))}
-                            htmlFor="country"
-                          >
-                            Country
-                          </label>
-                          <TextField
-                            css={textFieldCss}
-                            id="country"
-                            name="country"
-                            placeholder="United States"
-                            value={values.country}
-                            onChange={handleChange}
-                            error={touched.country && Boolean(errors.country)}
-                            helperText={touched.country && errors.country}
-                          />
-                        </Box>
-                      </Box>
+                      <Grid xs={12} sm={5.5} sx={{ margin: "1rem 0" }}>
+                        <label
+                          css={formLabelCss(touched.country && Boolean(errors.country))}
+                          htmlFor="country"
+                        >
+                          Country
+                        </label>
+                        <TextField
+                          css={textFieldCss}
+                          id="country"
+                          name="country"
+                          placeholder="United States"
+                          value={values.country}
+                          onChange={handleChange}
+                          error={touched.country && Boolean(errors.country)}
+                          helperText={touched.country && errors.country}
+                        />
+                      </Grid>
                     </Grid>
 
                     <Box css={paymentContainerCss}>
                       <h2 css={sectionTitleCss}>Payment Details</h2>
-                      <Box css={paymentMethodCss}>
-                        <h3>Payment Method</h3>
+                      <h3 css={"margin:1rem 0"}>Payment Method</h3>
+                      <Grid container justifyContent="space-between" css={paymentMethodCss}>
+                        <Grid
+                          xs={12}
+                          sm={5.5}
+                          sx={{ margin: "1rem 0", paddingLeft: "3rem" }}
+                          css={methodCss(errors.paymentMethod && touched.paymentMethod)}
+                        >
+                          <FastField
+                            id="e-Money"
+                            htmlFor="e-Money"
+                            type="radio"
+                            name="paymentMethod"
+                            value="e-Money"
+                          />
+                          <label id="e-Money" htmlFor="e-Money">
+                            e-Money
+                          </label>
+                        </Grid>
 
-                        <Box>
-                          <Box css={methodCss(errors.paymentMethod && touched.paymentMethod)}>
-                            <FastField
-                              id="e-Money"
-                              htmlFor="e-Money"
-                              type="radio"
-                              name="paymentMethod"
-                              value="e-Money"
-                            />
-                            <label id="e-Money" htmlFor="e-Money">
-                              e-Money
-                            </label>
-                          </Box>
-
-                          <Box css={methodCss(errors.paymentMethod && touched.paymentMethod)}>
-                            <FastField
-                              id="cash"
-                              htmlFor="cash"
-                              type="radio"
-                              name="paymentMethod"
-                              value="cash"
-                            />
-                            <label id="cash" htmlFor="cash">
-                              Cash on Delivery
-                            </label>
-                          </Box>
-                        </Box>
-                      </Box>
+                        <Grid
+                          xs={12}
+                          sm={5.5}
+                          sx={{ margin: "1rem 0", paddingLeft: "3rem" }}
+                          css={methodCss(errors.paymentMethod && touched.paymentMethod)}
+                        >
+                          <FastField
+                            id="cash"
+                            htmlFor="cash"
+                            type="radio"
+                            name="paymentMethod"
+                            value="cash"
+                          />
+                          <label id="cash" htmlFor="cash">
+                            Cash on Delivery
+                          </label>
+                        </Grid>
+                      </Grid>
 
                       {values.paymentMethod === "cash" ? (
                         <Box css={cashOnDeliveryCss}>
