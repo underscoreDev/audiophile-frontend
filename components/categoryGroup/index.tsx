@@ -42,7 +42,7 @@ const CategoryGroup = () => {
         <Box css={categorydescCss}>
           <h1>SPEAKER</h1>
 
-          <Button onClick={() => router.push("/speaker")} text="shop" variant="BORDERLESS_BLACK" />
+          <Button onClick={() => router.push("/speakers")} text="shop" variant="BORDERLESS_BLACK" />
         </Box>
       </Box>
 
