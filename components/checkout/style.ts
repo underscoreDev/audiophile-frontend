@@ -120,7 +120,7 @@ export const methodCss = (error: string | boolean | undefined) => css`
 export const summaryGridCss = css`
   background-color: #fff;
   border-radius: 1rem;
-  height: 68rem;
+  height: 70rem;
   > h1 {
     margin-bottom: 3rem;
     ${h6}
