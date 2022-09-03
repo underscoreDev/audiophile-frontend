@@ -15,6 +15,7 @@ const greg = async () => {
 };
 
 const WithAuth = (WrappedComponent: any) => {
+  /*
   return (props: JSX.IntrinsicAttributes) => {
     const router = useRouter();
     const [verified, setVerified] = useState(false);
@@ -31,6 +32,7 @@ const WithAuth = (WrappedComponent: any) => {
       //   router.push("/");
     }
   };
+  */
 };
 
 export default WithAuth;
