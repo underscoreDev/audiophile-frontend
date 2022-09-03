@@ -318,7 +318,7 @@ const Checkout = () => {
                   <Grid
                     xs={12}
                     md={4}
-                    sx={{ padding: "5rem", marginTop: { xs: "5rem", md:0 } }}
+                    sx={{ padding: "5rem", marginTop: { xs: "10rem", md: 0 } }}
                     css={summaryGridCss}
                   >
                     <h1>SUMMARY</h1>
