@@ -315,7 +315,12 @@ const Checkout = () => {
                     </Box>
                   </Grid>
 
-                  <Grid xs={12} md={4} css={summaryGridCss}>
+                  <Grid
+                    xs={12}
+                    md={4}
+                    sx={{ padding: "5rem", marginTop: { xs: "5rem", md:0 } }}
+                    css={summaryGridCss}
+                  >
                     <h1>SUMMARY</h1>
 
                     <Box className="cart__filled--body">

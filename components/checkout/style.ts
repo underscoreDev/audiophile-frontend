@@ -96,6 +96,7 @@ export const cashOnDeliveryCss = css`
     line-height: 2.5rem;
     width: 55rem;
     opacity: 0.7;
+    text-align: justify;
   }
 `;
 
@@ -119,9 +120,7 @@ export const methodCss = (error: string | boolean | undefined) => css`
 export const summaryGridCss = css`
   background-color: #fff;
   border-radius: 1rem;
-  // height: 68rem;
-  // padding: 3rem;
-
+  height: 68rem;
   > h1 {
     margin-bottom: 3rem;
     ${h6}
