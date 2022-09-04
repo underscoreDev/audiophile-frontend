@@ -7,12 +7,13 @@ import Footer from "components/footer";
 import * as _ from "styled-components/cssprop";
 import { PersistGate } from "redux-persist/integration/react";
 import ResponsiveAppBar from "components/navbar";
+import { PageLoader } from "components/pageLoader";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   let persistor = persistStore(store);
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+      <PersistGate loading={<PageLoader />} persistor={persistor}>
         <Global />
         <ResponsiveAppBar />
         <Component {...pageProps} />
