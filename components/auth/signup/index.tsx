@@ -1,7 +1,7 @@
 import React from "react";
 import { useTitle } from "react-use";
+import toast from "react-hot-toast";
 import Button from "components/buttons";
-import { showToast } from "utils/toast";
 import { SignupSchema } from "utils/yupSchema";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Unstable_Grid2";
@@ -16,7 +16,6 @@ import InputAdornment from "@mui/material/InputAdornment";
 import { useSignupUserMutation } from "redux/api/auth.api";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { formLabelCss, textFieldCss } from "components/checkout/style";
-import toast, { Toaster } from "react-hot-toast";
 
 export interface SignupProps {
   firstname: string;
@@ -56,37 +55,34 @@ const SignUp = () => {
       showPasswordConfirm: !signupValues.showPasswordConfirm,
     });
 
-  //   const handleSubmit = async (
-  //     values: SignupProps,
-  //     { setSubmitting }: FormikHelpers<SignupProps>
-  //   ) => {
-  //     toast.success("Signup Successful. Check Email to verify your Email");
+  const handleSubmit = async (
+    values: SignupProps,
+    { setSubmitting }: FormikHelpers<SignupProps>
+  ) => {
+    try {
+      await signUpUser({
+        firstname: values.firstname,
+        lastname: values.lastname,
+        email: values.email,
+        password: values.password,
+        passwordConfirm: values.passwordConfirm,
+        phoneNumber: values.phone,
+      }).unwrap();
 
-  //     try {
-  //       //   await signUpUser({
-  //       //     firstname: values.firstname,
-  //       //     lastname: values.lastname,
-  //       //     email: values.email,
-  //       //     password: values.password,
-  //       //     passwordConfirm: values.passwordConfirm,
-  //       //     phoneNumber: values.phone,
-  //       //   }).unwrap();
-  //       toast.success("Signup Successful. Check Email to verify your Email");
-  //       //   setSubmitting(false);
-  //     } catch (error) {
-  //       toast.error("An error occoured. Please try again");
-  //       //   console.log(error);
-  //       //   setSubmitting(false);
-  //     }
-  //   };
-  const handleSubmit = () => {
-    toast.success("Signup Successful. Check Email to verify your Email");
+      toast.success("Signup Successful. Check Email to verify your Email");
+
+      setSubmitting(false);
+    } catch (error) {
+      toast.error("An error occoured. Please try again");
+      console.log(error);
+      setSubmitting(false);
+    }
   };
 
   return (
     <Container css={signUpCss}>
       <h1>Signup</h1>
-      {/* <Formik initialValues={signupValues} validationSchema={SignupSchema} onSubmit={handleSubmit}>
+      <Formik initialValues={signupValues} validationSchema={SignupSchema} onSubmit={handleSubmit}>
         {({ errors, touched, values, isSubmitting, handleChange }) => (
           <Form>
             <Grid container justifyContent="space-between">
@@ -243,8 +239,7 @@ const SignUp = () => {
             />
           </Form>
         )}
-      </Formik> */}
-      <button onClick={handleSubmit}>submit</button>
+      </Formik>
     </Container>
   );
 };
