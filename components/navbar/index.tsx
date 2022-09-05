@@ -20,7 +20,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
-import { routes, NavRoutes } from "components/navbar/data";
+import { routes, NavRoutes, userRoutes } from "components/navbar/data";
 import {
   cartCss,
   cartLogoCss,
@@ -36,8 +36,7 @@ import { RandomlyPositionedModal, Backdrop } from "components/cart/style";
 import speaker from "assets/shared/desktop/image-category-thumbnail-speakers.png";
 import earphones from "assets/shared/desktop/image-category-thumbnail-earphones.png";
 import headphones from "assets/shared/desktop/image-category-thumbnail-headphones.png";
-
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+import Link from "next/link";
 
 const ResponsiveAppBar = () => {
   const router = useRouter();
@@ -176,7 +175,7 @@ const ResponsiveAppBar = () => {
               <Image src={cart} alt="cart" />
             </Box>
 
-            <Tooltip title="Open settings">
+            <Tooltip title="Open User Panel">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="User Photo" src="/static/images/avatar/2.jpg" />
               </IconButton>
@@ -192,10 +191,10 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+              {userRoutes.map((panel: NavRoutes) => (
+                <MenuItem key={panel.name} onClick={handleCloseUserMenu}>
                   <Typography fontSize="large" textAlign="center">
-                    {setting}
+                    <Link href={panel.path}>{panel.name}</Link>
                   </Typography>
                 </MenuItem>
               ))}

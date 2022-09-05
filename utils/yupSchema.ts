@@ -20,3 +20,23 @@ export const CheckoutSchema = Yup.object().shape({
     .max(50, "Country Too Long!")
     .required("This field is required"),
 });
+
+export const SignupSchema = Yup.object().shape({
+  firstname: Yup.string()
+    .min(2, "Name Too Short!")
+    .max(50, "Name Too Long!")
+    .required("Firstname is Required"),
+  lastname: Yup.string()
+    .min(2, "Name Too Short!")
+    .max(50, "Name Too Long!")
+    .required("Lastname Required"),
+  email: Yup.string().email("Wrong Format").required("Required"),
+  phone: Yup.string()
+    .min(10, "Phone number too short")
+    .max(15, "Phone number too long")
+    .required("Phone number is required"),
+  password: Yup.string().min(6, "Password too short").required("this field is required"),
+  passwordConfirm: Yup.string()
+    .oneOf([Yup.ref("password"), null], "Passwords do not match")
+    .required("Password Confirm field is required"),
+});

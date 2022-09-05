@@ -11,10 +11,11 @@ interface ButtonProps {
     | "BORDERLESS_BLACK"
     | "BORDERLESS_COLOURED";
   onClick?(): void;
+  type?: "submit" | "button" | "reset";
 }
 
-const Button = ({ text, variant, onClick }: ButtonProps) => (
-  <button onClick={onClick} css={buttonCss(variant)}>
+const Button = ({ text, variant, onClick, type }: ButtonProps) => (
+  <button type={type} onClick={onClick} css={buttonCss(variant)}>
     {text}
     {variant === "BORDERLESS_BLACK" ||
       (variant === "BORDERLESS_COLOURED" && (
