@@ -6,8 +6,8 @@ interface ToastTypeProps {
   message: React.ReactNode;
 }
 
-export const showToast = ({ message, type }: ToastTypeProps) => {
-  return toast(message, {
+export const showToast = ({ message, type }: ToastTypeProps) =>
+  toast(message, {
     theme: "dark",
     type: type,
     position: "top-center",
@@ -15,4 +15,3 @@ export const showToast = ({ message, type }: ToastTypeProps) => {
     transition: Flip,
     hideProgressBar: true,
   });
-};

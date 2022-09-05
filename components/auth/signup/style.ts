@@ -8,5 +8,10 @@ export const signUpCss = css`
   button[type="submit"] {
     margin-top: 3rem;
     float: right;
+
+    &:disabled {
+      cursor: not-allowed;
+      pointer-events: none;
+    }
   }
 `;

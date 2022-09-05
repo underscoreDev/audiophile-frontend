@@ -1,5 +1,7 @@
 import React from "react";
+import { useTitle } from "react-use";
 import Button from "components/buttons";
+import { showToast } from "utils/toast";
 import { SignupSchema } from "utils/yupSchema";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Unstable_Grid2";
@@ -11,8 +13,10 @@ import Visibility from "@mui/icons-material/Visibility";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { signUpCss } from "components/auth/signup/style";
 import InputAdornment from "@mui/material/InputAdornment";
+import { useSignupUserMutation } from "redux/api/auth.api";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { formLabelCss, textFieldCss } from "components/checkout/style";
+import toast, { Toaster } from "react-hot-toast";
 
 export interface SignupProps {
   firstname: string;
@@ -26,7 +30,8 @@ export interface SignupProps {
 }
 
 const SignUp = () => {
-  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+  useTitle("SIGNUP | AUDIOPHILE");
+  const [signUpUser, { isLoading }] = useSignupUserMutation();
 
   const [signupValues, setSignupValues] = React.useState<SignupProps>({
     firstname: "",
@@ -51,20 +56,38 @@ const SignUp = () => {
       showPasswordConfirm: !signupValues.showPasswordConfirm,
     });
 
-  const handleSubmit = async (
-    values: SignupProps,
-    { setSubmitting }: FormikHelpers<SignupProps>
-  ) => {
-    await sleep(1000);
-    alert(JSON.stringify(values, null, 2));
-    setSubmitting(false);
+  //   const handleSubmit = async (
+  //     values: SignupProps,
+  //     { setSubmitting }: FormikHelpers<SignupProps>
+  //   ) => {
+  //     toast.success("Signup Successful. Check Email to verify your Email");
+
+  //     try {
+  //       //   await signUpUser({
+  //       //     firstname: values.firstname,
+  //       //     lastname: values.lastname,
+  //       //     email: values.email,
+  //       //     password: values.password,
+  //       //     passwordConfirm: values.passwordConfirm,
+  //       //     phoneNumber: values.phone,
+  //       //   }).unwrap();
+  //       toast.success("Signup Successful. Check Email to verify your Email");
+  //       //   setSubmitting(false);
+  //     } catch (error) {
+  //       toast.error("An error occoured. Please try again");
+  //       //   console.log(error);
+  //       //   setSubmitting(false);
+  //     }
+  //   };
+  const handleSubmit = () => {
+    toast.success("Signup Successful. Check Email to verify your Email");
   };
 
   return (
     <Container css={signUpCss}>
       <h1>Signup</h1>
-      <Formik initialValues={signupValues} validationSchema={SignupSchema} onSubmit={handleSubmit}>
-        {({ errors, touched, values, handleChange }) => (
+      {/* <Formik initialValues={signupValues} validationSchema={SignupSchema} onSubmit={handleSubmit}>
+        {({ errors, touched, values, isSubmitting, handleChange }) => (
           <Form>
             <Grid container justifyContent="space-between">
               <Grid xs={12} sm={5.5} sx={{ margin: "1rem 0" }}>
@@ -189,7 +212,7 @@ const SignUp = () => {
                   css={textFieldCss}
                   name="passwordConfirm"
                   placeholder="Confirm your password"
-                  type={signupValues.showPasswordConfirm ? "text" : "passwordConfirm"}
+                  type={signupValues.showPasswordConfirm ? "text" : "password"}
                   value={values.passwordConfirm}
                   onChange={handleChange("passwordConfirm")}
                   error={touched.passwordConfirm && Boolean(errors.passwordConfirm)}
@@ -212,10 +235,16 @@ const SignUp = () => {
               </Grid>
             </Grid>
 
-            <Button text="Sign up" type="submit" variant="PINK_DARK" />
+            <Button
+              text={isSubmitting || isLoading ? "Loading" : "Sign Up"}
+              type="submit"
+              disabled={isSubmitting || isLoading}
+              variant={isSubmitting || isLoading ? "PINK_LIGHT" : "PINK_DARK"}
+            />
           </Form>
         )}
-      </Formik>
+      </Formik> */}
+      <button onClick={handleSubmit}>submit</button>
     </Container>
   );
 };

@@ -8,6 +8,7 @@ import * as _ from "styled-components/cssprop";
 import { PersistGate } from "redux-persist/integration/react";
 import ResponsiveAppBar from "components/navbar";
 import { PageLoader } from "components/pageLoader";
+import toast, { Toaster } from "react-hot-toast";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   let persistor = persistStore(store);
@@ -16,6 +17,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <PersistGate loading={<PageLoader />} persistor={persistor}>
         <Global />
         <ResponsiveAppBar />
+        <Toaster />
         <Component {...pageProps} />
         <Footer />
       </PersistGate>

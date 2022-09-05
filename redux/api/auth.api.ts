@@ -1,6 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { CreateUserProps } from "interfaces/user.interface";
-import { REHYDRATE } from "redux-persist";
 import { axiosBaseQuery } from "redux/api/axiosBaseQuery";
 
 export const authApi = createApi({
@@ -8,13 +7,7 @@ export const authApi = createApi({
 
   tagTypes: ["Auth"],
 
-  baseQuery: axiosBaseQuery({ baseUrl: "https://localhost:8998/api/v1/auth" }),
-
-  extractRehydrationInfo(action, { reducerPath }) {
-    if (action.type === REHYDRATE) {
-      return action.payload[reducerPath];
-    }
-  },
+  baseQuery: axiosBaseQuery({ baseUrl: "http://127.0.0.1:9898/api/v1/auth" }),
 
   endpoints: (builder) => ({
     signupUser: builder.mutation<void, CreateUserProps>({
