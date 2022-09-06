@@ -22,7 +22,7 @@ const mobileMarginCss = css`
 
 const Home = () => {
   useTitle("AUDIOPHILE | One Stop Audio Store");
-
+  console.log(process.env.API_URL);
   return (
     <Box>
       <HeaderCarousel />

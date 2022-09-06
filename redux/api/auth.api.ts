@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { CreateUserProps } from "interfaces/user.interface";
+import { CreateUserProps, LoginUserProps } from "interfaces/user.interface";
 import { axiosBaseQuery } from "redux/api/axiosBaseQuery";
 
 export const authApi = createApi({
@@ -7,11 +7,15 @@ export const authApi = createApi({
 
   tagTypes: ["Auth"],
 
-  baseQuery: axiosBaseQuery({ baseUrl: "http://127.0.0.1:9898/api/v1/auth" }),
+  baseQuery: axiosBaseQuery({ baseUrl: `${process.env.API_URL}/auth` }),
 
   endpoints: (builder) => ({
     signupUser: builder.mutation<void, CreateUserProps>({
       query: (user) => ({ url: "/signup", method: "post", data: user }),
+    }),
+
+    loginUser: builder.mutation<void, LoginUserProps>({
+      query: (user) => ({ url: "/login", method: "post", data: user }),
     }),
   }),
 });

@@ -13,6 +13,11 @@ export interface CreateUserProps {
   passwordConfirm: string | undefined;
 }
 
+export interface LoginUserProps {
+  email: string;
+  password: string;
+}
+
 export interface UserProps {
   firstname: string;
   lastname: string;
