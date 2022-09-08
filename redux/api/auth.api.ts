@@ -16,7 +16,7 @@ export const authApi = createApi({
     }),
 
     verifyUserEmail: builder.mutation<void, VerifyEmailProps>({
-      query: (token) => ({ url: `/verify-email/${token}`, method: "post" }),
+      query: (token) => ({url: `/verify-email/${token.emailToken}`,method: "post"}),
     }),
 
     loginUser: builder.mutation<void, LoginUserProps>({

@@ -19,24 +19,32 @@ export interface VerifyEmailProps {
 
 const VerifyEmail = () => {
   useTitle("VERIFY-EMAIL | AUDIOPHILE");
-  const [verifyUser, { isLoading, data }] = useVerifyUserEmailMutation();
+  const [verifyUser, { isLoading, data, isSuccess }] = useVerifyUserEmailMutation();
   const router = useRouter();
 
-  const [signupValues, setSignupValues] = React.useState<VerifyEmailProps>({ emailToken: "" });
+  const [verificationToken, setVerificationToken] = React.useState<VerifyEmailProps>({
+    emailToken: "",
+  });
 
-  const handleSubmit = async (
+  const handleVerifyUser = async (
     values: VerifyEmailProps,
     { setSubmitting }: FormikHelpers<VerifyEmailProps>
   ) => {
+    console.log(values);
     try {
       await verifyUser({ emailToken: values.emailToken });
       console.log(data);
-      toast.success("Signup Successful. Check Email to verify your Email");
-      setSubmitting(false);
-      router.push("/");
+      if (isSuccess) {
+        toast.success("Email Verified");
+        setSubmitting(false);
+        setVerificationToken({ emailToken: "" });
+        router.push("/");
+      } else {
+        toast.error(`An Error Occoured`);
+        setSubmitting(false);
+      }
     } catch (error: any) {
       toast.error(`${error.data.message}`);
-
       setSubmitting(false);
     }
   };
@@ -45,9 +53,9 @@ const VerifyEmail = () => {
     <Container css={signUpCss}>
       <h1>Verify Email</h1>
       <Formik
-        initialValues={signupValues}
+        initialValues={verificationToken}
         validationSchema={VerificationCodeSchema}
-        onSubmit={handleSubmit}
+        onSubmit={handleVerifyUser}
       >
         {({ errors, touched, values, isSubmitting, handleChange }) => (
           <Form>

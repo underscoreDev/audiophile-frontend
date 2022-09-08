@@ -44,6 +44,6 @@ export const SignupSchema = Yup.object().shape({
 export const VerificationCodeSchema = Yup.object().shape({
   emailToken: Yup.string()
     .min(6, "Token Too Short!")
-    .max(6, "Token Too Long!")
+    .max(7, "Token Too Long!")
     .required("Token is Required"),
 });
