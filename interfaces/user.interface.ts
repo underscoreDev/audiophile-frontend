@@ -36,3 +36,14 @@ export interface UserProps {
   emailVerificationToken: string | undefined;
   emailVerificationTokenExpires: string | undefined;
 }
+
+
+export interface EmailProps {
+  email: string;
+}
+
+export interface ResetPasswordProps {
+  resetToken: string;
+  password: string;
+  passwordConfirm: string;
+}

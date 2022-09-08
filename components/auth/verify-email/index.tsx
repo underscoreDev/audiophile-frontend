@@ -30,19 +30,13 @@ const VerifyEmail = () => {
     values: VerifyEmailProps,
     { setSubmitting }: FormikHelpers<VerifyEmailProps>
   ) => {
-    console.log(values);
     try {
-      await verifyUser({ emailToken: values.emailToken });
-      console.log(data);
-      if (isSuccess) {
-        toast.success("Email Verified");
-        setSubmitting(false);
-        setVerificationToken({ emailToken: "" });
-        router.push("/");
-      } else {
-        toast.error(`An Error Occoured`);
-        setSubmitting(false);
-      }
+      const greg = await verifyUser({ emailToken: values.emailToken }).unwrap();
+      console.log(greg);
+      toast.success("Email Verified");
+      setSubmitting(false);
+      setVerificationToken({ emailToken: "" });
+      router.push("/");
     } catch (error: any) {
       toast.error(`${error.data.message}`);
       setSubmitting(false);
