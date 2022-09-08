@@ -16,6 +16,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import { useSignupUserMutation } from "redux/api/auth.api";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { formLabelCss, textFieldCss } from "components/checkout/style";
+import { useRouter } from "next/router";
 
 export interface SignupProps {
   firstname: string;
@@ -30,7 +31,8 @@ export interface SignupProps {
 
 const SignUp = () => {
   useTitle("SIGNUP | AUDIOPHILE");
-  const [signUpUser, { isLoading }] = useSignupUserMutation();
+  const [signUpUser, { isLoading, data }] = useSignupUserMutation();
+  const router = useRouter();
 
   const [signupValues, setSignupValues] = React.useState<SignupProps>({
     firstname: "",
@@ -55,7 +57,7 @@ const SignUp = () => {
       showPasswordConfirm: !signupValues.showPasswordConfirm,
     });
 
-  const handleSubmit = async (
+  const handleRegisterUser = async (
     values: SignupProps,
     { setSubmitting }: FormikHelpers<SignupProps>
   ) => {
@@ -68,13 +70,12 @@ const SignUp = () => {
         passwordConfirm: values.passwordConfirm,
         phoneNumber: values.phone,
       }).unwrap();
-
       toast.success("Signup Successful. Check Email to verify your Email");
-
       setSubmitting(false);
-    } catch (error) {
-      toast.error("An error occoured. Please try again");
-      console.log(error);
+      router.push("/auth/verify-email");
+    } catch (error: any) {
+      toast.error(`${error.data.message}`);
+
       setSubmitting(false);
     }
   };
@@ -82,7 +83,11 @@ const SignUp = () => {
   return (
     <Container css={signUpCss}>
       <h1>Signup</h1>
-      <Formik initialValues={signupValues} validationSchema={SignupSchema} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={signupValues}
+        validationSchema={SignupSchema}
+        onSubmit={handleRegisterUser}
+      >
         {({ errors, touched, values, isSubmitting, handleChange }) => (
           <Form>
             <Grid container justifyContent="space-between">

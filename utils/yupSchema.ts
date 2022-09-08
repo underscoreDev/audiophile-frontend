@@ -40,3 +40,10 @@ export const SignupSchema = Yup.object().shape({
     .oneOf([Yup.ref("password"), null], "Passwords do not match")
     .required("Password Confirm field is required"),
 });
+
+export const VerificationCodeSchema = Yup.object().shape({
+  emailToken: Yup.string()
+    .min(6, "Token Too Short!")
+    .max(6, "Token Too Long!")
+    .required("Token is Required"),
+});
