@@ -41,6 +41,11 @@ export const SignupSchema = Yup.object().shape({
     .required("Password Confirm field is required"),
 });
 
+export const LoginSchema = Yup.object().shape({
+  email: Yup.string().email("Wrong Format").required("Required"),
+  password: Yup.string().min(6, "Password too short").required("this field is required"),
+});
+
 export const VerificationCodeSchema = Yup.object().shape({
   emailToken: Yup.string()
     .min(6, "Token Too Short!")
