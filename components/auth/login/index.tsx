@@ -25,7 +25,7 @@ interface ILoginUser extends LoginUserProps {
 
 const Login = () => {
   useTitle("SIGNUP | AUDIOPHILE");
-  const [loginInUser, { isLoading, data }] = useLoginUserMutation();
+  const [loginInUser, { isLoading }] = useLoginUserMutation();
   const router = useRouter();
 
   const [loginValues, setLoginValues] = React.useState<ILoginUser>({
@@ -48,14 +48,13 @@ const Login = () => {
       await loginInUser({
         email: values.email,
         password: values.password,
-      });
-      console.log(data);
+      }).unwrap();
+
       toast.success("Login Successful");
       setSubmitting(false);
       router.push("/");
     } catch (error: any) {
-      toast.error(`${error.data.message}`);
-
+      toast.error("Invalid Login credentials");
       setSubmitting(false);
     }
   };
