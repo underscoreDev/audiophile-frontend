@@ -24,7 +24,7 @@ interface ILoginUser extends LoginUserProps {
 }
 
 const Login = () => {
-  useTitle("SIGNUP | AUDIOPHILE");
+  useTitle("LOGIN | AUDIOPHILE");
   const [loginInUser, { isLoading }] = useLoginUserMutation();
   const router = useRouter();
 

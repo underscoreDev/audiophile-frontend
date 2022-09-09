@@ -46,6 +46,10 @@ export const LoginSchema = Yup.object().shape({
   password: Yup.string().min(6, "Password too short").required("this field is required"),
 });
 
+export const EmailSchama = Yup.object().shape({
+  email: Yup.string().email("Wrong Format").required("Required"),
+});
+
 export const VerificationCodeSchema = Yup.object().shape({
   emailToken: Yup.string()
     .min(6, "Token Too Short!")

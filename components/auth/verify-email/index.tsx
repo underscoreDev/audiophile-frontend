@@ -1,17 +1,19 @@
 import React from "react";
-import { useTitle } from "react-use";
+import Link from "next/link";
 import toast from "react-hot-toast";
+import { useTitle } from "react-use";
 import Button from "components/buttons";
-import { VerificationCodeSchema } from "utils/yupSchema";
+import { useRouter } from "next/router";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Unstable_Grid2";
 import Container from "@mui/material/Container";
 import InputLabel from "@mui/material/InputLabel";
+import Typography from "@mui/material/Typography";
 import { Formik, Form, FormikHelpers } from "formik";
+import { VerificationCodeSchema } from "utils/yupSchema";
 import { signUpCss } from "components/auth/signup/style";
 import { useVerifyUserEmailMutation } from "redux/api/auth.api";
 import { formLabelCss, textFieldCss } from "components/checkout/style";
-import { useRouter } from "next/router";
 
 export interface VerifyEmailProps {
   emailToken: string;
@@ -19,7 +21,7 @@ export interface VerifyEmailProps {
 
 const VerifyEmail = () => {
   useTitle("VERIFY-EMAIL | AUDIOPHILE");
-  const [verifyUser, { isLoading, data, isSuccess }] = useVerifyUserEmailMutation();
+  const [verifyUser, { isLoading }] = useVerifyUserEmailMutation();
   const router = useRouter();
 
   const [verificationToken, setVerificationToken] = React.useState<VerifyEmailProps>({
@@ -38,8 +40,9 @@ const VerifyEmail = () => {
       setVerificationToken({ emailToken: "" });
       router.push("/");
     } catch (error: any) {
-      toast.error(`${error.data.message}`);
+      toast.error("An error occoured: Invalid Token");
       setSubmitting(false);
+      setVerificationToken({ emailToken: "" });
     }
   };
 
@@ -65,7 +68,7 @@ const VerifyEmail = () => {
                   id="emailToken"
                   css={textFieldCss}
                   name="emailToken"
-                  placeholder="Alexei Sanchez"
+                  placeholder="293837"
                   value={values.emailToken.trim().slice(0, 6)}
                   onChange={handleChange}
                   error={touched.emailToken && Boolean(errors.emailToken)}
@@ -83,6 +86,10 @@ const VerifyEmail = () => {
           </Form>
         )}
       </Formik>
+
+      <Typography sx={{ fontSize: "1.5rem", marginTop: "1rem"}}>
+        <Link href="/auth/resend-token">Didn't Get Code ? Resend</Link>
+      </Typography>
     </Container>
   );
 };

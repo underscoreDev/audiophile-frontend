@@ -74,7 +74,7 @@ const SignUp = () => {
       setSubmitting(false);
       router.push("/auth/verify-email");
     } catch (error: any) {
-      toast.error(`${error.data.message}`);
+      toast.error(`There was an error Signing up ${error.data.message}`);
 
       setSubmitting(false);
     }
