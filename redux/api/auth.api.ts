@@ -16,14 +16,15 @@ export const authApi = createApi({
   baseQuery: axiosBaseQuery({ baseUrl: `${API_URL}/auth` }),
 
   endpoints: (builder) => ({
+    // done
     signupUser: builder.mutation<void, CreateUserProps>({
       query: (user) => ({ url: "/signup", method: "post", data: user }),
     }),
-
+// done
     verifyUserEmail: builder.mutation<any, VerifyEmailProps>({
       query: (token) => ({ url: `/verify-email/${token.emailToken}`, method: "post" }),
     }),
-
+    // done
     resendEmailToken: builder.mutation<any, EmailProps>({
       query: (email) => ({
         url: "/resend-email-confirmation-code",
@@ -31,7 +32,7 @@ export const authApi = createApi({
         data: email,
       }),
     }),
-
+    // done
     loginUser: builder.mutation<any, LoginUserProps>({
       query: (user) => ({ url: "/login", method: "post", data: user }),
     }),
@@ -39,7 +40,7 @@ export const authApi = createApi({
     logoutUser: builder.query<any, void>({
       query: () => ({ url: "/logout", method: "get" }),
     }),
-
+    // done
     forgotPassword: builder.mutation<any, EmailProps>({
       query: (email) => ({ method: "patch", url: "/forgot-password", data: email }),
     }),
@@ -47,7 +48,7 @@ export const authApi = createApi({
     resendForgotPasswordCode: builder.mutation<any, EmailProps>({
       query: (email) => ({ method: "patch", url: "/resend-forgot-password-code", data: email }),
     }),
-
+    // done
     resetPassword: builder.mutation<any, ResetPasswordProps>({
       query: (data) => ({ method: "post", url: "/reset-password", data }),
     }),
