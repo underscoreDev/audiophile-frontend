@@ -92,8 +92,8 @@ const ResetPassword = () => {
                   id="resetPasswordCode"
                   css={textFieldCss}
                   name="resetPasswordCode"
-                  placeholder="+2348012345678"
-                  value={values.resetPasswordCode.trim()}
+                  placeholder="9294rd"
+                  value={values.resetPasswordCode.trim().slice(0, 6)}
                   onChange={handleChange}
                   error={touched.resetPasswordCode && Boolean(errors.resetPasswordCode)}
                   helperText={touched.resetPasswordCode && errors.resetPasswordCode}
