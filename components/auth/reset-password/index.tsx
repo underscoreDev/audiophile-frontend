@@ -17,6 +17,8 @@ import InputAdornment from "@mui/material/InputAdornment";
 import { useResetPasswordMutation } from "redux/api/auth.api";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { formLabelCss, textFieldCss } from "components/checkout/style";
+import Typography from "@mui/material/Typography";
+import Link from "next/link";
 
 interface ResetPasswordProps {
   resetPasswordCode: string;
@@ -184,6 +186,10 @@ const ResetPassword = () => {
           </Form>
         )}
       </Formik>
+
+      <Typography sx={{ fontSize: "1.5rem", marginTop: "1rem" }}>
+        <Link href="/auth/resend-forgot-password-code">Didn't Get Code ? Resend</Link>
+      </Typography>
     </Container>
   );
 };

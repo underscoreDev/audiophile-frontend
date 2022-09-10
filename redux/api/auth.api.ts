@@ -20,7 +20,7 @@ export const authApi = createApi({
     signupUser: builder.mutation<void, CreateUserProps>({
       query: (user) => ({ url: "/signup", method: "post", data: user }),
     }),
-// done
+    // done
     verifyUserEmail: builder.mutation<any, VerifyEmailProps>({
       query: (token) => ({ url: `/verify-email/${token.emailToken}`, method: "post" }),
     }),
