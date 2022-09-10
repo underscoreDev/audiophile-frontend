@@ -47,11 +47,11 @@ const Login = () => {
     { setSubmitting }: FormikHelpers<ILoginUser>
   ) => {
     try {
-      await loginInUser({
+      const { token } = await loginInUser({
         email: values.email,
         password: values.password,
       }).unwrap();
-
+      localStorage.setItem("token", JSON.stringify(token));
       toast.success("Login Successful");
       setSubmitting(false);
       router.push("/");

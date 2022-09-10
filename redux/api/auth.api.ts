@@ -19,10 +19,12 @@ export const authApi = createApi({
     // done
     signupUser: builder.mutation<void, CreateUserProps>({
       query: (user) => ({ url: "/signup", method: "post", data: user }),
+      invalidatesTags: ["Auth"],
     }),
     // done
     verifyUserEmail: builder.mutation<any, VerifyEmailProps>({
       query: (token) => ({ url: `/verify-email/${token.emailToken}`, method: "post" }),
+      invalidatesTags: ["Auth"],
     }),
     // done
     resendEmailToken: builder.mutation<any, EmailProps>({
@@ -31,26 +33,38 @@ export const authApi = createApi({
         method: "post",
         data: email,
       }),
+      invalidatesTags: ["Auth"],
     }),
     // done
     loginUser: builder.mutation<any, LoginUserProps>({
       query: (user) => ({ url: "/login", method: "post", data: user }),
+      invalidatesTags: ["Auth"],
     }),
 
     logoutUser: builder.query<any, void>({
       query: () => ({ url: "/logout", method: "get" }),
+      providesTags: ["Auth"],
     }),
+
+    verifyCookie: builder.query<any, void>({
+      query: () => ({ url: "/verify-cookie", method: "get" }),
+      providesTags: ["Auth"],
+    }),
+
     // done
     forgotPassword: builder.mutation<any, EmailProps>({
       query: (email) => ({ method: "patch", url: "/forgot-password", data: email }),
+      invalidatesTags: ["Auth"],
     }),
     // done
     resendForgotPasswordCode: builder.mutation<any, EmailProps>({
       query: (email) => ({ method: "patch", url: "/resend-forgot-password-code", data: email }),
+      invalidatesTags: ["Auth"],
     }),
     // done
     resetPassword: builder.mutation<any, ResetPasswordProps>({
       query: (data) => ({ method: "post", url: "/reset-password", data }),
+      invalidatesTags: ["Auth"],
     }),
   }),
 });
@@ -64,4 +78,6 @@ export const {
   useResendEmailTokenMutation,
   useResendForgotPasswordCodeMutation,
   useResetPasswordMutation,
+  useVerifyCookieQuery,
+  usePrefetch,
 } = authApi;

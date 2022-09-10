@@ -25,6 +25,9 @@ export const axiosBaseQuery =
         data,
         params,
         withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token") as string)}`,
+        },
       });
       return { data: result.data };
     } catch (axiosError) {

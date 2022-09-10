@@ -1,38 +1,35 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { useVerifyCookieQuery } from "redux/api/auth.api";
 
-const axiosInstance = axios.create({
-  baseURL: "http://127.0.0.1:9898/api/v1",
-  headers: {
-    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTIxMjBlNjNmZWMyYWRlMTQzYmI2OCIsImlhdCI6MTY2MjEyODc2MSwiZXhwIjoxNjY5OTA0NzYxfQ.xm-NDZevnw10pRhO8Y-pefo8J2f4wHNo-x75RpIgRmg`,
-  },
-});
-
-const greg = async () => {
-  const data = await axiosInstance({ method: "get", url: "/users/verify-cookie" });
-  return data;
-};
-
-const WithAuth = (WrappedComponent: any) => {
-  /*
-  return (props: JSX.IntrinsicAttributes) => {
+const WithAuth = (Component: any) => {
+  const AuthenticatedComponent = () => {
     const router = useRouter();
-    const [verified, setVerified] = useState(false);
 
-    useEffect(() => {
-      const me = greg();
-      console.log(me);
-    }, []);
+    const { data, isError, isFetching, isLoading, isSuccess, error } = useVerifyCookieQuery();
+    console.log({ data, isError, isFetching, isLoading, isSuccess, error });
 
-    if (verified) {
-      return <WrappedComponent {...props} />;
+    if (!data) {
+      // setIsAuthenticated(false);
+      router.push("/auth/login");
     } else {
-      return null;
-      //   router.push("/");
+      // setIsAuthenticated(true);
+      <Component />;
+      // router.push("/checkout");
     }
+    // useEffect(() => {
+    //   if (!data) {
+    //     setIsAuthenticated(false);
+    //     router.push("/auth/login");
+    //   } else {
+    //     setIsAuthenticated(true);
+    //     <Component />;
+    //     // router.push("/checkout");
+    //   }
+    //   // return isAuthenticated ? <Component /> : router.push("/auth/login");
+    // }, [data, isError, isFetching, isLoading, isSuccess, error, isAuthenticated]);
   };
-  */
+  return AuthenticatedComponent;
 };
 
 export default WithAuth;
