@@ -1,7 +1,8 @@
 import React from "react";
-import { useTitle } from "react-use";
 import toast from "react-hot-toast";
+import { useTitle } from "react-use";
 import Button from "components/buttons";
+import { useRouter } from "next/router";
 import { SignupSchema } from "utils/yupSchema";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Unstable_Grid2";
@@ -16,7 +17,6 @@ import InputAdornment from "@mui/material/InputAdornment";
 import { useSignupUserMutation } from "redux/api/auth.api";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { formLabelCss, textFieldCss } from "components/checkout/style";
-import { useRouter } from "next/router";
 
 export interface SignupProps {
   firstname: string;
