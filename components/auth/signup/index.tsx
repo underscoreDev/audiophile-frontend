@@ -31,7 +31,7 @@ export interface SignupProps {
 
 const SignUp = () => {
   useTitle("SIGNUP | AUDIOPHILE");
-  const [signUpUser, { isLoading, data }] = useSignupUserMutation();
+  const [signUpUser, { isLoading }] = useSignupUserMutation();
   const router = useRouter();
 
   const [signupValues, setSignupValues] = React.useState<SignupProps>({
