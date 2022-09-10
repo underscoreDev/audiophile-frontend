@@ -88,7 +88,7 @@ const VerifyEmail = () => {
       </Formik>
 
       <Typography sx={{ fontSize: "1.5rem", marginTop: "1rem"}}>
-        <Link href="/auth/resend-token">Didn't Get Code ? Resend</Link>
+        <Link href="/auth/resend-token">Did not Get Code ? Resend</Link>
       </Typography>
     </Container>
   );
