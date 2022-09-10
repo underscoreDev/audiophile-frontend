@@ -1,9 +1,9 @@
-import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
+import { authApi } from "redux/api/auth.api";
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "redux/store/rootReducer";
 import storageSession from "redux-persist/lib/storage/session";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { authApi } from "redux/api/auth.api";
+import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
 
 const persistConfig = {
   key: "root",

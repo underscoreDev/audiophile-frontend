@@ -19,7 +19,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     .then((data) => console.log(data))
     .catch((err: any) => console.log(err));
 
-  return (
+    return (
     <Provider store={store}>
       <PersistGate loading={<PageLoader />} persistor={persistor}>
         <Global />
