@@ -44,7 +44,7 @@ export const authApi = createApi({
     forgotPassword: builder.mutation<any, EmailProps>({
       query: (email) => ({ method: "patch", url: "/forgot-password", data: email }),
     }),
-
+    // done
     resendForgotPasswordCode: builder.mutation<any, EmailProps>({
       query: (email) => ({ method: "patch", url: "/resend-forgot-password-code", data: email }),
     }),
