@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import toast from "react-hot-toast";
 import { useTitle } from "react-use";
 import { useRouter } from "next/router";
@@ -7,6 +8,7 @@ import { LoginSchema } from "utils/yupSchema";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Unstable_Grid2";
 import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
 import { Formik, Form, FormikHelpers } from "formik";
@@ -133,6 +135,10 @@ const Login = () => {
           </Form>
         )}
       </Formik>
+
+      <Typography sx={{ fontSize: "1.5rem", marginTop: "1rem" }}>
+        <Link href="/auth/forgot-password">Forgot Password ?</Link>
+      </Typography>
     </Container>
   );
 };

@@ -56,3 +56,14 @@ export const VerificationCodeSchema = Yup.object().shape({
     .max(7, "Token Too Long!")
     .required("Token is Required"),
 });
+
+export const ResetPasswordSchema = Yup.object().shape({
+  resetPasswordCode: Yup.string()
+    .min(6, "Token Too Short!")
+    .max(7, "Token Too Long!")
+    .required("Token is Required"),
+  newPassword: Yup.string().min(6, "Password too short").required("this field is required"),
+  confirmNewPassword: Yup.string()
+    .oneOf([Yup.ref("password"), null], "Passwords do not match")
+    .required("Password Confirm field is required"),
+});
