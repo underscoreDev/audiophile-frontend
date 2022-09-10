@@ -64,6 +64,6 @@ export const ResetPasswordSchema = Yup.object().shape({
     .required("Token is Required"),
   newPassword: Yup.string().min(6, "Password too short").required("this field is required"),
   confirmNewPassword: Yup.string()
-    .oneOf([Yup.ref("newPssword"), null], "Passwords do not match")
+    .oneOf([Yup.ref("newPassword"), null], "Passwords do not match")
     .required("Password Confirm field is required"),
 });
