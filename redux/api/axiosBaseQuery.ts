@@ -34,8 +34,11 @@ export const axiosBaseQuery =
       let err = axiosError as AxiosError;
       return {
         error: {
+          err: axiosError,
           status: err.response?.status,
-          data: err.response?.data || err.message,
+          data: err.response?.data,
+          message: err.message,
+          status2: err.status,
         },
       };
     }

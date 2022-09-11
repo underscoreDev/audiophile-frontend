@@ -10,16 +10,21 @@ import * as _ from "styled-components/cssprop";
 import ResponsiveAppBar from "components/navbar";
 import { PageLoader } from "components/pageLoader";
 import { PersistGate } from "redux-persist/integration/react";
+import { getAuthUser } from "redux/reducers/authUser.reducer";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   let persistor = persistStore(store);
 
-  store
-    .dispatch(authApi.endpoints.verifyCookie.initiate())
-    .then((data) => console.log(data))
-    .catch((err: any) => console.log(err));
+  (async () => {
+    try {
+      const audio = await store.dispatch(authApi.endpoints.verifyCookie.initiate());
+      store.dispatch(getAuthUser(audio.data));
+    } catch (error) {
+      console.log("user not logged in");
+    }
+  })();
 
-    return (
+  return (
     <Provider store={store}>
       <PersistGate loading={<PageLoader />} persistor={persistor}>
         <Global />
