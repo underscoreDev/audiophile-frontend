@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getLoggedInUser } from "redux/actions/authUser.actions";
 
 export interface AuthUserState {
-  data: {
+  user: {
     email: string;
     firstname: string;
     id: string;
@@ -14,7 +14,7 @@ export interface AuthUserState {
 }
 
 const initialState: AuthUserState = {
-  data: null,
+  user: null,
 };
 
 const authReducer = createSlice({

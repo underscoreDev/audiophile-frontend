@@ -4,15 +4,13 @@ import { boldText, body } from "utils/typography";
 
 export const footerCss = css`
   background-color: ${colors.colorBlack};
-  min-height: 36.5rem;
   height: 100%;
   color: ${colors.colorLightWhite};
-  margin-top: 15rem;
   position: relative;
 `;
 
 export const footerContainerCss = css`
-  padding: 5rem 0;
+  padding: 10rem 2rem;
 
   &::before {
     content: "";
@@ -41,9 +39,9 @@ export const footerContainerCss = css`
     }
   }
 
-  svg{
-    width:2.4rem;
-    height:2.4rem;
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
   }
 
   p {

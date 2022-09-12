@@ -17,8 +17,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   (async () => {
     try {
-      const audio = await store.dispatch(authApi.endpoints.verifyCookie.initiate());
-      store.dispatch(getAuthUser(audio.data));
+      const { data } = await store.dispatch(authApi.endpoints.verifyCookie.initiate());
+      store.dispatch(getAuthUser(data));
     } catch (error) {
       console.log("user not logged in");
     }

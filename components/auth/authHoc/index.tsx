@@ -1,35 +1,16 @@
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { useVerifyCookieQuery } from "redux/api/auth.api";
+import React from "react";
+import { useRouter, withRouter } from "next/router";
+import Login from "components/auth/login";
+import { useAppSelector } from "redux/store/store";
 
 const WithAuth = (Component: any) => {
-  const AuthenticatedComponent = () => {
-    const router = useRouter();
+  const router = useRouter();
+  const { user } = useAppSelector(({ authUserReducer }) => authUserReducer);
+  return user ? <Component /> : router.push("/login");
+  // const AuthenticatedComponent = () => {
+  // };
 
-    const { data, isError, isFetching, isLoading, isSuccess, error } = useVerifyCookieQuery();
-    console.log({ data, isError, isFetching, isLoading, isSuccess, error });
-
-    if (!data) {
-      // setIsAuthenticated(false);
-      router.push("/auth/login");
-    } else {
-      // setIsAuthenticated(true);
-      <Component />;
-      // router.push("/checkout");
-    }
-    // useEffect(() => {
-    //   if (!data) {
-    //     setIsAuthenticated(false);
-    //     router.push("/auth/login");
-    //   } else {
-    //     setIsAuthenticated(true);
-    //     <Component />;
-    //     // router.push("/checkout");
-    //   }
-    //   // return isAuthenticated ? <Component /> : router.push("/auth/login");
-    // }, [data, isError, isFetching, isLoading, isSuccess, error, isAuthenticated]);
-  };
-  return AuthenticatedComponent;
+  // return AuthenticatedComponent;
 };
 
 export default WithAuth;

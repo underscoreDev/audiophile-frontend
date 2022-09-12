@@ -6,6 +6,7 @@ export const checkoutContainer = css`
   width: 100%;
   height: 100%;
   background-color: #f2f2f2;
+  padding: 10rem 0;
 `;
 
 export const backButtonCss = css`
@@ -13,7 +14,7 @@ export const backButtonCss = css`
   cursor: pointer;
   color: ${colors.colorLightPink};
   transition: 0.3s all;
-  width: fit-content;
+  margin-bottom: 5rem;
   &:hover {
     font-weight: 700;
   }

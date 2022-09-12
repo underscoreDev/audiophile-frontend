@@ -6,22 +6,22 @@ import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
 import { CheckoutSchema } from "utils/yupSchema";
 import { useAppSelector } from "redux/store/store";
+import cashOnDelivery from "assets/cart/cash on delivery.png";
 import { Formik, Form, FormikHelpers, FastField } from "formik";
 import { cartProductType, FormValuesProps } from "interfaces/interfaces";
 import { getTotalPrice, grandTotal, shipping, vat } from "redux/reducers/cartReducer";
-import cashOnDelivery from "assets/cart/cash on delivery.png";
 import {
-  checkoutContainer,
+  methodCss,
+  formLabelCss,
+  textFieldCss,
   backButtonCss,
   summaryGridCss,
-  formLabelCss,
   checkoutTextCss,
-  textFieldCss,
   sectionTitleCss,
   paymentMethodCss,
   cashOnDeliveryCss,
+  checkoutContainer,
   paymentContainerCss,
-  methodCss,
 } from "components/checkout/style";
 
 const Checkout = () => {
@@ -57,12 +57,10 @@ const Checkout = () => {
 
   return (
     <Box css={checkoutContainer}>
-      <Container sx={{ maxWidth: { xs: "lg", xl: "xl" } }} css={"padding:10rem 0"}>
-        <Box css={"margin-bottom:5rem"}>
-          <p onClick={() => router.back()} css={backButtonCss}>
-            Go Back
-          </p>
-        </Box>
+      <Container sx={{ maxWidth: { xs: "lg", xl: "xl" } }}>
+        <p onClick={() => router.back()} css={backButtonCss}>
+          Go Back
+        </p>
 
         <Formik
           initialValues={initialvalues}

@@ -43,6 +43,7 @@ const ResponsiveAppBar = () => {
   const loc = useLocation();
   const [open, setOpen] = React.useState(false);
   const { cartProducts } = useAppSelector(({ cartReducer }) => cartReducer);
+  const { user } = useAppSelector(({ authUserReducer }) => authUserReducer);
   const renderBackdrop = (props: any) => <Backdrop {...props} />;
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -177,7 +178,10 @@ const ResponsiveAppBar = () => {
 
             <Tooltip title="Open User Panel">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="User Photo" src="/static/images/avatar/2.jpg" />
+                <Avatar
+                  alt={`${user?.firstname.slice(0, 1)}-${user?.lastname.slice(0, 1)}`}
+                  src={user?.photo}
+                />
               </IconButton>
             </Tooltip>
 
