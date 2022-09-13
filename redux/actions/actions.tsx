@@ -1,4 +1,3 @@
-import { showToast } from "utils/toast";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { CartState, cartProductType } from "interfaces/interfaces";
 
@@ -26,6 +25,7 @@ export const incrementQuantity = (state: CartState, action: PayloadAction<string
       message: <h2>Product isn&apos;t in Cart. Add Product to cart First</h2>,
       type: "error",
     });
+    toast;
   }
 };
 
