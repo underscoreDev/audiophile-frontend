@@ -18,7 +18,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <PersistGate loading={<PageLoader />} persistor={persistor}>
         <Global />
         <ResponsiveAppBar />
-        <Toaster />
+        <Toaster containerStyle={{ fontSize: "1.75rem", fontWeight:600 }} />
         <Component {...pageProps} />
         <Footer />
       </PersistGate>
