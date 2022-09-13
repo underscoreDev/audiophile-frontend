@@ -1,14 +1,12 @@
 import Image from "next/image";
 import Box from "@mui/material/Box";
 import { useTitle } from "react-use";
-import { showToast } from "utils/toast";
+import { toast } from "react-hot-toast";
 import Button from "components/buttons";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import BestAudio from "components/bestAudio";
-import "react-toastify/dist/ReactToastify.css";
 import Grid from "@mui/material/Unstable_Grid2";
-import { ToastContainer } from "react-toastify";
 import Container from "@mui/material/Container";
 import CategoryGroup from "components/categoryGroup";
 import { addItemToCart } from "redux/reducers/cartReducer";
@@ -20,11 +18,12 @@ import {
   goBackButton,
   productDescCss,
   featuresCss,
+  imagesCss,
 } from "components/productDetails/style";
 
 const ProductDetail = () => {
   const router = useRouter();
-  useTitle(`${router.query.productDetails} | PRODUCT`);
+  useTitle(`${router.query.productDetails}`);
   const dispatch = useAppDispatch();
   const [quantity, setQuantity] = useState<number>(1);
   const { cartProducts } = useAppSelector(({ cartReducer }) => cartReducer);
@@ -43,10 +42,7 @@ const ProductDetail = () => {
       if (
         cartProducts.map((product: cartProductType) => product.id).includes(currentProduct.slug)
       ) {
-        showToast({
-          message: <h2>{currentProduct?.name} is already in cart</h2>,
-          type: "error",
-        });
+        toast.error(`${currentProduct?.name} is already in cart`);
         return;
       } else {
         dispatch(
@@ -56,15 +52,13 @@ const ProductDetail = () => {
             product: currentProduct,
           })
         );
-        showToast({ message: <h2>{currentProduct?.name} added to cart</h2>, type: "success" });
+        toast.success(`${currentProduct?.name} added to cart`);
       }
     }
   };
 
   return (
     <Container sx={{ maxWidth: { xs: "lg", xl: "xl" } }} css={productCss}>
-      <ToastContainer newestOnTop={true} />
-
       <h1 onClick={() => router.back()} css={goBackButton}>
         Go Back
       </h1>
@@ -130,15 +124,7 @@ const ProductDetail = () => {
         }}
         css={"img{border-radius:1rem}"}
       >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            flexDirection: { xs: "row", md: "column" },
-            marginBottom: { xs: "3rem", md: 0 },
-            paddingRight: { xs: 0, md: "3rem" },
-          }}
-        >
+        <Box sx={imagesCss}>
           <Box sx={{ paddingRight: { xs: "3rem", md: 0 } }}>
             <Image
               priority={true}
@@ -187,7 +173,9 @@ const ProductDetail = () => {
       <Box css={"margin:15rem 0"}>
         <CategoryGroup />
       </Box>
-      <BestAudio />
+      <Box sx={{ marginBottom: "12rem" }}>
+        <BestAudio />
+      </Box>
     </Container>
   );
 };

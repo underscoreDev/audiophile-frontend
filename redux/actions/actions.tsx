@@ -1,3 +1,4 @@
+import toast from "react-hot-toast"
 import { PayloadAction } from "@reduxjs/toolkit";
 import { CartState, cartProductType } from "interfaces/interfaces";
 
@@ -21,11 +22,7 @@ export const incrementQuantity = (state: CartState, action: PayloadAction<string
   if (state.cartProducts[itemIndex]) {
     state.cartProducts[itemIndex].quantity >= 1 && (state.cartProducts[itemIndex].quantity += 1);
   } else {
-    showToast({
-      message: <h2>Product isn&apos;t in Cart. Add Product to cart First</h2>,
-      type: "error",
-    });
-    toast;
+    toast.error("Product is not in Cart. Add Product to cart First");
   }
 };
 
@@ -37,9 +34,6 @@ export const decrementQuantity = (state: CartState, action: PayloadAction<string
   if (state.cartProducts[itemIndex]) {
     state.cartProducts[itemIndex].quantity >= 1 && (state.cartProducts[itemIndex].quantity -= 1);
   } else {
-    showToast({
-      message: <h2>Product isn&apos;t in Cart. Add Product to cart First</h2>,
-      type: "error",
-    });
+    toast.error("Product is not in Cart. Add Product to cart First");
   }
 };

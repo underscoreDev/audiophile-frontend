@@ -44,7 +44,7 @@ const Home = () => {
           <Yx1Earphone />
         </Box>
 
-        <Box css={marginCss}>
+        <Box sx={{ marginBottom: "12rem" }} css={marginCss}>
           <BestAudio />
         </Box>
       </Container>

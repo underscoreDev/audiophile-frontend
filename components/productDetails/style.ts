@@ -68,3 +68,11 @@ export const featuresCss = css`
     }
   }
 `;
+
+export const imagesCss = {
+  display: "flex",
+  justifyContent: "space-between",
+  flexDirection: { xs: "row", md: "column" },
+  marginBottom: { xs: "3rem", md: 0 },
+  paddingRight: { xs: 0, md: "3rem" },
+};
