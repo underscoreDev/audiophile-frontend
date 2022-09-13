@@ -179,7 +179,7 @@ const ResponsiveAppBar = () => {
             <Tooltip title="Open User Panel">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar
-                  alt={`${user?.firstname.slice(0, 1)}-${user?.lastname.slice(0, 1)}`}
+                  alt={`${user?.firstname?.slice(0, 1)}-${user?.lastname?.slice(0, 1)}`}
                   src={user?.photo}
                 />
               </IconButton>

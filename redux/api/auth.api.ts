@@ -46,11 +46,6 @@ export const authApi = createApi({
       providesTags: ["Auth"],
     }),
 
-    verifyCookie: builder.query<any, void>({
-      query: () => ({ url: "/verify-cookie", method: "get" }),
-      providesTags: ["Auth"],
-    }),
-
     // done
     forgotPassword: builder.mutation<any, EmailProps>({
       query: (email) => ({ method: "patch", url: "/forgot-password", data: email }),
@@ -78,6 +73,4 @@ export const {
   useResendEmailTokenMutation,
   useResendForgotPasswordCodeMutation,
   useResetPasswordMutation,
-  useVerifyCookieQuery,
-  usePrefetch,
 } = authApi;
