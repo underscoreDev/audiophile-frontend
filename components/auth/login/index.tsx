@@ -20,6 +20,8 @@ import { useLoginUserMutation } from "redux/api/auth.api";
 import { LoginUserProps } from "interfaces/user.interface";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { formLabelCss, textFieldCss } from "components/checkout/style";
+import { getAuthUser } from "redux/reducers/authUser.reducer";
+import { useAppDispatch } from "redux/store/store";
 
 interface ILoginUser extends LoginUserProps {
   showPassword: boolean;
@@ -29,7 +31,7 @@ const Login = () => {
   useTitle("LOGIN | AUDIOPHILE");
   const [loginInUser, { isLoading }] = useLoginUserMutation();
   const router = useRouter();
-
+  const dispatch = useAppDispatch();
   const [loginValues, setLoginValues] = React.useState<ILoginUser>({
     email: "",
     password: "",
@@ -47,11 +49,12 @@ const Login = () => {
     { setSubmitting }: FormikHelpers<ILoginUser>
   ) => {
     try {
-      const { token } = await loginInUser({
+      const { token, data } = await loginInUser({
         email: values.email,
         password: values.password,
       }).unwrap();
       localStorage.setItem("jwt", JSON.stringify(token));
+      dispatch(getAuthUser({ user: data }));
       toast.success("Login Successful");
       setSubmitting(false);
       router.push("/");

@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { VerifyEmailProps } from "components/auth/verify-email";
-import { API_URL, axiosBaseQuery } from "redux/api/axiosBaseQuery";
+import { axiosBaseQuery } from "redux/api/axiosBaseQuery";
 import {
   EmailProps,
   CreateUserProps,

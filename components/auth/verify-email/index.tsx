@@ -37,6 +37,7 @@ const VerifyEmail = () => {
   ) => {
     try {
       const data = await verifyUser({ emailToken: values.emailToken }).unwrap();
+      console.log(data);
       localStorage.setItem("jwt", JSON.stringify(data.token));
       dispatch(getAuthUser({ user: data.data }));
       toast.success("Email Verified");

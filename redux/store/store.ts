@@ -45,9 +45,9 @@ const verify = async () => {
       },
     });
     localStorage.setItem("jwt", JSON.stringify(data.token));
-    store.dispatch(getAuthUser({ user: data }));
+    store.dispatch(getAuthUser({ user: data.data }));
   } catch (err) {
-    store.dispatch(getAuthUser({ user: null }));
+    console.log("not authenticated");
   }
 };
 
