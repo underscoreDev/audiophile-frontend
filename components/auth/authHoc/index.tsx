@@ -23,7 +23,7 @@ const withAuth = (Component: any) => {
               Authorization: `Bearer ${JSON.parse(localStorage.getItem("jwt") as string)}`,
             },
           });
-          localStorage.setItem("jwt", JSON.stringify(token));
+          localStorage.setItem("jwt", JSON.stringify(data.token));
           dispatch(getAuthUser({ user: data.data }));
         } catch (err) {
           toast.error("You must login or signup to checkout");
