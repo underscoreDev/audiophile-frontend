@@ -13,7 +13,7 @@ export const authApi = createApi({
 
   tagTypes: ["Auth"],
 
-  baseQuery: axiosBaseQuery({ baseUrl: `${API_URL}/auth` }),
+  baseQuery: axiosBaseQuery({ baseUrl: "/auth" }),
 
   endpoints: (builder) => ({
     // done

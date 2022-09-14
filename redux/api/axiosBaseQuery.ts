@@ -2,12 +2,19 @@ import axios from "axios";
 import type { BaseQueryFn } from "@reduxjs/toolkit/query";
 import type { AxiosRequestConfig, AxiosError } from "axios";
 
-export const API_URL = "https://audiophile--shop.herokuapp.com/api/v1";
+export const API_URL = "http://127.0.0.1:9898/api/v1";
+
+export const transport = axios.create({
+  withCredentials: true,
+  baseURL: API_URL,
+});
 
 export const axiosBaseQuery =
-  (
-    { baseUrl }: { baseUrl: string } = { baseUrl: "" }
-  ): BaseQueryFn<
+  ({
+    baseUrl,
+  }: {
+    baseUrl: string;
+  }): BaseQueryFn<
     {
       url: string;
       method: AxiosRequestConfig["method"];
@@ -19,15 +26,11 @@ export const axiosBaseQuery =
   > =>
   async ({ url, method, data, params }) => {
     try {
-      const result = await axios({
-        url: baseUrl + url,
+      const result = await transport({
+        url: `${baseUrl}${url}`,
         method,
         data,
         params,
-        withCredentials: true,
-        headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token") as string)}`,
-        },
       });
       return { data: result.data };
     } catch (axiosError) {
