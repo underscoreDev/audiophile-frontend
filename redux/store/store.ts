@@ -5,8 +5,6 @@ import storageSession from "redux-persist/lib/storage/session";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
 import { transport } from "redux/api/axiosBaseQuery";
-import { toast } from "react-hot-toast";
-import { getLoggedInUser } from "./../actions/authUser.actions";
 import { getAuthUser } from "redux/reducers/authUser.reducer";
 
 const persistConfig = {
@@ -46,7 +44,7 @@ const verify = async () => {
         Authorization: `Bearer ${JSON.parse(localStorage.getItem("jwt") as string)}`,
       },
     });
-    console.log(data);
+    localStorage.setItem("jwt", JSON.stringify(data.token));
     store.dispatch(getAuthUser({ user: data }));
   } catch (err) {
     store.dispatch(getAuthUser({ user: null }));

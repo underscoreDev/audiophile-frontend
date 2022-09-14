@@ -1,3 +1,4 @@
+import Link from "next/link";
 import * as React from "react";
 import Image from "next/image";
 import Box from "@mui/material/Box";
@@ -36,7 +37,6 @@ import { RandomlyPositionedModal, Backdrop } from "components/cart/style";
 import speaker from "assets/shared/desktop/image-category-thumbnail-speakers.png";
 import earphones from "assets/shared/desktop/image-category-thumbnail-earphones.png";
 import headphones from "assets/shared/desktop/image-category-thumbnail-headphones.png";
-import Link from "next/link";
 
 const ResponsiveAppBar = () => {
   const router = useRouter();

@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { PageLoader } from "components/pageLoader";
-import { API_URL, transport } from "redux/api/axiosBaseQuery";
+import { transport } from "redux/api/axiosBaseQuery";
 import { getAuthUser } from "redux/reducers/authUser.reducer";
 import { useAppDispatch, useAppSelector } from "redux/store/store";
 

@@ -14,6 +14,8 @@ import { VerificationCodeSchema } from "utils/yupSchema";
 import { signUpCss } from "components/auth/signup/style";
 import { useVerifyUserEmailMutation } from "redux/api/auth.api";
 import { formLabelCss, textFieldCss } from "components/checkout/style";
+import { useAppDispatch } from "redux/store/store";
+import { getAuthUser } from "redux/reducers/authUser.reducer";
 
 export interface VerifyEmailProps {
   emailToken: string;
@@ -23,6 +25,7 @@ const VerifyEmail = () => {
   useTitle("VERIFY-EMAIL | AUDIOPHILE");
   const [verifyUser, { isLoading }] = useVerifyUserEmailMutation();
   const router = useRouter();
+  const dispatch = useAppDispatch();
 
   const [verificationToken, setVerificationToken] = React.useState<VerifyEmailProps>({
     emailToken: "",
@@ -33,8 +36,9 @@ const VerifyEmail = () => {
     { setSubmitting }: FormikHelpers<VerifyEmailProps>
   ) => {
     try {
-      const greg = await verifyUser({ emailToken: values.emailToken }).unwrap();
-      console.log(greg);
+      const data = await verifyUser({ emailToken: values.emailToken }).unwrap();
+      localStorage.setItem("jwt", JSON.stringify(data.token));
+      dispatch(getAuthUser({ user: data.data }));
       toast.success("Email Verified");
       setSubmitting(false);
       setVerificationToken({ emailToken: "" });
@@ -87,7 +91,7 @@ const VerifyEmail = () => {
         )}
       </Formik>
 
-      <Typography sx={{ fontSize: "1.5rem", marginTop: "1rem"}}>
+      <Typography sx={{ fontSize: "1.5rem", marginTop: "1rem" }}>
         <Link href="/auth/resend-token">Did not Get Code ? Resend</Link>
       </Typography>
     </Container>
