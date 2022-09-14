@@ -33,7 +33,6 @@ const SignUp = () => {
   useTitle("SIGNUP | AUDIOPHILE");
   const [signUpUser, { isLoading }] = useSignupUserMutation();
   const router = useRouter();
-
   const [signupValues, setSignupValues] = React.useState<SignupProps>({
     firstname: "",
     lastname: "",
@@ -81,7 +80,7 @@ const SignUp = () => {
   };
 
   return (
-    <Container css={signUpCss}>
+    <Container css={signUpCss} sx={{ marginBottom: "15rem" }}>
       <h1>Signup</h1>
       <Formik
         initialValues={signupValues}

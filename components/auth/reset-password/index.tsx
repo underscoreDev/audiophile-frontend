@@ -19,6 +19,8 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { formLabelCss, textFieldCss } from "components/checkout/style";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
+import { getAuthUser } from "redux/reducers/authUser.reducer";
+import { useAppDispatch } from "redux/store/store";
 
 interface ResetPasswordProps {
   resetPasswordCode: string;
@@ -32,7 +34,7 @@ const ResetPassword = () => {
   useTitle("RESET-PASSWORD | AUDIOPHILE");
   const [resetPassword, { isLoading }] = useResetPasswordMutation();
   const router = useRouter();
-
+  const dispatch = useAppDispatch();
   const [resetPasswordValues, setResetPasswordValues] = React.useState<ResetPasswordProps>({
     resetPasswordCode: "",
     newPassword: "",
@@ -58,13 +60,15 @@ const ResetPassword = () => {
     { setSubmitting }: FormikHelpers<ResetPasswordProps>
   ) => {
     try {
-      await resetPassword({
+      const { data } = await resetPassword({
         resetToken: values.resetPasswordCode,
         password: values.newPassword,
         passwordConfirm: values.confirmNewPassword,
       }).unwrap();
       toast.success("Password Changed Successfully");
       setSubmitting(false);
+      localStorage.setItem("jwt", JSON.stringify(data.token));
+      dispatch(getAuthUser({ user: data.data }));
       router.push("/");
     } catch (error: any) {
       toast.error(`Error: Invalid Reset Password Code`);
@@ -73,7 +77,7 @@ const ResetPassword = () => {
   };
 
   return (
-    <Container css={signUpCss}>
+    <Container css={signUpCss} sx={{ marginBottom: "15rem" }}>
       <h1>Reset Password</h1>
       <Formik
         initialValues={resetPasswordValues}

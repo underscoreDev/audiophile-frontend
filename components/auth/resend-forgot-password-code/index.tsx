@@ -45,7 +45,7 @@ const ResendForgotPasswordCode = () => {
   };
 
   return (
-    <Container css={signUpCss}>
+    <Container css={signUpCss} style={{ marginBottom: "15rem" }}>
       <h1>Resend Forgot Password Code</h1>
       <Formik
         initialValues={email}

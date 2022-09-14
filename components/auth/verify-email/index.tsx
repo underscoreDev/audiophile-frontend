@@ -36,10 +36,10 @@ const VerifyEmail = () => {
     { setSubmitting }: FormikHelpers<VerifyEmailProps>
   ) => {
     try {
-      const data = await verifyUser({ emailToken: values.emailToken }).unwrap();
-      console.log(data);
-      localStorage.setItem("jwt", JSON.stringify(data.token));
-      dispatch(getAuthUser({ user: data.data }));
+      const { data, token } = await verifyUser({ emailToken: values.emailToken }).unwrap();
+
+      localStorage.setItem("jwt", JSON.stringify(token));
+      dispatch(getAuthUser({ user: data.user }));
       toast.success("Email Verified");
       setSubmitting(false);
       setVerificationToken({ emailToken: "" });
@@ -52,7 +52,7 @@ const VerifyEmail = () => {
   };
 
   return (
-    <Container css={signUpCss}>
+    <Container css={signUpCss} sx={{ marginBottom: "15rem" }}>
       <h1>Verify Email</h1>
       <Formik
         initialValues={verificationToken}

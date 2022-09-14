@@ -45,7 +45,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <Container css={signUpCss}>
+    <Container css={signUpCss} sx={{ marginBottom: "15rem" }}>
       <h1>Forgot Password</h1>
       <Formik
         initialValues={email}

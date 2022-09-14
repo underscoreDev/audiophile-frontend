@@ -45,7 +45,7 @@ const ResendToken = () => {
   };
 
   return (
-    <Container css={signUpCss}>
+    <Container css={signUpCss} style={{ marginBottom: "15rem" }}>
       <h1>Resend Email Verification Code</h1>
       <Formik initialValues={email} validationSchema={EmailSchama} onSubmit={handleResendToken}>
         {({ errors, touched, values, isSubmitting, handleChange }) => (
