@@ -57,7 +57,7 @@ const ResponsiveAppBar = () => {
 
   const handleCloseNavMenu = () => setAnchorElNav(null);
 
-  const handleCloseUserMenu = () => setAnchorElUser(null);
+  const handleCloseUserMenu = (path: string) => setAnchorElUser(null);
 
   return (
     <AppBar sx={{ backgroundColor: "black", padding: "1rem 0" }} position="sticky">
@@ -179,7 +179,7 @@ const ResponsiveAppBar = () => {
             <Tooltip title="Open User Panel">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar
-                  sx={{ fontSize: "2rem", fontWeight:700 }}
+                  sx={{ fontSize: "2rem", fontWeight: 700 }}
                   alt={`${user?.firstname?.slice(0, 1)}`}
                   src={user?.photo}
                 />
@@ -198,9 +198,17 @@ const ResponsiveAppBar = () => {
                 onClose={handleCloseUserMenu}
               >
                 {userRoutes.map((panel: NavRoutes) => (
-                  <MenuItem key={panel.name} onClick={handleCloseUserMenu}>
+                  <MenuItem
+                    key={panel.path}
+                    onClick={() => {
+                      router.push(`${panel.path}`);
+                      setAnchorElUser(null);
+                    }}
+                  >
                     <Typography fontSize="large" textAlign="center">
-                      <Link href={panel.path}>{panel.name}</Link>
+                      <Box>
+                        <IconButton sx={{ fontSize: "3rem" }}>{panel.icon}</IconButton> {panel.name}
+                      </Box>
                     </Typography>
                   </MenuItem>
                 ))}
@@ -217,9 +225,18 @@ const ResponsiveAppBar = () => {
                 onClose={handleCloseUserMenu}
               >
                 {authUserRoutes.map((panel: NavRoutes) => (
-                  <MenuItem key={panel.name} onClick={handleCloseUserMenu}>
+                  <MenuItem
+                    key={panel.path}
+                    onClick={() => {
+                      router.push(`${panel.path}`);
+                      setAnchorElUser(null);
+                    }}
+                  >
                     <Typography fontSize="large" textAlign="center">
-                      <Link href={panel.path}>{panel.name}</Link>
+                      <Box>
+                        <IconButton sx={{ fontSize: "3rem" }}>{panel.icon}</IconButton>
+                        {panel.name}
+                      </Box>
                     </Typography>
                   </MenuItem>
                 ))}
