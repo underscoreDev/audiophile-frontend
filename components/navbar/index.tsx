@@ -21,7 +21,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
-import { routes, NavRoutes, userRoutes } from "components/navbar/data";
+import { routes, NavRoutes, userRoutes, authUserRoutes } from "components/navbar/data";
 import {
   cartCss,
   cartLogoCss,
@@ -178,28 +178,53 @@ const ResponsiveAppBar = () => {
 
             <Tooltip title="Open User Panel">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt={`${user?.firstname?.slice(0, 1)}`} src={user?.photo} />
+                <Avatar
+                  sx={{ fontSize: "2rem", fontWeight:700 }}
+                  alt={`${user?.firstname?.slice(0, 1)}`}
+                  src={user?.photo}
+                />
               </IconButton>
             </Tooltip>
 
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{ vertical: "top", horizontal: "right" }}
-              keepMounted
-              transformOrigin={{ vertical: "top", horizontal: "right" }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {userRoutes.map((panel: NavRoutes) => (
-                <MenuItem key={panel.name} onClick={handleCloseUserMenu}>
-                  <Typography fontSize="large" textAlign="center">
-                    <Link href={panel.path}>{panel.name}</Link>
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+            {!user ? (
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{ vertical: "top", horizontal: "right" }}
+                keepMounted
+                transformOrigin={{ vertical: "top", horizontal: "right" }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {userRoutes.map((panel: NavRoutes) => (
+                  <MenuItem key={panel.name} onClick={handleCloseUserMenu}>
+                    <Typography fontSize="large" textAlign="center">
+                      <Link href={panel.path}>{panel.name}</Link>
+                    </Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            ) : (
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{ vertical: "top", horizontal: "right" }}
+                keepMounted
+                transformOrigin={{ vertical: "top", horizontal: "right" }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {authUserRoutes.map((panel: NavRoutes) => (
+                  <MenuItem key={panel.name} onClick={handleCloseUserMenu}>
+                    <Typography fontSize="large" textAlign="center">
+                      <Link href={panel.path}>{panel.name}</Link>
+                    </Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            )}
           </Box>
         </Toolbar>
       </Container>

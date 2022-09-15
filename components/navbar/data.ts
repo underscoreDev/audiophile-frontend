@@ -11,10 +11,13 @@ export const routes: NavRoutes[] = [
 ];
 
 export const userRoutes: NavRoutes[] = [
-  { name: "Profile", path: "/user/profile" },
-  { name: "Account", path: "/user/account" },
-  { name: "Dashboard", path: "/admin/dashboard" },
   { name: "Login", path: "/auth/login" },
   { name: "Signup", path: "/auth/signup" },
-  { name: "Logout", path: "/auth/logout" },
+];
+
+export const authUserRoutes: NavRoutes[] = [
+  { name: "Profile", path: "/user/me" },
+  { name: "My Orders", path: "/user/my-orders" },
+  { name: "Profile Settings", path: "/user/profile-settings" },
+  { name: "Logout", path: "/user/logout" },
 ];
