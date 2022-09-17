@@ -225,7 +225,7 @@ const ResponsiveAppBar = () => {
                       setAnchorElUser(null);
                     }}
                   >
-                    <Box>
+                    <Box sx={{ display: "flex" }}>
                       <IconButton sx={{ fontSize: "3rem" }}>{panel.icon}</IconButton>
                       <Typography fontSize="large" textAlign="center">
                         {panel.name}
@@ -253,7 +253,7 @@ const ResponsiveAppBar = () => {
                       setAnchorElUser(null);
                     }}
                   >
-                    <Box>
+                    <Box sx={{ display: "flex" }}>
                       <IconButton sx={{ fontSize: "3rem" }}>{panel.icon}</IconButton>
                       <Typography fontSize="large" textAlign="center">
                         {panel.name}
@@ -263,7 +263,7 @@ const ResponsiveAppBar = () => {
                 ))}
 
                 <MenuItem onClick={handleLogOutUser}>
-                  <Box>
+                  <Box sx={{ display: "flex" }}>
                     <IconButton sx={{ fontSize: "3rem" }}>
                       <LogoutIcon />
                     </IconButton>
