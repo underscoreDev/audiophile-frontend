@@ -1,11 +1,11 @@
 import { authApi } from "redux/api/auth.api";
+import { persistReducer } from "redux-persist";
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "redux/store/rootReducer";
 import { transport } from "redux/api/axiosBaseQuery";
 import { getAuthUser } from "redux/reducers/authUser.reducer";
 import storageSession from "redux-persist/lib/storage/session";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
 
 const persistConfig = {
   key: "root",
