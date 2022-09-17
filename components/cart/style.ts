@@ -32,9 +32,9 @@ export const RandomlyPositionedModal = styled(Modal)`
 
   @media (max-width: 768px) {
     width: 38rem;
-    height: 80%;
-    right: 0;
-    top: 10rem;
+    height: 65%;
+    right: 2.5rem;
+    top: 8rem;
   }
 
   .cart {
