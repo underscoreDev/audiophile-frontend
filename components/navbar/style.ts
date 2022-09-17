@@ -10,7 +10,7 @@ export const cartCss = css`
   color: #fff;
   padding: 0.5rem 0.7rem;
   border-radius: 100%;
-  top: 0.5rem;
+  top: -1rem;
   left: 0.7rem;
   cursor: pointer;
 `;

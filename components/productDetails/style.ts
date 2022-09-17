@@ -20,6 +20,7 @@ export const goBackButton = css`
   cursor: pointer;
   margin: 0 0 5rem 0;
   z-index: 100;
+  width:fit-content;
 `;
 
 export const productDescCss = css`

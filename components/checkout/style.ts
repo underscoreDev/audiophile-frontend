@@ -15,6 +15,7 @@ export const backButtonCss = css`
   color: ${colors.colorLightPink};
   transition: 0.3s all;
   margin-bottom: 5rem;
+  width:fit-content;
   &:hover {
     font-weight: 700;
   }

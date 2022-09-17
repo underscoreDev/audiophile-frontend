@@ -13,6 +13,7 @@ import {
   removeFromCart,
 } from "redux/reducers/cartReducer";
 import DeleteIcon from "@mui/icons-material/Delete";
+
 interface closeCart {
   setOpen: Dispatch<SetStateAction<boolean>>;
 }

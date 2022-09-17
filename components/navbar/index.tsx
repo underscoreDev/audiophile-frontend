@@ -67,12 +67,11 @@ const ResponsiveAppBar = () => {
 
   const handleLogOutUser = async () => {
     try {
-      const log = await logout().unwrap();
-      console.log(log);
+      const {status} = await logout().unwrap();
       setAnchorElUser(null);
       localStorage.setItem("jwt", "");
       dispatch(logUserOut());
-      toast.success("Logged Out successfully");
+      toast.success(`${status}`);
       router.push("/");
     } catch (error) {
       setAnchorElUser(null);
@@ -168,7 +167,7 @@ const ResponsiveAppBar = () => {
             </Drawer>
           </Box>
 
-          <Box sx={logoMobilestyles}>
+          <Box onClick={() => router.push("/")} sx={logoMobilestyles}>
             <Navlogo />
           </Box>
 
