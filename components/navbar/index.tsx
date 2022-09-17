@@ -21,6 +21,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { routes, NavRoutes, userRoutes, authUserRoutes } from "components/navbar/data";
 import {
   cartCss,
@@ -30,13 +31,16 @@ import {
   categoryTypeCss,
   categorydescCss,
 } from "components/navbar/style";
-import { useAppSelector } from "redux/store/store";
+import { useAppDispatch, useAppSelector } from "redux/store/store";
 import cart from "assets/shared/desktop/icon-cart.svg";
 import { categoryGroupCss } from "components/categoryGroup/style";
 import { RandomlyPositionedModal, Backdrop } from "components/cart/style";
 import speaker from "assets/shared/desktop/image-category-thumbnail-speakers.png";
 import earphones from "assets/shared/desktop/image-category-thumbnail-earphones.png";
 import headphones from "assets/shared/desktop/image-category-thumbnail-headphones.png";
+import { useLogoutUserMutation } from "redux/api/auth.api";
+import { toast } from "react-hot-toast";
+import { logUserOut } from "redux/reducers/authUser.reducer";
 
 const ResponsiveAppBar = () => {
   const router = useRouter();
@@ -44,6 +48,8 @@ const ResponsiveAppBar = () => {
   const [open, setOpen] = React.useState(false);
   const { cartProducts } = useAppSelector(({ cartReducer }) => cartReducer);
   const { user } = useAppSelector(({ authUserReducer }) => authUserReducer);
+  const [logout] = useLogoutUserMutation();
+  const dispatch = useAppDispatch();
   const renderBackdrop = (props: any) => <Backdrop {...props} />;
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -59,6 +65,20 @@ const ResponsiveAppBar = () => {
 
   const handleCloseUserMenu = (path: string) => setAnchorElUser(null);
 
+  const handleLogOutUser = async () => {
+    try {
+      const log = await logout().unwrap();
+      console.log(log);
+      setAnchorElUser(null);
+      localStorage.setItem("jwt", "");
+      dispatch(logUserOut());
+      toast.success("Logged Out successfully");
+      router.push("/");
+    } catch (error) {
+      setAnchorElUser(null);
+      toast.error("Couldn't log out");
+    }
+  };
   return (
     <AppBar sx={{ backgroundColor: "black", padding: "1rem 0" }} position="sticky">
       <Container sx={{ maxWidth: { xs: "lg", xl: "xl" } }}>
@@ -205,11 +225,12 @@ const ResponsiveAppBar = () => {
                       setAnchorElUser(null);
                     }}
                   >
-                    <Typography fontSize="large" textAlign="center">
-                      <Box>
-                        <IconButton sx={{ fontSize: "3rem" }}>{panel.icon}</IconButton> {panel.name}
-                      </Box>
-                    </Typography>
+                    <Box>
+                      <IconButton sx={{ fontSize: "3rem" }}>{panel.icon}</IconButton>
+                      <Typography fontSize="large" textAlign="center">
+                        {panel.name}
+                      </Typography>
+                    </Box>
                   </MenuItem>
                 ))}
               </Menu>
@@ -232,14 +253,25 @@ const ResponsiveAppBar = () => {
                       setAnchorElUser(null);
                     }}
                   >
-                    <Typography fontSize="large" textAlign="center">
-                      <Box>
-                        <IconButton sx={{ fontSize: "3rem" }}>{panel.icon}</IconButton>
+                    <Box>
+                      <IconButton sx={{ fontSize: "3rem" }}>{panel.icon}</IconButton>
+                      <Typography fontSize="large" textAlign="center">
                         {panel.name}
-                      </Box>
-                    </Typography>
+                      </Typography>
+                    </Box>
                   </MenuItem>
                 ))}
+
+                <MenuItem onClick={handleLogOutUser}>
+                  <Box>
+                    <IconButton sx={{ fontSize: "3rem" }}>
+                      <LogoutIcon />
+                    </IconButton>
+                    <Typography fontSize="large" textAlign="center">
+                      Logout
+                    </Typography>
+                  </Box>
+                </MenuItem>
               </Menu>
             )}
           </Box>

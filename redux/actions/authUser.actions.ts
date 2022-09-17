@@ -16,3 +16,7 @@ interface AuthUserPayload {
 export const getLoggedInUser = (state: AuthUserState, action: PayloadAction<AuthUserPayload>) => {
   state.user = action.payload.user;
 };
+
+export const logoutUser = (state: AuthUserState) => {
+  state.user=null
+};

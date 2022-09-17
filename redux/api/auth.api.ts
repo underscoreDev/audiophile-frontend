@@ -41,9 +41,9 @@ export const authApi = createApi({
       invalidatesTags: ["Auth"],
     }),
 
-    logoutUser: builder.query<any, void>({
-      query: () => ({ url: "/logout", method: "get" }),
-      providesTags: ["Auth"],
+    logoutUser: builder.mutation<any, void>({
+      query: () => ({ url: "/logout", method: "post" }),
+      invalidatesTags: ["Auth"],
     }),
 
     // done
@@ -69,7 +69,7 @@ export const {
   useVerifyUserEmailMutation,
   useForgotPasswordMutation,
   useLoginUserMutation,
-  useLogoutUserQuery,
+  useLogoutUserMutation,
   useResendEmailTokenMutation,
   useResendForgotPasswordCodeMutation,
   useResetPasswordMutation,

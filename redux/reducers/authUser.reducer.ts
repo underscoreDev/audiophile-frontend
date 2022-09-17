@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getLoggedInUser } from "redux/actions/authUser.actions";
+import { getLoggedInUser, logoutUser } from "redux/actions/authUser.actions";
 
 export interface AuthUserState {
   user: {
@@ -22,9 +22,10 @@ const authReducer = createSlice({
   initialState,
   reducers: {
     getAuthUser: getLoggedInUser,
+    logUserOut: logoutUser,
   },
 });
 
-export const { getAuthUser } = authReducer.actions;
+export const { getAuthUser, logUserOut } = authReducer.actions;
 
 export default authReducer.reducer;

@@ -1,6 +1,5 @@
 import LoginIcon from "@mui/icons-material/Login";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
-import LogoutIcon from "@mui/icons-material/Logout";
 import Person2Icon from "@mui/icons-material/Person2";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
@@ -25,7 +24,6 @@ export const userRoutes: NavRoutes[] = [
 
 export const authUserRoutes: NavRoutes[] = [
   { name: "Profile", path: "/user/me", icon: <Person2Icon /> },
-  { name: "My Orders", path: "/user/my-orders", icon:<LocalMallIcon /> },
-  { name: "Profile Settings", path: "/user/profile-settings", icon:<SettingsIcon /> },
-  { name: "Logout", path: "/user/logout", icon:<LogoutIcon /> },
+  { name: "My Orders", path: "/user/my-orders", icon: <LocalMallIcon /> },
+  { name: "Profile Settings", path: "/user/profile-settings", icon: <SettingsIcon /> },
 ];
